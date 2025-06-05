@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+
+
+@font-face {
+  font-family: 'Gafiya';
+  src: url('/font/Gafiya-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.main-text {
+  font-family: 'Gafiya', Arial, sans-serif;
+}
+/* * {
+  font-family: 'Gafiya', Arial, sans-serif;
+} */
+/* .p-font-style{
+  font-family:;
+} */
+
+html {
+  scroll-behavior: smooth;
+}
