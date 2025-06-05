@@ -3,7 +3,7 @@ import React from 'react';
 const Hero1 = () => {
   return (
     <div
-      className="relative w-full h-screen bg-cover bg-center text-white -mt-25"
+      className="relative w-full h-screen bg-cover bg-center text-white "
       style={{
         backgroundImage: 'url("/gallery/bg2.jpg")',
         fontFamily: `'Wellsbrook Initials SG Regular'`,

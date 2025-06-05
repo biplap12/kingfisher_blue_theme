@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import EnquiryModal from './loginMOdel'; // Make sure this is the correct path
 
 const Navbar = () => {
@@ -17,13 +16,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 w-full py-6 px-8 text-white backdrop-blur-md">
+    <div className="fixed top-0 right-0 left-0 z-50 w-full mx-auto py-6 px-24 text-white backdrop-blur-md">
       <div className="flex justify-between items-center">
         {/* Left Placeholder */}
-        <div className="w-[180px]"></div>
 
         {/* Center Logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
+        <div className="">
           <img src="/logo/logo1.png" alt="Logo" className="h-10 object-contain" />
         </div>
 

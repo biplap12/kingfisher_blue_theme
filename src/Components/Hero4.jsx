@@ -1,57 +1,64 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Hero4 = () => {
-  const lifestyle = [
-    { title: "MARINA-SIDE BLISS", desc: "A first-line marina facing property, with stunning views and interconnected promenades.", img: "/gallery/img1.jpg", span: 2 },
-    { title: "RESORT-LIKE COMFORT", img: "/gallery/img2.jpg" },
-    { title: "URBAN VITALITY", img: "/gallery/img3.jpg" },
-    { title: "SUNSET VIEWS", img: "/gallery/img4.jpg" },
-    { title: "ISLAND LIFE", img: "/gallery/img5.jpg" },
+  const amenities = [
+    { title: "CLUB HOUSE", img: "/new/6.jpg" },
+    { title: "STATE-OF-THE ART GYM", img: "/new/7.jpg" },
+    { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
+    { title: "EV CHARGING STATIONS", img: "/new/2.jpg" },
+    { title: "STATE-OF-THE ART GYM", img: "/new/7.jpg" },
+    { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
+    { title: "EV CHARGING STATIONS", img: "/new/2.jpg" },
   ];
 
-  const text =[
-    {
-      title:"Enriched By The Ocean",
-      description:"Set your mind adrift from a marina reimagined"
-    }
-  ]
-  
+  const carouselRef = useRef(null);
 
+  const scrollBy = (direction) => {
+    const scrollContainer = carouselRef.current;
+    const scrollAmount = 300;
+    if (scrollContainer) {
+      scrollContainer.scrollBy({
+        left: direction === "next" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <>
-   <div className="flex justify-center items-center mt-20 flex-col mb-20"> 
-  {text.map((item, index) => {
-    return (
-      <div key={index} className="text-center mb-10">
-        <h1 className="text-4xl md:text-5xl tracking-widest text-[#1e2c3a] uppercase">
-          {item.title}
-        </h1>
-        <p className="text-lg mt-5 p-font-style">
-          {item.description}
-        </p>
+    <section className="w-full relative py-20 px-6  ">
+      <h2 className="text-center text-3xl md:text-4xl text-yellow-500 font-light tracking-wide mb-6 uppercase">
+        Explore our ICONIC PROPERTIES
+      </h2>
+      <p className="max-w-3xl mx-auto text-center text-lg text-gray-600 mb-12">
+        Kingfisher is celebrated for creating refined residential towers,
+        vibrant master-planned communities, and exclusive coastal retreats.
+      </p>
+
+      {/* Carousel Wrapper */}
+      <div>
+        <motion.div className="flex items-center gap-6 scrollbar-hide  overflow-hidden pb-4">
+          {amenities.map((a, index) => (
+            <div
+              key={index}
+              className="min-w-[600px] w-[250px] md:w-[300px] flex-shrink-0 text-center select-none"
+            >
+              <img
+                src={a.img}
+                alt={a.title}
+                className="h-[80vh] w-full object-cover mb-3"
+                draggable={false}
+              />
+              <p className="text-sm md:text-base uppercase tracking-wider text-gray-700">
+                {a.title}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </div>
-    )
-  })}
-</div>
-    <div className="grid md:grid-cols-4 gap-4 mx-30 mb-20">
-      {lifestyle.map((item, index) => (
-        <div
-          key={index}
-          className={`relative text-white h-80 bg-cover bg-center ${
-            item.span === 2 ? "md:col-span-2 md:row-span-2 h-[660px]" : ""
-          }`}
-          style={{ backgroundImage: `url(${item.img})` }}
-        >
-          <div className="absolute bottom-4 left-4 right-4">
-            <h3 className="text-lg font-semibold">{item.title}</h3>
-            {item.desc && <p className="text-sm mt-2">{item.desc}</p>}
-          </div>
-        </div>
-      ))}
-    </div>
-    </>
+    </section>
   );
 };
 
-export default Hero4
+export default Hero4;
