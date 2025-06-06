@@ -1,5 +1,5 @@
-import Hero1 from "../components/Hero1.jsx";
-import Hero2 from "../components/Hero2.jsx";
+import Hero1 from "../components/hero1.jsx";
+import Hero2 from "../components/hero2.jsx";
 import Hero4 from "../Components/Hero4.jsx";
 import PaymentPlanSection from "../Components/PaymentPlanSection.jsx";
 import FloorPlanSelector from "../Components/FloorPlanSelector.jsx";

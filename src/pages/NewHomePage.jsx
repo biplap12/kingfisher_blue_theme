@@ -22,6 +22,7 @@ const NewHomePage = () => {
     <MapSection/>
     <PaymentPlanSection/>
     <FloorPlanSelector/>
+    
     </div>
     </>
   )}

@@ -54,8 +54,8 @@ const Gallery = () => {
 
       {/* Centered Text */}
       <div className="absolute inset-0 flex items-center justify-center z-30">
-        <h2 className="text-white text-4xl md:text-6xl font-bold text-center">
-          Explore the Journey
+        <h2 className="text-white md:text-6xl  text-6xl font-bold  tracking-wide uppercase leading-20 text-center p-6  main-text">
+          Find your dream home{" "}
         </h2>
       </div>
     </section>

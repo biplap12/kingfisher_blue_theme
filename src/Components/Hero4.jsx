@@ -50,9 +50,15 @@ const Hero4 = () => {
                 className="h-[80vh] w-full object-cover mb-3"
                 draggable={false}
               />
-              <p className="text-sm md:text-base uppercase tracking-wider text-gray-700">
-                {a.title}
-              </p>
+              <div className="flex flex-col justify-start items-start gap-2">
+                <p className="text-yellow-500">Starting From: $50,000</p>
+                <p className="text-xl uppercase tracking-wider text-zinc-700">
+                  {a.title}
+                </p>
+                <button className="bg-yellow-100 border border-amber-800 px-6 py-3 uppercase cursor-pointer hover:bg-yellow-300">
+                  View Detail
+                </button>
+              </div>
             </div>
           ))}
         </motion.div>

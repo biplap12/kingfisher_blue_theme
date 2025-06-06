@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Home,
-  Wrench,
-  Globe,
-  Award,
-} from "lucide-react";
+import { Home, Wrench, Globe, Award } from "lucide-react";
 
 const stats = [
   {
