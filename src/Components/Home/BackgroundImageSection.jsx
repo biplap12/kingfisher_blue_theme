@@ -3,23 +3,22 @@ import React from 'react';
 const Hero1 = () => {
   return (
     <div
-      className="relative w-full h-screen bg-cover bg-center text-white "
+      className="relative w-full h-screen bg-cover bg-center text-white -mt-25"
       style={{
-        backgroundImage: 'url("/gallery/bg2.jpg")',
+    backgroundImage: 'url("https://v.fastcdn.co/cdn-cgi/image/format=auto,fit=scale-down,sharpen=1/u/a43967b2/65501639-0-Desktop-Header-.jpg")',
         fontFamily: `'Wellsbrook Initials SG Regular'`,
       }}
     >
       {/* Center Text */}
-      <div className="absolute top-1/2 text-6xl font-bold  tracking-wide uppercase leading-20 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6  main-text">
-         <p>WHERE THE  </p>
-          <p>SEA MEETS</p>
-           <p>YOUR SOUL</p>
+      <div className="absolute top-1/4 text-5xl font-bold text-white  tracking-wide uppercase leading-20 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6 heading-font">
+         <p>WHERE THE  SEA </p>
+          <p>MEETS YOUR SOUL</p>
       </div>
 
       {/* Bottom Text */}
-      <div className="absolute bottom-6 w-full text-center">
+      {/* <div className="absolute bottom-6 w-full text-center">
         <p className="text-xl bg-opacity-50 inline-block px-4 py-2 rounded-md">Nepal</p>
-      </div>
+      </div> */}
     </div>
   );
 };

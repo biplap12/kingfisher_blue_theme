@@ -8,7 +8,7 @@ import {
 
 export default function PropertyCard({ property }) {
   return (
-    <div className=" text-[#F5BC6D] rounded-lg shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden h-[400px] flex flex-col transition-transform hover:scale-[1.03] duration-300">
+    <div className=" primary-color rounded-lg shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden h-[400px] flex flex-col transition-transform hover:scale-[1.03] duration-300">
       {/* Image Section */}
       <div className="relative h-56 w-full overflow-hidden">
         <img

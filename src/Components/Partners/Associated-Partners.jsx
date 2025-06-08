@@ -21,7 +21,7 @@ const logos = [
 const PartnerLogos = () => {
   return (
     <section className="bg-white h-auto flex flex-col items-center justify-center px-4 py-20">
-      <h2 className="text-center text-3xl md:text-4xl text-yellow-500 font-light tracking-wide mb-6 uppercase">
+      <h2 className="text-center text-3xl md:text-4xl primary-color font-light tracking-wide mb-6 uppercase">
         Associated Partners
       </h2>
       <p className="text-lg text-center text-gray-500 max-w-3xl mx-auto mb-14">

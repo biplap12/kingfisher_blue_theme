@@ -3,8 +3,11 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App.jsx";
 import Home from "./Home.jsx";
 import NotFound from "./NotFound.jsx";
-import EnquiryForm from "../Components/loginMOdel.jsx";
+import EnquiryForm from "../Components/loginModel.jsx";
 import AllPropertypage from "./AllPropertypage.jsx";
+import About from "./About.jsx";
+import Contact from "./Contact.jsx";
+import Blog from "./Blog.jsx";
 
 
 const router = createBrowserRouter([
@@ -25,6 +28,18 @@ const router = createBrowserRouter([
        {
       path: "/all-property-page",
       element: <AllPropertypage/>,
+      },
+      {
+        path:"/about",
+        element:<About/>
+      },
+        {
+        path:"/contact",
+        element:<Contact/>
+      },
+        {
+        path:"/blog",
+        element:<Blog/>
       },
  
     ],
