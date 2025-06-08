@@ -13,7 +13,7 @@ const paymentSchedule = [
 
 const PaymentPlanSection = () => {
   return (
-    <section className="py-20 px-6 md:px-24 bg-[#f9f9f9]">
+    <section id="dark-section" className="py-20 px-6 md:px-24 bg-[#f9f9f9]">
       <h2 className="text-center text-3xl font-light   tracking-widest mb-16">
         PAYMENT PLAN
       </h2>
@@ -23,11 +23,13 @@ const PaymentPlanSection = () => {
         <div className="grid grid-cols-2 gap-x-8 gap-y-10">
           {paymentSchedule.map((item, index) => (
             <div key={index} className="border-b border-gray-500 pb-10 ">
-              <p className="text-sm text-gray-400 mb-1 flex justify-items-start t">{item.step}</p>
-             <div className="flex flex-col items-center">
-              <p className="text-[32px] font-semibold">{item.percentage}</p>
-              <p className="text-[16px] text-gray-600 mt-1">{item.note}</p>
-            </div>
+              <p className="text-sm text-gray-400 mb-1 flex justify-items-start t">
+                {item.step}
+              </p>
+              <div className="flex flex-col items-center">
+                <p className="text-[32px] font-semibold">{item.percentage}</p>
+                <p className="text-[16px] text-gray-600 mt-1">{item.note}</p>
+              </div>
             </div>
           ))}
 

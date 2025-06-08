@@ -10,105 +10,109 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
-  const currentYear= new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#111827] text-white py-10 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10">
-        {/* Logo */}
-        <div className="flex-1 flex justify-center lg:justify-start">
-          <img
-            src="/logo/logo1.png"
-            alt="Company Logo"
-            className="h-16 object-contain"
-          />
-        </div>
+    <footer
+      id="dark-section"
+      className="relative min-h-screen flex items-end text-white"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1643267629353-1cefe0ce6e7c?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Footer Background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
 
-        {/* Contact Details */}
-        <div className="flex-1">
-          <h2 className="text-2xl font-semibold border-b border-white pb-2 mb-4">
-            DETAILS
-          </h2>
-          <p className="flex items-start gap-3 mb-3 text-sm leading-relaxed">
-            <MapPin className="mt-1 w-5 h-5 shrink-0" />
-            SUITE 203, PARK HEIGHTS SQUARE 1,<br /> DUBAI HILLS, DUBAI
-          </p>
-          <p className="flex items-center gap-3 mb-3 text-sm">
-            <Phone className="w-5 h-5 shrink-0" />
-            <a
-              href="tel:+971800468429"
-              className="underline hover:no-underline"
-            >
-              +971 800 468429
-            </a>
-          </p>
-          <p className="flex items-center gap-3 text-sm">
-            <Mail className="w-5 h-5 shrink-0" />
-            <a
-              href="mailto:info@imtiaz.ae"
-              className="underline hover:no-underline"
-            >
-              info@imtiaz.ae
-            </a>
-          </p>
-        </div>
+      {/* Content */}
+      <div className="relative z-10 w-full py-8 px-6 ">
+        <div className="max-w-9xl mx-auto flex flex-col lg:flex-row justify-between items-top gap-10  mb-20">
+          {/* Logo */}
+          <div className="flex-1 flex justify-center lg:justify-start">
+            <img
+              src="/logo/logo1.png"
+              alt="Company Logo"
+              className="h-16 object-contain"
+            />
+          </div>
 
-        {/* Social Links */}
-        <div className="flex-1">
-          <h2 className="text-2xl font-semibold border-b border-white pb-2 mb-4">
-            GET IN TOUCH
-          </h2>
-          <div className="flex space-x-6 mt-4">
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="hover:text-gray-400 transition"
-            >
-              <Instagram className="w-6 h-6" />
-            </a>
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="hover:text-gray-400 transition"
-            >
-              <Facebook className="w-6 h-6" />
-            </a>
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className="hover:text-gray-400 transition"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="#"
-              aria-label="YouTube"
-              className="hover:text-gray-400 transition"
-            >
-              <Youtube className="w-6 h-6" />
-            </a>
+          {/* Contact Details */}
+          <div className=" flex justify-between items-top">
+            <div className=" ">
+              <h2 className="text-2xl font-semibold pb-2 mb-4">DETAILS</h2>
+
+              <div className="flex flex-col justify-between">
+                <p className="flex items-start gap-3 mb-3 text-sm leading-relaxed">
+                  <MapPin className="mt-1 w-5 h-5 shrink-0 text-yellow-200" />
+                  SUITE 203, PARK HEIGHTS SQUARE 1, DUBAI HILLS, DUBAI
+                </p>
+                <p className="flex items-top gap-3 mb-3 text-sm">
+                  <Phone className="w-5 h-5 shrink-0 text-yellow-200" />
+                  <a
+                    href="tel:+971800468429"
+                    className="underline hover:no-underline"
+                  >
+                    +971 800 468429
+                  </a>
+                </p>
+                <p className="flex items-top gap-3 text-sm">
+                  <Mail className="w-5 h-5 shrink-0 text-yellow-200" />
+                  <a
+                    href="mailto:info@imtiaz.ae"
+                    className="underline hover:no-underline"
+                  >
+                    info@kingfisherrealstate.com
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex-1 items-center justify-end">
+            <h2 className="text-2xl font-semibold text-end ">GET IN TOUCH</h2>
+            <div className="flex space-x-4 mt-4 justify-end text-yellow-200">
+              {[Instagram, Facebook, Linkedin, Youtube].map((Icon, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  className="hover:text-gray-300 transition"
+                  aria-label={Icon.name}
+                >
+                  <Icon className="w-6 h-6" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-        </div>
-        <div className="flex flex-wrap justify-between items-center mt-20 text-sm  text-white fade-in">
-          <p className="text-gray-400">© {currentYear} All rights reserved.</p>
+
+        {/* Bottom Bar */}
+        <div className="flex flex-wrap justify-between items-end text-sm text-white border-t border-yellow-900">
+          <p className="text-gray-400">
+            © {currentYear} All Rights Reserved | Flyeast Nepal Pvt. Ltd.
+          </p>
 
           <a
             href="https://www.webxnep.com/"
-            className="relative flex items-center gap-2 p-[1px] rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 -mt-5 mb-3"
+            target="_blank"
+            className="relative flex items-end justify-end gap-2"
           >
-            <div className="flex items-center gap-2 bg-[#232266] rounded-full px-3 py-1">
-              <p className="text-[#F5BC6D] text-xs">Designed & Developed by</p>
+            <div className="flex items-center gap-2 py-1">
+              <p className="text-xs hover:underline">Designed & Developed by</p>
               <div className="w-12 h-8 overflow-hidden animate-spin-slow">
                 <img
                   src="/webx/logo.svg"
                   alt="WebX logo"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain hover:scale-105"
                 />
               </div>
             </div>
           </a>
         </div>
-      
+      </div>
     </footer>
   );
 };

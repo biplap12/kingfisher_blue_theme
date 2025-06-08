@@ -27,14 +27,14 @@ const AmenitiesSection = () => {
   };
 
   return (
-    <section className="relative py-20 px-4 md:px-16 mx-25">
+    <section id="dark-section" className="relative py-20 px-4 md:px-16 mx-25">
       <h2 className="text-center text-3xl md:text-4xl font-light tracking-widest mb-16 heading-font">
         AMENITIES
       </h2>
 
       {/* Vertical Text */}
       <p className="absolute left-0 top-[65%] text-center -translate-y-1/2 -rotate-90 origin-left text-2xl tracking-wider font-light hidden lg:block text-black">
-        REVITALISE. RECHARGE. <br/> REIMAGINE.
+        REVITALISE. RECHARGE. <br /> REIMAGINE.
       </p>
 
       {/* Carousel Wrapper */}

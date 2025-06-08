@@ -31,7 +31,10 @@ const locations = [
 
 const MapSection = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-8 px-4 md:px-24 py-16 items-start">
+    <div
+      id="dark-section"
+      className="flex flex-col md:flex-row gap-8 px-4 md:px-24 py-16 items-start"
+    >
       {/* Sidebar */}
       <div className="w-full md:w-1/3 space-y-10">
         {locations.map((item, i) => (

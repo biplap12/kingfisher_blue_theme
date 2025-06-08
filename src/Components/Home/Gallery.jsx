@@ -24,14 +24,14 @@ const Gallery = () => {
   {text.map((item, index) => {
     return (
       <div key={index} className="text-center mb-10">
-        <h1 className="text-4xl md:text-5xl tracking-widest text-[#1e2c3a] uppercase heading-font">
+        <h1 className="text-4xl md:text-5xl tracking-widest text-yellow-500 uppercase mb-6">
           {item.title}
         </h1>
-        <p className="text-lg mt-5 p-font-style paragraph-font">
+        <p className="text-lg mt-5 text-zinc-500">
           {item.description}
         </p>
       </div>
-    )
+    );
   })}
 </div>
     <div className="grid md:grid-cols-4 gap-4 mx-30 mb-20">

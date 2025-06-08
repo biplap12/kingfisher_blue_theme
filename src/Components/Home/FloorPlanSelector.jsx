@@ -36,7 +36,7 @@ const FloorPlanSelector = () => {
   const [selected, setSelected] = useState(floorPlans[0]);
 
   return (
-    <section className="py-20 px-6 md:px-24 bg-[#f9f9f9]">
+    <section id="dark-section" className="py-20 px-6 md:px-24 bg-[#f9f9f9]">
       <h2 className="text-center text-3xl font-light tracking-widest mb-16 heading-font">
         FLOOR PLANS
       </h2>
@@ -50,11 +50,13 @@ const FloorPlanSelector = () => {
                 onClick={() => setSelected(plan)}
                 className="text-left w-full  tracking-wider transition-all text-gray-700 hover:text-black text-2xl"
               >
-                <div className={`flex items-center gap-3 p-2 rounded-lg ${
-                  selected.label === plan.label
-                    ? "bg-[#F6BC6D] text-white"
-                    : "bg-white border border-gray-300 hover:bg-gray-100"
-                    }`}>
+                <div
+                  className={`flex items-center gap-3 p-2 rounded-lg ${
+                    selected.label === plan.label
+                      ? "bg-[#F6BC6D] text-white"
+                      : "bg-white border border-gray-300 hover:bg-gray-100"
+                  }`}
+                >
                   <span className="text-sm">{plan.SN}</span>
                   <span>{plan.label.toUpperCase()}</span>
                 </div>
@@ -75,15 +77,17 @@ const FloorPlanSelector = () => {
             </div>
           ))}
 
-        <div className="flex flex-col items-center">
-          <a
-            href={selected.image}
-          download={selected.label + ' Floor Plan kingfisher real estate'}
-            className="mt-8 inline-flex items-center w-fit gap-2 px-4 py-2 border rounded-sm border-black text-sm font-medium hover:bg-black hover:text-white transition"
-          >
-            <Download />DOWNLOAD FLOOR PLAN
-          </a>
-        </div></div>
+          <div className="flex flex-col items-center">
+            <a
+              href={selected.image}
+              download={selected.label + " Floor Plan kingfisher real estate"}
+              className="mt-8 inline-flex items-center w-fit gap-2 px-4 py-2 border rounded-sm border-black text-sm font-medium hover:bg-black hover:text-white transition"
+            >
+              <Download />
+              DOWNLOAD FLOOR PLAN
+            </a>
+          </div>
+        </div>
 
         {/* Image Preview */}
         <div className="flex-1 w-full flex items-center justify-center bg-white ">
