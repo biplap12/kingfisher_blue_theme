@@ -2,10 +2,9 @@ import React from "react";
 import {
   CircleCheckBig,
   CreditCard,
+  Download,
   MapPin,
-  Phone,
   Tag,
-  User,
 } from "lucide-react";
 
 const data = [
@@ -54,9 +53,12 @@ exceptional is simply everyday.`,
 
 const Hero2 = () => {
   return (
-    <div className="text-[#1e1e1e] w-full relative">
+    <div
+      id="dark-section"
+      className="text-[#1e1e1e] min-h-screen w-full primary-background-color"
+    >
       {/* Top Info Section */}
-      <div className="w-11/12 mx-auto px-6 pt-20 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div className="w-full px-6 py-20 grid grid-cols-2 md:grid-cols-4 text-center">
         {data.map((item, index) => (
           <div
             key={index}
@@ -64,26 +66,37 @@ const Hero2 = () => {
               index !== data.length - 1 ? "border-r border-gray-300" : ""
             }`}
           >
-            <p className="text-xs mb-1 text-[#f69c1e] uppercase tracking-wider flex justify-center gap-2">
+            <p className="text-xs mb-1 uppercase tracking-wider flex justify-center gap-2 paragraph-font">
               {item.icon}
               {item.label}
             </p>
-            <p className="text-4xl text-[#444d59] tracking-wider">
+            <p className="text-4xl text-yellow-500 tracking-wider">
               {item.value}
             </p>
           </div>
         ))}
       </div>
 
+      {/* Navigation */}
+      <div className="text-center text-sm uppercase tracking-widest mt-4 space-x-4">
+        {navItems.map((item, idx) => (
+          <span
+            key={idx}
+            className="text-[#1e2c3a] hover:underline cursor-pointer"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
 
       {/* Curved Hero Section */}
-      <div className="relative bg-[#f7f7f7]">
-        <div className="absolute inset-0 bg-white  z-0"></div>
+      <div className="relative ">
+        {/* <div className="absolute inset-0 bg-white clip-hero-shape z-0"></div> */}
         <div className="relative z-10 text-center px-6 py-24 max-w-4xl mx-auto">
           {text.map((item, index) => {
             return (
               <div key={index} className="text-center mb-10">
-                <h1 className="text-4xl md:text-5xl tracking-widest text-[#F6BC6D] uppercase mb-6">
+                <h1 className="text-4xl md:text-5xl tracking-widest text-yellow-500 uppercase mb-6">
                   {item.title}
                 </h1>
                 <p className="text-sm md:text-base text-gray-700 max-w-2xl mx-auto p-font-style">
@@ -96,10 +109,10 @@ const Hero2 = () => {
           {/* Buttons */}
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <button className="border border-gray-700 px-6 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-gray-200">
-              <Phone className="w-4 h-4" /> Connect with us
+              <Download className="w-4 h-4" /> Download Brochure
             </button>
             <button className="border border-gray-700 px-6 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-gray-200">
-              <User className="w-4 h-4" /> Know more about us
+              <Download className="w-4 h-4" /> Download Fact Sheet
             </button>
           </div>
         </div>

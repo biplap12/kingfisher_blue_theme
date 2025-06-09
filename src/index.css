@@ -22,3 +22,19 @@
 html {
   scroll-behavior: smooth;
 }
+
+.primary-color {
+  color: #F5BC6D;
+}
+.secondary-color {
+  color: blue;
+}
+.heading-font{
+  font-family: 'Gafiya', Arial, sans-serif;
+}
+.paragraph-font{
+  font-family: 'serif';
+}
+.primary-background-color {
+  background-color: #ffffff;
+}

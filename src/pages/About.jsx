@@ -192,25 +192,25 @@ export default function About() {
         className="h-screen bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")' }}
       >
-        <h1 className="text-4xl md:text-5xl font-bold bg-opacity-50 px-6 py-4 rounded">
+        <div className="text-4xl md:text-5xl font-bold bg-opacity-50 px-6 py-4 rounded">
           Home / About
-        </h1>
+        </div>
       </section>
 
       {/* Team Section */}
-      <div className="bg-[#232266]  text-[#F5BC6D] min-h-screen flex flex-col items-center justify-center p-6">
-        <h2 className="text-3xl font-bold uppercase tracking-wider mb-10 border-b border-white pb-2">
+      <div className="primary-background-color text-[#F5BC6D] min-h-screen flex flex-col items-center justify-center p-6">
+        <h1 className="text-3xl font-bold uppercase tracking-wider mb-10 border-b border-white pb-2 heading-font">
           Our Team
-        </h2>
+        </h1>
         <div className=" max-w-7xl w-full flex flex-col md:flex-row items-center gap-10">
           {/* Text Content */}
           <div className="md:w-1/3">
             <h2 className="text-sm uppercase border-b border-white mb-4">
               {currentMember.title}
             </h2>
-            <h1 className="text-5xl    italic leading-none">
+            <h1 className="text-5xl italic leading-none">
               {currentMember.name.split(" ")[0]}
-              <span className="text-white   font-medium ml-2">
+              <span className="text-gray font-medium ml-2">
                 {currentMember.name.split(" ").slice(1).join(" ")}
               </span>
             </h1>
