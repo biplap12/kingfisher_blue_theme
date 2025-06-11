@@ -62,21 +62,6 @@ const Details = () => {
           </div>
         ))}
       </div>
-
-      {/* Navigation */}
-      {/* <div className="text-center text-sm uppercase tracking-widest mt-4 space-x-4 max-h-screen sticky top-10 paragraph-font">
-        {navItems.map((item, idx) => (
-          <span
-            key={idx}
-            className="text-[#1e2c3a] hover:underline cursor-pointer"
-          >
-            {item}
-          </span>
-        ))}
-      </div> */}
-       {/* Curved Hero Section */}
-      
-      {/* Custom clip-path shape */}
      
     </section>
   );

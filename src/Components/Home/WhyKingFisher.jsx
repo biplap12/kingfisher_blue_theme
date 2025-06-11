@@ -5,6 +5,7 @@ import {
   Globe,
   Award,
 } from "lucide-react";
+import { MdDescription } from "react-icons/md";
 
 const stats = [
   {
@@ -29,20 +30,28 @@ const stats = [
   },
 ];
 
+const text= [
+  {
+    title:"WHY CHOOSE KINGFISHER ?",
+    description:"Kingfisher Real Estate is known for delivering landmark projects marked by quality and attention to detail. Blending modern design with top-tier amenities, the company has established a strong presence across the UAE, Saudi Arabia, Qatar, and other global markets. Its diverse portfolio of upscale residential, commercial, and lifestyle properties reflects a commitment to excellence and innovation."
+  }
+];
+
 const Whykingfisher = () => {
   return (
     <section className="bg-[#f9f9f9] py-20 px-4 lightSection">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
-          WHY CHOOSE KINGFISHER ?
-        </h2>
-        <p className="text-lg text-gray-500 max-w-3xl mx-auto mb-14 paragraph-font">
-          At Kingfisher, we craft more than just properties — we build lasting
-          lifestyles. With a reputation for architectural excellence, smart
-          innovation, and global standards, our projects redefine luxury living
-          across the UAE and beyond.
-        </p>
-
+       
+        {text.map((textItem, index) => (
+          <div key={index}>
+            <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
+              {textItem.title}
+            </h2>
+            <p className="text-lg text-gray-500 max-w-6xl mx-auto mb-14 paragraph-font text-justify">
+              {textItem.description}
+            </p>
+          </div>
+        ))}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div

@@ -70,15 +70,7 @@ const Slider = () => {
             );
           })}
 
-          {/* Buttons */}
-          {/* <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <button className="border border-gray-700 px-6 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-gray-200">
-              <Download className="w-4 h-4" /> Download Brochure
-            </button>
-            <button className="border border-gray-700 px-6 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-gray-200">
-              <Download className="w-4 h-4" /> Download Fact Sheet
-            </button>
-          </div> */}
+       
         </div>
       </div>
 

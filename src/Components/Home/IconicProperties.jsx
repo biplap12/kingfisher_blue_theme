@@ -36,6 +36,12 @@ const properties = [
       "https://images.unsplash.com/photo-1584306221131-373b2e117535?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
+const text=[
+  {
+    title:"Explore Our Iconic Properties",
+    description:"Kingfisher Real Estate is recognized for developing premium residential towers, exclusive communities, and luxurious resort-style homes. From contemporary apartments in prime city locations to serene urban getaways, each property showcases modern design and high-end amenities, delivering a refined and elevated living experience."
+  }
+]
 
 const IconicProperties = () => {
   const navigate = useNavigate();
@@ -43,13 +49,21 @@ const IconicProperties = () => {
   return (
     <section id="apartments" className="py-20 px-6 lightSection">
       <div className="text-center mb-14">
-        <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
-          Explore Our Iconic Properties
+        {text.map((textItem,index)=>(
+        <div key={index+"iconic property"}>
+           <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
+          {textItem.title}
         </h2>
-        <p className="text-lg text-gray-500 max-w-4xl mx-auto paragraph-font">
-          Kingfisher is celebrated for creating refined residential towers,
-          vibrant master-planned communities, and exclusive coastal retreats...
+        <p className="text-lg text-gray-500 max-w-7xl mx-auto paragraph-font">
+          {textItem.description}
         </p>
+        </div>
+
+
+        )
+
+        )}
+       
       </div>
 
       <div  className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-5 mx-4 md:mx-24">

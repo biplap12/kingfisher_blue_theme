@@ -24,11 +24,8 @@ const PartnerLogos = () => {
       <h2 className="text-center text-3xl md:text-5xl tracking-wide mb-6 uppercase heading-font">
         Associated Partners
       </h2>
-      <p className="text-lg text-center text-gray-500 max-w-3xl mx-auto mb-14 paragraph-font">
-        At Kingfisher, we craft more than just properties — we build lasting
-        lifestyles. With a reputation for architectural excellence, smart
-        innovation, and global standards, our projects redefine luxury living
-        across the UAE and beyond.
+      <p className="text-lg text-center text-gray-500 max-w-6xl mx-auto mb-14 paragraph-font">
+       Associated Partners is known for delivering high-end residential developments, vibrant communities, and exclusive resort-inspired properties. From modern apartments in key urban centers to peaceful, upscale retreats, each project is thoughtfully designed with premium amenities to provide an exceptional standard of living.
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  w-full max-w-6xl">
         {logos.map((src, index) => (

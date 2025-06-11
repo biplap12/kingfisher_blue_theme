@@ -78,15 +78,6 @@ const FloorPlanSelector = () => {
             </div>
           ))}
 
-          {/* <div className="flex mt-8 flex-col items-center bg-[#F5BC6D] justify-center p-2 rounded-lg">
-            <Link
-            to="/enquiry"
-        
-              className=" flex items-center gap-2 w-full font-medium cursor-pointer transition justify-center text-lg text-white"
-            >
-            Contact  <MoveUpRight />
-            </Link>
-          </div> */}
         </div>
 
         {/* Image Preview */}
