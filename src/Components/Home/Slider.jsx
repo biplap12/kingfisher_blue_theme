@@ -14,7 +14,7 @@ const images = [
 const text = [
   {
     title: "Beyond the Final Light",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum soluta itaque pariatur, ipsum sequi saepe expedita beatae earum doloremque, officia sit consequuntur, exercitationem in? Commodi cumque incidunt officia mollitia dolorem.",
+    description: "Framed by a stunning ocean panorama, Kingfisher’s newest landmark on Dubai Islands captures the essence of refined coastal living. Nestled along the marina, this exceptional development offers a seamless blend of tranquility, energy, and connectivity—where every feature is thoughtfully designed to elevate modern lifestyles.",
   },
 ];
 
@@ -56,14 +56,14 @@ const Slider = () => {
   return (
     <><div className="relative lightSection -z-[9999999]">
         {/* <div className="absolute inset-0 bg-white clip-hero-shape z-0"></div> */}
-        <div id="indoor" className="relative -z-[9999999] text-center px-6 py-24 max-w-4xl mx-auto">
+        <div id="indoor" className="relative -z-[9999999] text-center px-6 py-24 max-w-6xl mx-auto">
           {text.map((item, index) => {
             return (
               <div key={index} className="text-center mb-10">
                 <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
                   {item.title}
                 </h2>
-                <p className="text-lg  tracking-widest text-gray-500 max-w-5xl mx-auto text-justify paragraph-font">
+                <p className="text-lg  tracking-widest text-gray-500 max-w-7xl mx-auto text-justify paragraph-font">
                   {item.description}
                 </p>
               </div>

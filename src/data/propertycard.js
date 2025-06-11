@@ -9,7 +9,7 @@ const data = [
     Beds: "Studio",
   },
   {
-    images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg"],
+    images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg","./gallery/img1.jpg", "./gallery/img2.jpg"],
     Name: "Skyview Apartment",
     priceFrom: "AED 3,200",
     Location: "Abu Dhabi",

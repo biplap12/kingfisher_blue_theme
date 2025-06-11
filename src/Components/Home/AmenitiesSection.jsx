@@ -27,13 +27,13 @@ const AmenitiesSection = () => {
   };
 
   return (
-    <section id="amenities" className="relative -z-10 py-8 px-4 md:px-16 mx-25 lightSection">
-      <h2 className="text-center text-4xl md:text-5xl  tracking-widest mb-16 heading-font">
+    <section id="amenities" className="relative py-8 px-4 md:px-16 mx-25 lightSection">
+      <h2 className="text-center text-4xl md:text-5xl tracking-widest mb-16 heading-font">
         AMENITIES
       </h2>
 
       {/* Vertical Text */}
-      <p className="absolute left-0 top-[65%] text-center -translate-y-1/2 -rotate-90 origin-left text-2xl tracking-wider font-light hidden lg:block text-black">
+      <p className="absolute left-0 top-[65%] text-center -translate-y-1/2 -rotate-90 origin-left text-2xl tracking-wider font-light hidden lg:block text-black -z-50">
         REVITALISE. RECHARGE. <br /> REIMAGINE.
       </p>
 
@@ -67,7 +67,7 @@ const AmenitiesSection = () => {
         </motion.div>
 
         {/* Buttons below carousel */}
-        <div className="flex justify-end gap-4 mt-6">
+        <div className="flex justify-end gap-4 mt-6 z-50">
           <button
             onClick={() => scrollBy("prev")}
             className="p-3 transition cursor-pointer"
