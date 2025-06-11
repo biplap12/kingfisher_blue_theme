@@ -11,6 +11,13 @@ const images = [
   "/gallery/img7.jpg",
 ];
 
+const text = [
+  {
+    title: "Beyond the Final Light",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum soluta itaque pariatur, ipsum sequi saepe expedita beatae earum doloremque, officia sit consequuntur, exercitationem in? Commodi cumque incidunt officia mollitia dolorem.",
+  },
+];
+
 const Slider = () => {
   const [current, setCurrent] = useState(0);
   const length = images.length;
@@ -47,12 +54,39 @@ const Slider = () => {
   };
 
   return (
+    <><div className="relative lightSection -z-[9999999]">
+        {/* <div className="absolute inset-0 bg-white clip-hero-shape z-0"></div> */}
+        <div id="indoor" className="relative -z-[9999999] text-center px-6 py-24 max-w-4xl mx-auto">
+          {text.map((item, index) => {
+            return (
+              <div key={index} className="text-center mb-10">
+                <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
+                  {item.title}
+                </h2>
+                <p className="text-lg  tracking-widest text-gray-500 max-w-5xl mx-auto text-justify paragraph-font">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+
+          {/* Buttons */}
+          {/* <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <button className="border border-gray-700 px-6 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-gray-200">
+              <Download className="w-4 h-4" /> Download Brochure
+            </button>
+            <button className="border border-gray-700 px-6 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-gray-200">
+              <Download className="w-4 h-4" /> Download Fact Sheet
+            </button>
+          </div> */}
+        </div>
+      </div>
+
     <div
-      id="dark-section"
-      className="flex flex-col items-center w-full  overflow-hidden"
+      className="flex flex-col items-center w-full -z-10  overflow-hidden lightSection"
     >
       <div
-        className="relative w-full h-[500px] flex justify-center items-center overflow-visible touch-none hover:cursor-grab"
+        className="relative w-full -z-10 h-[500px] flex justify-center items-center overflow-visible touch-none hover:cursor-grab"
         onMouseDown={handleStart}
         onMouseUp={handleEnd}
         onTouchStart={handleStart}
@@ -62,7 +96,7 @@ const Slider = () => {
         <img
           src={images[getIndex(current - 1)]}
           alt="Left Slide"
-          className="absolute left-0 top-0 w-[10%] h-full object-cover opacity-80 transform -translate-x-6 scale-100   transition-all duration-500"
+          className="absolute -z-10 left-0 top-0 w-[10%] h-full object-cover opacity-80 transform -translate-x-6 scale-100   transition-all duration-500"
           draggable={false}
           style={{ zIndex: 10 }}
         />
@@ -71,7 +105,7 @@ const Slider = () => {
         <img
           src={images[current]}
           alt="Current Slide"
-          className="relative w-[80%] h-full object-cover shadow-lg transition-all duration-500 scale-100"
+          className="relative  -z-10 w-[80%] h-full object-cover shadow-lg transition-all duration-500 scale-100"
           draggable={false}
           style={{ zIndex: 20 }}
         />
@@ -80,7 +114,7 @@ const Slider = () => {
         <img
           src={images[getIndex(current + 1)]}
           alt="Right Slide"
-          className="absolute right-0 top-0 w-[10%] h-full object-cover opacity-80 transform translate-x-6 scale-100 transition-all duration-500"
+          className="absolute -z-10 right-0 top-0 w-[10%] h-full object-cover opacity-80 transform translate-x-6 scale-100 transition-all duration-500"
           draggable={false}
           style={{ zIndex: 10 }}
         />
@@ -115,6 +149,8 @@ const Slider = () => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 

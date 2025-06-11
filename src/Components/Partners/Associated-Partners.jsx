@@ -20,11 +20,11 @@ const logos = [
 
 const PartnerLogos = () => {
   return (
-    <section className="bg-white h-auto flex flex-col items-center justify-center px-4 py-20">
-      <h2 className="text-center text-3xl md:text-4xl primary-color font-light tracking-wide mb-6 uppercase">
+    <section id="partners" className="bg-white h-auto flex flex-col items-center justify-center px-4 py-20">
+      <h2 className="text-center text-3xl md:text-5xl tracking-wide mb-6 uppercase heading-font">
         Associated Partners
       </h2>
-      <p className="text-lg text-center text-gray-500 max-w-3xl mx-auto mb-14">
+      <p className="text-lg text-center text-gray-500 max-w-3xl mx-auto mb-14 paragraph-font">
         At Kingfisher, we craft more than just properties — we build lasting
         lifestyles. With a reputation for architectural excellence, smart
         innovation, and global standards, our projects redefine luxury living

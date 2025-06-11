@@ -27,8 +27,8 @@ const AmenitiesSection = () => {
   };
 
   return (
-    <section id="dark-section" className="relative py-20 px-4 md:px-16 mx-25">
-      <h2 className="text-center text-3xl md:text-4xl font-light tracking-widest mb-16 heading-font">
+    <section id="amenities" className="relative -z-10 py-8 px-4 md:px-16 mx-25 lightSection">
+      <h2 className="text-center text-4xl md:text-5xl  tracking-widest mb-16 heading-font">
         AMENITIES
       </h2>
 
@@ -51,7 +51,7 @@ const AmenitiesSection = () => {
           {amenities.map((a, index) => (
             <div
               key={index}
-              className="min-w-[300px] w-[250px] md:w-[300px] flex-shrink-0 text-center select-none"
+              className="min-w-[300px] w-[250px] -z-10 md:w-[300px] flex-shrink-0 text-center select-none"
             >
               <img
                 src={a.img}
@@ -70,14 +70,14 @@ const AmenitiesSection = () => {
         <div className="flex justify-end gap-4 mt-6">
           <button
             onClick={() => scrollBy("prev")}
-            className="p-3 transition"
+            className="p-3 transition cursor-pointer"
             aria-label="Scroll Left"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={() => scrollBy("next")}
-            className="p-3 transition"
+            className="p-3 transition cursor-pointer"
             aria-label="Scroll Right"
           >
             <ChevronRight size={24} />

@@ -31,12 +31,12 @@ const stats = [
 
 const Whykingfisher = () => {
   return (
-    <section className="bg-[#f9f9f9] py-20 px-4">
+    <section className="bg-[#f9f9f9] py-20 px-4 lightSection">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl tracking-widest text-yellow-500 uppercase mb-6">
+        <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
           WHY CHOOSE KINGFISHER ?
         </h2>
-        <p className="text-lg text-gray-500 max-w-3xl mx-auto mb-14">
+        <p className="text-lg text-gray-500 max-w-3xl mx-auto mb-14 paragraph-font">
           At Kingfisher, we craft more than just properties — we build lasting
           lifestyles. With a reputation for architectural excellence, smart
           innovation, and global standards, our projects redefine luxury living
@@ -47,7 +47,7 @@ const Whykingfisher = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+              className="bg-white rounded-xl p-6 flex flex-col items-center  border border-gray-300 text-center hover:shadow-lg transition-shadow"
             >
               <div className="mb-4">{stat.icon}</div>
               <p className="text-3xl font-bold text-[#003f2e]">{stat.value}</p>

@@ -3,11 +3,12 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App.jsx";
 import Home from "./Home.jsx";
 import NotFound from "./NotFound.jsx";
-import EnquiryForm from "../Components/loginModel.jsx";
+import EnquiryForm from "../Components/Form/loginModel.jsx";
 import AllPropertypage from "./AllPropertypage.jsx";
 import About from "./About.jsx";
 import Contact from "./Contact.jsx";
 import Blog from "./Blog.jsx";
+import Property_Gallary from "../Components/Property-View/Gallery.jsx";
 
 
 const router = createBrowserRouter([
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       element: <EnquiryForm />,
       },
        {
-      path: "/all-property-page",
+      path: "/properties",
       element: <AllPropertypage/>,
       },
       {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
         path:"/blog",
         element:<Blog/>
       },
+      //   {
+      //   path:"/gallery/:id",
+      //   element:<Property_Gallary/>
+      // },
  
     ],
   },

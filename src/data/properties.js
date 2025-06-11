@@ -1,6 +1,6 @@
 export const properties = [
   {
-     id: 1,
+    id:1,
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -12,7 +12,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:2,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -23,7 +23,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:3,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -34,7 +34,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:4,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -45,7 +45,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:5,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -56,7 +56,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:6,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -67,7 +67,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:7,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -78,7 +78,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:8,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -89,7 +89,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:9,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -100,7 +100,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:10,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -111,7 +111,7 @@ export const properties = [
     featured: false,
   },
    {
-     id: 1,
+    id:11,
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -123,7 +123,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:12,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -134,7 +134,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:13,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -145,7 +145,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -156,7 +156,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -167,7 +167,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -178,7 +178,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -189,7 +189,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -200,7 +200,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -211,7 +211,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -221,7 +221,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -233,7 +233,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -244,7 +244,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -255,7 +255,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -266,7 +266,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -277,7 +277,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -288,7 +288,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -299,7 +299,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -310,7 +310,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -321,7 +321,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -331,7 +331,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -343,7 +343,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -354,7 +354,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -365,7 +365,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -376,7 +376,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -387,7 +387,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -398,7 +398,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -409,7 +409,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -420,7 +420,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -431,7 +431,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -441,7 +441,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -453,7 +453,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -464,7 +464,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -475,7 +475,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -486,7 +486,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -497,7 +497,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -508,7 +508,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -519,7 +519,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -530,7 +530,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -541,7 +541,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -551,7 +551,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -563,7 +563,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -574,7 +574,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -585,7 +585,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -596,7 +596,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -607,7 +607,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -618,7 +618,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -629,7 +629,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -640,7 +640,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -651,7 +651,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -661,7 +661,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -673,7 +673,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -684,7 +684,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -695,7 +695,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -706,7 +706,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -717,7 +717,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -728,7 +728,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -739,7 +739,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -750,7 +750,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -761,7 +761,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -771,7 +771,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -783,7 +783,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -794,7 +794,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -805,7 +805,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -816,7 +816,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -827,7 +827,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -838,7 +838,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -849,7 +849,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -860,7 +860,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -871,7 +871,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -881,7 +881,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -893,7 +893,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -904,7 +904,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -915,7 +915,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -926,7 +926,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -937,7 +937,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -948,7 +948,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -959,7 +959,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -970,7 +970,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -981,7 +981,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -991,7 +991,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -1003,7 +1003,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -1014,7 +1014,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -1025,7 +1025,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -1036,7 +1036,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -1047,7 +1047,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -1058,7 +1058,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -1069,7 +1069,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -1080,7 +1080,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -1091,7 +1091,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,
@@ -1101,7 +1101,7 @@ export const properties = [
     location: "Central Heights",
     featured: false,
   }, {
-     id: 1,
+
     image: "/gallery/img1.jpg",
     title: "Smart Townhouse on City Edge",
     sqft: 1700,
@@ -1113,7 +1113,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 2,
+    id:1,
     image: "/gallery/img2.jpg",
     title: "Luxury Villa with Pool",
     sqft: 3200,
@@ -1124,7 +1124,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 3,
+    id:1,
     image: "/gallery/img3.jpg",
     title: "Cozy Cottage Near Lake",
     sqft: 1200,
@@ -1135,7 +1135,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 4,
+    id:1,
     image: "/gallery/img4.jpg",
     title: "Urban Apartment with City View",
     sqft: 1100,
@@ -1146,7 +1146,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 5,
+    id:1,
     image: "/gallery/img5.jpg",
     title: "Spacious Country House",
     sqft: 2500,
@@ -1157,7 +1157,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 6,
+    id:1,
     image: "/gallery/img6.jpg",
     title: "Charming Bungalow",
     sqft: 1450,
@@ -1168,7 +1168,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 7,
+    id:1,
     image: "/gallery/img7.jpg",
     title: "Elegant Duplex Home",
     sqft: 1900,
@@ -1179,7 +1179,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 8,
+    id:1,
     image: "/gallery/img8.jpg",
     title: "Contemporary Condo",
     sqft: 1000,
@@ -1190,7 +1190,7 @@ export const properties = [
     featured: false,
   },
   {
-    id: 9,
+    id:1,
     image: "/gallery/img9.jpg",
     title: "Renovated Historic Home",
     sqft: 2100,
@@ -1201,7 +1201,7 @@ export const properties = [
     featured: true,
   },
   {
-    id: 10,
+    id:1,
     image: "/gallery/img10.jpg",
     title: "Minimalist Studio Loft",
     sqft: 750,

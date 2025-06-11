@@ -118,7 +118,7 @@ const EnquiryModal = ({ onClose }) => {
   // };
 
   return (
-    <div ref={backdropRef} className="fixed inset-0 z-50 min-h-screen bg-black/80 flex justify-center items-center">
+    <div ref={backdropRef} className="fixed inset-0 z-10 min-h-screen bg-black/80 flex justify-center items-center">
       <div ref={modalRef} className="bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row w-full max-w-5xl overflow-hidden">
         {/* Left Image */}
         <div className="md:w-1/2 hidden md:block">

@@ -91,6 +91,7 @@ export default function ToggleSidebar({ onClose }) {
                     key={href}
                     to={href}
                     onClick={onClose}
+                    className="text-2xl md:text-6xl lg:text-7xl"
                   >
                     {label}
 
@@ -108,35 +109,40 @@ export default function ToggleSidebar({ onClose }) {
         </motion.div>
 
         {/* Centered Social Icons */}
-        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-50">
-          <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="flex justify-center gap-6 pointer-events-auto"
-          >
-            {[
-              {
-                icon: <FaInstagram size={30} />,
-                hoverColor: "hover:text-pink-500",
-              },
-              {
-                icon: <FaFacebookF size={30} />,
-                hoverColor: "hover:text-blue-500",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.2, rotate: 8 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className={`text-gray-300 ${item.hoverColor} transition-all duration-300 cursor-pointer`}
-              >
-                {item.icon}
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+       <div className="fixed bottom-10 left-0 right-0 md:bottom-110 flex items-center justify-center pointer-events-none z-50">
+  <motion.div
+    initial={{ y: 40, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: 1.5 }}
+    className="flex justify-center gap-4 sm:gap-6 pointer-events-auto"
+  >
+    {[
+      {
+        icon: <FaInstagram className="w-6 h-6 sm:w-8 sm:h-8" />,
+        hoverColor: "hover:text-pink-500",
+        href: "https://instagram.com/yourprofile",
+      },
+      {
+        icon: <FaFacebookF className="w-6 h-6 sm:w-8 sm:h-8" />,
+        hoverColor: "hover:text-blue-500",
+        href: "https://facebook.com/yourprofile",
+      },
+    ].map((item, index) => (
+      <motion.a
+        key={index}
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.2, rotate: 8 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className={`text-gray-300 ${item.hoverColor} transition-all duration-300 cursor-pointer`}
+      >
+        {item.icon}
+      </motion.a>
+    ))}
+  </motion.div>
+</div>
       </motion.div>
     </AnimatePresence>
   );

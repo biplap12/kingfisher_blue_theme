@@ -13,8 +13,8 @@ const paymentSchedule = [
 
 const PaymentPlanSection = () => {
   return (
-    <section id="dark-section" className="py-20 px-6 md:px-24 bg-[#f9f9f9]">
-      <h2 className="text-center text-3xl font-light   tracking-widest mb-16">
+    <section id="payment-plan" className="py-10 px-6 md:px-24 bg-[#f9f9f9] lightSection">
+      <h2 className="text-center text-4xl md:text-5xl font-light tracking-widest mb-15 heading-font">
         PAYMENT PLAN
       </h2>
 
@@ -34,12 +34,12 @@ const PaymentPlanSection = () => {
           ))}
 
           {/* Button */}
-          <div className="col-span-2 flex justify-center pt-6">
+          {/* <div className="col-span-2 flex justify-center pt-6">
             <button className="flex items-center gap-2 px-4 py-2 border rounded-md text-sm font-medium hover:bg-black hover:text-white transition">
               <Download className="w-4 h-4" />
               DOWNLOAD PAYMENT PLAN
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Right: Image */}

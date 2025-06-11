@@ -9,6 +9,7 @@ import Hero1 from "../Components/Home/BackgroundImageSection.jsx";
 import Details from "../Components/Home/Details.jsx";
 import Gallery from "../Components/Home/Gallery.jsx";
 import PartnerLogos from "../Components/Partners/Associated-Partners.jsx";
+import Sticky from "../Components/Home/Sticky.jsx";
 
 const Home = () => {
   return (
@@ -17,6 +18,9 @@ const Home = () => {
       <Hero1 />
       <div>
         <Details />
+        <div className="sticky top-0">
+        <Sticky/>
+        </div>
         <Slider />
         <Gallery />
         <Whykingfisher />

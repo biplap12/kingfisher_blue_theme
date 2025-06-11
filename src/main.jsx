@@ -4,11 +4,14 @@ import './index.css'
 import App from './App.jsx'
 import router from './pages/Index.jsx'
 import { RouterProvider } from 'react-router-dom'
+import { MenuProvider } from './state/ContextMenu.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <MenuProvider>
  <RouterProvider router={router}>
       <App />
     </RouterProvider>
+    </MenuProvider>
   </StrictMode>,
 )

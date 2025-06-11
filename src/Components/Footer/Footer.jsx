@@ -13,74 +13,69 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      id="dark-section"
-      className="relative min-h-screen flex items-end text-white"
-    >
-      {/* Background Image */}
+    <footer className="relative bg-gray-900 w-full text-white overflow-hidden">
+      {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1643267629353-1cefe0ce6e7c?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="/footer/kingfisher.jpg"
           alt="Footer Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       </div>
 
+
       {/* Content */}
-      <div className="relative z-10 w-full py-8 px-6 ">
-        <div className="max-w-9xl mx-auto flex flex-col lg:flex-row justify-between items-top gap-10  mb-20">
+      <div className="relative z-0 max-w-8xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-3 gap-10 text-sm">
           {/* Logo */}
-          <div className="flex-1 flex justify-center lg:justify-start">
+          <div className="flex flex-col items-center md:items-start">
             <img
               src="/logo/logo1.png"
               alt="Company Logo"
-              className="h-16 object-contain"
+              className="h-14 mb-4"
             />
+            <p className="text-gray-300 max-w-xs text-center md:text-left">
+              Building excellence and trust in every square foot.
+            </p>
           </div>
 
-          {/* Contact Details */}
-          <div className=" flex justify-between items-top">
-            <div className=" ">
-              <h2 className="text-2xl font-semibold pb-2 mb-4">DETAILS</h2>
-
-              <div className="flex flex-col justify-between">
-                <p className="flex items-start gap-3 mb-3 text-sm leading-relaxed">
-                  <MapPin className="mt-1 w-5 h-5 shrink-0 text-yellow-200" />
-                  SUITE 203, PARK HEIGHTS SQUARE 1, DUBAI HILLS, DUBAI
-                </p>
-                <p className="flex items-top gap-3 mb-3 text-sm">
-                  <Phone className="w-5 h-5 shrink-0 text-yellow-200" />
-                  <a
-                    href="tel:+971800468429"
-                    className="underline hover:no-underline"
-                  >
-                    +971 800 468429
-                  </a>
-                </p>
-                <p className="flex items-top gap-3 text-sm">
-                  <Mail className="w-5 h-5 shrink-0 text-yellow-200" />
-                  <a
-                    href="mailto:info@imtiaz.ae"
-                    className="underline hover:no-underline"
-                  >
-                    info@kingfisherrealstate.com
-                  </a>
-                </p>
-              </div>
-            </div>
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-yellow-300">Contact Us</h3>
+            <ul className="space-y-3 text-gray-200">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-1 w-5 h-5 text-yellow-300" />
+                SUITE 203, PARK HEIGHTS SQUARE 1, DUBAI HILLS, DUBAI
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-yellow-300" />
+                <a href="tel:+971800468429" className="hover:underline">
+                  +971 800 468429
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-yellow-300" />
+                <a
+                  href="mailto:info@kingfisherrealestate.com"
+                  className="hover:underline"
+                >
+                  info@kingfisherrealestate.com
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Social Links */}
-          <div className="flex-1 items-center justify-end">
-            <h2 className="text-2xl font-semibold text-end ">GET IN TOUCH</h2>
-            <div className="flex space-x-4 mt-4 justify-end text-yellow-200">
+          <div className="flex flex-col items-center md:items-end">
+            <h3 className="text-lg font-semibold mb-4 text-yellow-300">Follow Us</h3>
+            <div className="flex gap-4">
               {[Instagram, Facebook, Linkedin, Youtube].map((Icon, idx) => (
                 <a
                   key={idx}
                   href="#"
-                  className="hover:text-gray-300 transition"
                   aria-label={Icon.name}
+                  className="text-white hover:text-yellow-300 transition"
                 >
                   <Icon className="w-6 h-6" />
                 </a>
@@ -89,27 +84,24 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="flex flex-wrap justify-between items-end text-sm text-white border-t border-yellow-900">
-          <p className="text-gray-400">
-            © {currentYear} All Rights Reserved | Flyeast Nepal Pvt. Ltd.
-          </p>
+        {/* Divider */}
+        <div className="my-10 border-t border-gray-700" />
 
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-2">
+          <p>© {currentYear} KingFisher Pvt. Ltd. All rights reserved.</p>
           <a
             href="https://www.webxnep.com/"
             target="_blank"
-            className="relative flex items-end justify-end gap-2"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:underline"
           >
-            <div className="flex items-center gap-2 py-1">
-              <p className="text-xs hover:underline">Designed & Developed by</p>
-              <div className="w-12 h-8 overflow-hidden animate-spin-slow">
-                <img
-                  src="/webx/logo.svg"
-                  alt="WebX logo"
-                  className="w-full h-full object-contain hover:scale-105"
-                />
-              </div>
-            </div>
+            <span>Designed & Developed by</span>
+            <img
+              src="/webx/logo.svg"
+              alt="WebX logo"
+              className="h-5 w-13 object-contain"
+            />
           </a>
         </div>
       </div>

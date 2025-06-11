@@ -1,9 +1,12 @@
-import { useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaChevronDown } from "react-icons/fa";
 import { blogPosts } from "../data/blogdata";
+import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
+import { MenuContext } from "../state/ContextMenu";
+import { useInView } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,10 +35,6 @@ const BlogPage = () => {
     });
   }, [searchQuery, selectedCategory]);
 
-  const handleReset = () => {
-    setSearchQuery("");
-    setSelectedCategory("All");
-  };
 
   useLayoutEffect(() => {
     gsap.from(headerRef.current, {
@@ -69,84 +68,55 @@ const BlogPage = () => {
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [filteredPosts]);
 
+   const divRef = useRef(null);
+    const {setMenuColor} = useContext(MenuContext)
+
+    const isVisible = useInView(divRef, {once:false});
+
+    useEffect(()=>{
+setMenuColor("dark")
+    },[isVisible])
+
+    
   return (
-    <div className="gradient-bg-blue text-white min-h-screen -mt-24 px-6 md:px-12 py-16  ">
-      {/* Header with Background Image */}
-      <div
-        ref={headerRef}
-        className="relative w-full h-[500px] md:h-[600px] mt-24 bg-cover bg-center rounded-3xl overflow-hidden mb-16"
-        style={{
-          backgroundImage:
-            "url('https://unsplash.com/blog/content/images/2025/04/400K--Blog--1.jpg')",
-        }}
-      >
-        <div className="absolute inset-0  backdrop-blur-sm" />
-        <div className="relative z-10 text-center max-w-2xl mx-auto px-6 py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Real Estate Blog</h1>
-          <p className="text-lg text-[#F5BC6D] mb-6">
-            The Hottest Real Estate Marketing, Website, and Technology Insights.
-          </p>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex items-center justify-center"
-          >
-            <input
-              type="email"
-              placeholder="Email address..."
-              className="w-72 px-4 py-2 rounded-l-full border border-white text-[#232266] focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-[#F5BC6D] hover:bg-[#f3aa45] text-[#232266] px-6 py-2 rounded-r-full font-semibold"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </div>
+   <div className="relative text-white -mt-25">
+  {/* Background overlay */}
+  <div className="absolute inset-0 h-fit bg-black/50 z-10" />
 
-      {/* Filters */}
-      <div className="flex flex-wrap justify-between items-center mb-10 gap-4">
-        <div className="relative inline-block w-64">
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="appearance-none w-full bg-[#232266] text-white px-4 py-2 rounded-full text-sm cursor-pointer pr-10"
-          >
-            {categories.map((category, i) => (
-              <option key={i} value={category} className="scroll-m-0">
-                {category === "All" ? "All Categories" : category}
-              </option>
-            ))}
-          </select>
-          <FaChevronDown className="w-4 h-4 absolute top-3 right-4 text-white pointer-events-none" />
-        </div>
+  {/* Header section with background image */}
+  <div
+    ref={headerRef}
+    className="relative h-[46vh] mt-24 bg-center bg-cover bg-no-repeat z-20 overflow-hidden"
+    style={{
+      backgroundImage:
+        "url('https://images.unsplash.com/photo-1502139214982-d0ad755818d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+    }}
+  >
+    {/* Blur overlay */}
+    <div className="absolute inset-0 backdrop-blur-sm z-20" />
 
-        <div className="flex gap-2 items-center">
-          <input
-            type="text"
-            placeholder="What are you searching for?"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="px-4 py-2 rounded-full bg-white text-[#232266] placeholder-gray-400 focus:outline-none w-64 border border-[#232266]"
-          />
-          <button
-            onClick={handleReset}
-            className="text-sm bg-[#F5BC6D] px-4 py-2 rounded-full text-[#232266] font-semibold"
-          >
-            RESET
-          </button>
-        </div>
-      </div>
+    {/* Content */}
+    <div className="relative z-30 text-center max-w-2xl mx-auto px-6 pt-32 pb-12">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
+      <Breadcrumbs />
+      <p className="text-lg text-[#F5BC6D] mt-4">
+        The Hottest Real Estate Marketing, Website, and Technology Insights.
+      </p>
+    </div>
+  </div>
+
+
+      
 
       {/* Blog Cards */}
-      <div className="grid md:grid-cols-3 gap-10">
+      <Link to={'/'} className="flex justify-start mx-20 py-6 items-center text-gray-700"><ArrowLeft size={15} /> Back</Link>
+      <div className="grid w-11/12 md:grid-cols-3 gap-5 mx-auto darkSection">
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, index) => (
             <Link key={index} to={`/blog/${index}`}>
               <div
                 ref={(el) => (cardsRef.current[index] = el)}
-                className="bg-[#1c1c3a] rounded-2xl overflow-hidden shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer border border-[#F5BC6D]/20 h-[460px] flex flex-col"
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer border border-[#F5BC6D]/20 h-[410px] flex flex-col"
               >
                 <img
                   src={post.image}
@@ -165,12 +135,12 @@ const BlogPage = () => {
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 text-white line-clamp-2">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-500 line-clamp-1">
                       {post.title}
                     </h3>
-                    <p className="text-sm text-gray-300 line-clamp-3">
-                      {post.description}
-                    </p>
+                   <p className="text-sm text-gray-500 line-clamp-2">
+                    {post.description}
+                  </p> 
                   </div>
                 </div>
               </div>
