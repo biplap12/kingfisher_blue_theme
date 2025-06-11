@@ -12,6 +12,21 @@ import PartnerLogos from "../Components/Partners/Associated-Partners.jsx";
 import Sticky from "../Components/Home/Sticky.jsx";
 
 const Home = () => {
+ const text = [
+    {
+      title: "Our Story",
+      description: "Framed by a stunning ocean panorama, Kingfisher’s newest landmark on Dubai Islands captures the essence of refined coastal living. Nestled along the marina, this exceptional development offers a seamless blend of tranquility, energy, and connectivity—where every feature is thoughtfully designed to elevate modern lifestyles.",
+      images:[
+         "/gallery/img1.jpg",
+  "/gallery/img2.jpg",
+  "/gallery/img3.jpg",
+  "/gallery/img4.jpg",
+  "/gallery/img5.jpg",
+  "/gallery/img6.jpg",
+  "/gallery/img7.jpg",
+      ]
+    },
+  ];
   return (
     <>
       {/* <Navbar/> */}
@@ -21,7 +36,7 @@ const Home = () => {
         <div className="sticky top-0">
         <Sticky/>
         </div>
-        <Slider />
+       <Slider title={text[0].title} description={text[0].description} images={text[0].images} />
         <Gallery />
         <Whykingfisher />
         <IconicProperties />

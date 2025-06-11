@@ -5,6 +5,8 @@ import { TbArrowUpDashed } from "react-icons/tb";
 import { MenuContext } from "../state/ContextMenu";
 import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 import { Link } from "react-router-dom";
+import Slider from "../Components/Home/Slider";
+import { image } from "framer-motion/client";
 
 const teamMembers = [
   {
@@ -76,6 +78,8 @@ export default function About() {
     setMenuColor("dark");
   }, [isVisible]);
 
+
+
   return (
     <div className="text-[#F5BC6D] -mt-23">
       <div className="relative h-auto -mt-25">
@@ -90,25 +94,23 @@ export default function About() {
           <div className="relative z-30 text-center max-w-2xl mx-auto px-6 pt-32 pb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 heading-font">About</h1>
             <Breadcrumbs />
-           
+
           </div>
         </div>
 
-        <div className="text-[#F5BC6D] min-h-screen flex flex-col mx-20 p-6 darkSection">
+        <div className="text-[#F5BC6D] min-h-screen flex flex-col  mx-20 p-6 darkSection">
           <Link to={'/'} className="flex justify-start items-center text-gray-700">
             <ArrowLeft size={15} /> Back
           </Link>
-
-          <div className="py-10 max-w-4xl">
-            <h2 className="text-4xl uppercase tracking-wider mb-5 pb-2 border-[#c6a664] inline-block heading-font">
-              Why Us?
-            </h2>
-            <p className="mt-2 text-base md:text-lg text-gray-600 text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit architecto
-              error odio sunt vel harum, laboriosam, molestias assumenda reiciendis
-              ipsum, ex rem nihil eveniet corporis quae minima beatae magnam consequatur?
-            </p>
-          </div>
+            {/* Our Story */}
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
+                Our Story
+              </h2>
+              <p className="text-lg tracking-wide text-gray-500 max-w-5xl mx-auto text-justify paragraph-font">
+                Framed by a stunning ocean panorama, Kingfisher’s newest landmark on Dubai Islands captures the essence of refined coastal living. Nestled along the marina, this exceptional development offers a seamless blend of tranquility, energy, and connectivity—where every feature is thoughtfully designed to elevate modern lifestyles.
+              </p>
+            </div>
 
           <h2 className="text-4xl uppercase tracking-wider mt-15 pb-2 heading-font">
             Our Team

@@ -67,6 +67,7 @@ const Contact = () => {
       setMenuColor("dark");
     }
   }, [isInView, setMenuColor]);
+  
 
   return (
     <div ref={contactRef} className="relative h-auto -mt-25">
