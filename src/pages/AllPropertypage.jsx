@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useRef } from 'react';
-import PropertyCard from '../Components/Property-card/PropertyCard';
-import { MenuContext } from '../state/ContextMenu';
-import { useInView } from 'framer-motion';
-import Breadcrumbs from '../Components/Breadcrumbs/Breadcrumbs';
+import React, { useContext, useEffect, useRef } from "react";
+import PropertyCard from "../Components/Property-card/PropertyCard";
+import { MenuContext } from "../state/MenuContext";
+import { useInView } from "framer-motion";
+import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 
 const AllPropertypage = () => {
   const divRef = useRef(null);
@@ -21,7 +21,7 @@ const AllPropertypage = () => {
           backgroundImage: 'url("/property/property.jpg")',
           fontFamily: `'Wellsbrook Initials SG Regular'`,
           height: "75vh",
-          padding: "0 50px"
+          padding: "0 50px",
         }}
       >
         {/* Black overlay at 80% */}
@@ -32,9 +32,8 @@ const AllPropertypage = () => {
           <p className="text-6xl font-bold tracking-wide uppercase leading-20 heading-font">
             ALL Properties
           </p>
-           <Breadcrumbs />
+          <Breadcrumbs />
         </div>
-       
       </section>
 
       {/* Property cards */}

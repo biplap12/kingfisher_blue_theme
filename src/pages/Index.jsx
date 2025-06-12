@@ -9,6 +9,7 @@ import About from "./About.jsx";
 import Contact from "./Contact.jsx";
 import Blog from "./Blog.jsx";
 import Property_Gallary from "../Components/Property-View/Gallery.jsx";
+import BlogViewer from "../Components/Blog/BlogView.jsx";
 
 
 const router = createBrowserRouter([
@@ -46,7 +47,10 @@ const router = createBrowserRouter([
       //   path:"/gallery/:id",
       //   element:<Property_Gallary/>
       // },
- 
+  {
+        path:"/blog/:id",
+        element:<BlogViewer/>
+      },
     ],
   },
   {

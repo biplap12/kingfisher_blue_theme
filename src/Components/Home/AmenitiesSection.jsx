@@ -1,4 +1,4 @@
-import React, { useRef } from "react"; 
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -27,8 +27,11 @@ const AmenitiesSection = () => {
   };
 
   return (
-    <section id="amenities" className="relative py-8 px-4 md:px-16 mx-25 lightSection">
-      <h2 className="text-center text-4xl md:text-5xl tracking-widest mb-16 heading-font">
+    <section
+      id="amenities"
+      className="relative py-8 px-4 md:px-16 mx-25 lightSection"
+    >
+      <h2 className="text-center text-3xl md:text-5xl tracking-widest mb-16 heading-font">
         AMENITIES
       </h2>
 
@@ -41,7 +44,7 @@ const AmenitiesSection = () => {
       <div>
         <motion.div
           ref={carouselRef}
-          className="flex items-end gap-6 overflow-hidden scrollbar-hide  pb-4"
+          className="flex items-end gap-6 overflow-hidden scrollbar-hide pb-4 "
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.1}

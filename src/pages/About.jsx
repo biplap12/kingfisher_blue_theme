@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { TbArrowUpDashed } from "react-icons/tb";
-import { MenuContext } from "../state/ContextMenu";
+import { MenuContext } from "../state/MenuContext";
 import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 import { Link } from "react-router-dom";
 import Slider from "../Components/Home/Slider";
@@ -220,7 +220,13 @@ export default function About() {
                     <div className="mt-auto self-end m-5">
                       <div className=" rounded-full hover:bg-gray-200 transition">
                         {/* <FaArrowRight size={18} /> */}
-                        <img src="./logo/icon.png" alt="logo icon" height={20} width={35} className="object-cover" />
+                        <img
+                          src="./logo/icon.png"
+                          alt="logo icon"
+                          height={20}
+                          width={35}
+                          className="object-cover"
+                        />
                       </div>
                     </div>
                   </div>

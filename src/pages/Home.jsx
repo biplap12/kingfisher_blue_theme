@@ -10,8 +10,12 @@ import Details from "../Components/Home/Details.jsx";
 import Gallery from "../Components/Home/Gallery.jsx";
 import PartnerLogos from "../Components/Partners/Associated-Partners.jsx";
 import Sticky from "../Components/Home/Sticky.jsx";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(()=>{
+    
+  })
  const text = [
     {
       title: "Our Story",
@@ -30,8 +34,10 @@ const Home = () => {
   return (
     <>
       {/* <Navbar/> */}
-      <Hero1 />
-      <div>
+      <section data-theme="light">
+        <Hero1 />
+      </section>
+      <section  data-theme="dark">
         <Details />
         <div className="sticky top-0">
         <Sticky/>
@@ -45,7 +51,7 @@ const Home = () => {
         <PaymentPlanSection />
         <FloorPlanSelector />
         <PartnerLogos />
-      </div>
+      </section>
     </>
   );
 };

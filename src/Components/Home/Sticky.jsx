@@ -29,27 +29,13 @@ const Sticky = () => {
       ease: "power2.inOut",
     });
   };
-
-
-
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => setIsSticky(!entry.isIntersecting),
-  //     { threshold: 0, rootMargin: "-1px 0px 0px 0px" }
-  //   );
-
-  //   if (navRef.current) observer.observe(navRef.current);
-
-  //   return () => observer.disconnect();
-  // }, []);
-
-  
+ 
   return (
  <>
   <div ref={navRef}></div>
 
   <div className="sticky top-0 z-[999999]  bg-white  pointer-events-auto">
-    <div className="text-center text-sm uppercase tracking-widest paragraph-font p-7 ">
+    <div className="text-center text-sm uppercase tracking-widest paragraph-font p-7 flex flex-wrap justify-center ">
       {navItems.map((item, idx) => (
         <span
           key={idx}

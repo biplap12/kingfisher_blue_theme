@@ -2,8 +2,9 @@ import React from "react";
 
 const Hero1 = () => {
   return (
-    <div id="hero"
-      className="relative w-full h-screen bg-cover bg-center text-white" 
+    <div
+      data-theme="dark"
+      className="relative w-full h-screen bg-cover bg-center text-white"
       style={{
         backgroundImage:
           'url("https://v.fastcdn.co/cdn-cgi/image/format=auto,fit=scale-down,sharpen=1/u/a43967b2/65501639-0-Desktop-Header-.jpg")',
@@ -14,8 +15,7 @@ const Hero1 = () => {
         <h1>Your Dream House</h1>
         <h2>Becoming True</h2>
       </div>
-      <div className="absolute inset-0 bg-black/70">
-      </div>
+      <div className="absolute inset-0 bg-black/70"></div>
     </div>
   );
 };

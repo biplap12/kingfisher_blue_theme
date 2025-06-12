@@ -62,61 +62,6 @@ const EnquiryModal = ({ onClose }) => {
       onComplete: onClose,
     });
   };
-
-  // const handleCountryChange = (opt) => {
-  //   setSelectedCountry(opt);
-  //   setPhone(opt.raw.dial);
-  // };
-
-  // const countryOptions = countries.map((c) => ({
-  //   value: c.code,
-  //   label: (
-  //     <div className="flex items-center gap-2 text-sm">
-  //       <img src={`https://flagcdn.com/24x18/${c.code.toLowerCase()}.png`} alt="flag" className="w-4 h-3 object-cover" />
-  //       <span>{c.name}</span>
-  //       <span className="text-gray-400 text-xs ml-1">({c.dial})</span>
-  //     </div>
-  //   ),
-  //   singleLabel: (
-  //     <div className="flex items-center gap-2 text-sm">
-  //       <img src={`https://flagcdn.com/24x18/${c.code.toLowerCase()}.png`} alt="flag" className="w-6 h-4 object-cover" />
-  //       <span className="font-semibold">{c.iso3}</span>
-  //     </div>
-  //   ),
-  //   raw: c,
-  // }));
-
-  // const customStyles = {
-  //   control: (base) => ({
-  //     ...base,
-  //     borderRadius: '0.75rem',
-  //     padding: '1px',
-  //     minHeight: '2rem',
-  //     fontSize: '0.75rem',
-  //     backgroundColor: '#fff',
-  //   }),
-  //   menu: (base) => ({
-  //     ...base,
-  //     fontSize: '0.75rem',
-  //     zIndex: 9999,
-  //   }),
-  //   option: (base, state) => ({
-  //     ...base,
-  //     padding: '4px 8px',
-  //     fontSize: '0.75rem',
-  //     backgroundColor: state.isFocused ? '#f0f0f0' : '#fff',
-  //     display: 'flex',
-  //     alignItems: 'center',
-  //     gap: '6px',
-  //   }),
-  //   singleValue: (base) => ({
-  //     ...base,
-  //     display: 'flex',
-  //     alignItems: 'center',
-  //     gap: '0.5rem',
-  //   }),
-  // };
-
   return (
     <div ref={backdropRef} className="fixed inset-0 z-10 min-h-screen bg-black/80 flex justify-center items-center">
       <div ref={modalRef} className="bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row w-full max-w-5xl overflow-hidden">
@@ -148,19 +93,7 @@ const EnquiryModal = ({ onClose }) => {
 
             {/* Country and Phone */}
             <div className="flex gap-3 items-center">
-              {/* <div className="w-[35%]">
-                <Select
-                  options={countryOptions}
-                  value={selectedCountry}
-                  onChange={handleCountryChange}
-                  classNamePrefix="react-select"
-                  getOptionLabel={(e) => e.label}
-                  formatOptionLabel={(data, { context }) =>
-                    context === 'menu' ? data.label : data.singleLabel
-                  }
-                  styles={customStyles}
-                />
-              </div> */}
+              
               <div className="flex-1 flex items-center">
                 <span className="px-4 py-3.5 bg-gray-100 border border-gray-200 rounded-l-xl text-sm text-gray-600">
                   {selectedCountry?.raw.dial || '+__'}

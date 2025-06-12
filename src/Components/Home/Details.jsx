@@ -6,7 +6,6 @@ import {
   MapPin,
   Tag,
 } from "lucide-react";
-import Sticky from "./Sticky";
 
 const data = [
   {
@@ -31,17 +30,10 @@ const data = [
   },
 ];
 
-
-
-
-
 const Details = () => {
-
- 
-
   return (
-    <section
-      className="text-[#1e1e1e]  w-full lightSection"
+    <section 
+      className="text-[#1e1e1e]  w-full"
     >
       {/* Top Info Section */}
       <div className="w-full px-6 py-20 grid grid-cols-2 md:grid-cols-4 text-center">
@@ -56,7 +48,7 @@ const Details = () => {
               {item.icon}
               {item.label}
             </p>
-            <p className="text-4xl text-zinc-500 tracking-wider paragraph-font">
+            <p className="text-lg sm:text-3xl md:text-4xl lg:text-4xl text-zinc-500 tracking-wider paragraph-font">
               {item.value}
             </p>
           </div>
