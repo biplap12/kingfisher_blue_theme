@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <MenuProvider>
  <RouterProvider router={router}>
-      <App />
+      {/* <App /> */}
     </RouterProvider>
     </MenuProvider>
   </StrictMode>,

@@ -114,18 +114,28 @@
 //     </div>
 //   );
 // }
-import { useContext, useEffect, useState } from "react";
+
+
+
+
+
+
+
+
+
+
+import { useEffect, useState } from "react";
 import ToggleSidebar from "./toggleSidebar.jsx";
 import { Link } from "react-router-dom";
-import { MenuContext } from "../../state/ContextMenu.jsx";
 import { BiSolidMessageAltDetail } from "react-icons/bi";
+import { useNavState } from "../../state/navstate.jsx";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
 
-  const { menuColor, setMenuColor } = useContext(MenuContext);
+  const { isDarkMode, toggleDarkMode } = useNavState();
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
   const closeSidebar = () => setIsOpen(false);
@@ -138,39 +148,66 @@ export default function Sidebar() {
     };
   }, [isOpen]);
 
+useEffect(() => {
+  const hero = document.getElementById("hero");
+  if (!hero) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      const heroIsVisible = entry.isIntersecting && entry.intersectionRatio > 0.5;
+
+      // If hero is visible and mode is dark, switch to light
+      if (heroIsVisible && isDarkMode) {
+        toggleDarkMode();
+      }
+
+      // If hero is NOT visible and mode is light, switch to dark
+      if (!heroIsVisible && !isDarkMode) {
+        toggleDarkMode();
+      }
+    },
+    {
+      threshold: [1], // Trigger when more than 50% is in view
+    }
+  );
+
+  observer.observe(hero);
+  return () => observer.disconnect();
+}, [isDarkMode, toggleDarkMode]);
+
+
   // Section observer for menu color
-  useEffect(() => {
-    const sections = document.querySelectorAll(".darkSection, .lightSection");
-    if (sections.length === 0) return;
+  // useEffect(() => {
+  //   const sections = document.querySelectorAll(".darkSection, .lightSection");
+  //   if (sections.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const fullyVisibleEntry = entries.find(
-          (entry) => entry.isIntersecting && entry.intersectionRatio === 1
-        );
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       const fullyVisibleEntry = entries.find(
+  //         (entry) => entry.isIntersecting && entry.intersectionRatio === 1
+  //       );
 
-        if (!fullyVisibleEntry) return;
+  //       if (!fullyVisibleEntry) return;
 
-        const classList = fullyVisibleEntry.target.classList;
+  //       const classList = fullyVisibleEntry.target.classList;
 
-        if (classList.contains("darkSection")) {
-          setMenuColor("white");
-        } else if (classList.contains("lightSection")) {
-          setMenuColor("black");
-        }
-      },
-      { threshold: 1.0 }
-    );
+  //       if (classList.contains("darkSection") && !isDarkMode) {
+  //         toggleDarkMode();
+  //       } else if (classList.contains("lightSection") && isDarkMode) {
+  //         toggleDarkMode();
+  //       }
+  //     },
+  //     { threshold: 1 }
+  //   );
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [setMenuColor]);
+  //   sections.forEach((section) => observer.observe(section));
+  //   return () => observer.disconnect();
+  // }, [isDarkMode, toggleDarkMode]);
 
   // Scroll direction visibility
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrollingDown(currentScrollY !== 0);
+      setIsScrollingDown(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -190,7 +227,11 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <div className={`fixed top-0 left-0 ${isScrollingDown ? "w-fit" :"w-full"}  z-[60] transition duration-300`}>
+    <div
+      className={`fixed top-0 left-0 ${
+        isScrollingDown ? "w-fit" : "w-full"
+      } z-[60] transition duration-300`}
+    >
       <div className="flex items-center justify-between px-6 py-5 transition-all duration-300">
         {/* Hamburger menu */}
         <div className="flex items-center gap-8">
@@ -201,17 +242,17 @@ export default function Sidebar() {
             <span
               className={`absolute h-0.5 w-12 transform transition-all duration-300 ease-in-out ${
                 isOpen ? "rotate-45 top-5" : "top-2"
-              } ${menuColor === "white" ? "bg-white" : "bg-black"}`}
+              } ${isDarkMode ? "bg-black" : " bg-white"}`}
             />
             <span
               className={`absolute h-0.5 w-8 transition-all duration-300 ease-in-out ${
                 isOpen ? "opacity-0" : "top-5"
-              } ${menuColor === "white" ? "bg-white" : "bg-black"}`}
+              } ${isDarkMode ? "bg-black" : " bg-white"}`}
             />
             <span
               className={`absolute h-0.5 w-12 transform transition-all duration-300 ease-in-out ${
                 isOpen ? "-rotate-45 top-5" : "top-8"
-              } ${menuColor === "white" ? "bg-white" : "bg-black"}`}
+              } ${isDarkMode ? "bg-black" : " bg-white"}`}
             />
           </div>
         </div>
@@ -248,7 +289,7 @@ export default function Sidebar() {
               isMobile
                 ? "p-2 rounded-full"
                 : "px-4 py-2 rounded font-semibold bg-white text-[#232266] hover:bg-[#e0a647]"
-            } `}
+            }`}
           >
             {isMobile ? (
               <BiSolidMessageAltDetail color="white" size={30} />

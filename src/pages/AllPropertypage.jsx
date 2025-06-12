@@ -15,8 +15,8 @@ const AllPropertypage = () => {
 
   return (
     <>
-      <div
-        className="relative w-full mx-auto h-screen bg-cover bg-center text-white -mt-25 lightSection"
+      <section
+        className="relative w-full mx-auto h-screen bg-cover bg-center text-white -mt-25 darkSection"
         style={{
           backgroundImage: 'url("/property/property.jpg")',
           fontFamily: `'Wellsbrook Initials SG Regular'`,
@@ -35,7 +35,7 @@ const AllPropertypage = () => {
            <Breadcrumbs />
         </div>
        
-      </div>
+      </section>
 
       {/* Property cards */}
       <PropertyCard />

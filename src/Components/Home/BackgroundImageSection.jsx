@@ -2,8 +2,8 @@ import React from "react";
 
 const Hero1 = () => {
   return (
-    <div
-      className="relative w-full h-screen bg-cover bg-center text-white darkSection " 
+    <div id="hero"
+      className="relative w-full h-screen bg-cover bg-center text-white" 
       style={{
         backgroundImage:
           'url("https://v.fastcdn.co/cdn-cgi/image/format=auto,fit=scale-down,sharpen=1/u/a43967b2/65501639-0-Desktop-Header-.jpg")',

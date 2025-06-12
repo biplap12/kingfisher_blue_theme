@@ -1,43 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
-// Context defaults
-export const MenuContext = createContext({
-  isOpen: false,
-  toggleSidebar: () => {},
-  closeSidebar: () => {},
-  isDarkSection: false,
-  setIsDarkSection: () => {},
-  isScrollingDown: false,
-  setIsScrollingDown: () => {},
+// Define the shape of the context (optional but good for clarity)
+const defaultMenuContext = {
   menuColor: "white",
-  setMenuColor: () => {},
-});
+  setMenuColor: () => {}, // placeholder function
+};
 
+// Create context with default values
+export const MenuContext = createContext(defaultMenuContext);
+
+// Provider component
 export const MenuProvider = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDarkSection, setIsDarkSection] = useState(false);
-  const [isScrollingDown, setIsScrollingDown] = useState(false);
-  const [menuColor, setMenuColor] = useState("white"); // only use "white" or "black"
-
-  const toggleSidebar = () => setIsOpen((prev) => !prev);
-  const closeSidebar = () => setIsOpen(false);
-
-
+  const [menuColor, setMenuColor] = useState("white");
 
   return (
-    <MenuContext.Provider
-      value={{
-        isOpen,
-        toggleSidebar,
-        closeSidebar,
-        isDarkSection,
-        setIsDarkSection,
-        isScrollingDown,
-        setIsScrollingDown,
-        menuColor,
-        setMenuColor,
-      }}
-    >
+    <MenuContext.Provider value={{ menuColor, setMenuColor }}>
       {children}
     </MenuContext.Provider>
   );

@@ -7,6 +7,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family:mission;
+  src: url("/font/PlayfairDisplay-Italic.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* @font-face {
   font-family: 'Gafiya';
   src: url('/font/Gafiya-Regular.otf') format('opentype');
@@ -50,4 +57,11 @@ html {
 }
 .bg-secondary-color {
   background-color: #232266;
+}
+
+
+.mission_font{
+  font-family: mission,sans-serif;
+  font-style: italic;
+
 }

@@ -7,68 +7,22 @@ import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 import { Link } from "react-router-dom";
 import Slider from "../Components/Home/Slider";
 import { image } from "framer-motion/client";
-
-const teamMembers = [
-  {
-    name: "And Neko Balda",
-    title: "Chief Development Officer (CDO)",
-    description:
-      "Eneko is a Technical Architect and Project Manager with over 15 years of experience at the renowned construction company ACR, where he was Group Leader for the northern region. At Kategora, he coordinates the Project Management activities.lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    imageUrl:
-      "https://plus.unsplash.com/premium_photo-1664540415069-bc45ce3e711e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    name: "John Doe",
-    title: "Chief Operating Officer (COO)",
-    description:
-      "John is an experienced operations manager who has worked in various multinational companies and now oversees the company’s operational strategies.",
-    imageUrl:
-      "https://images.unsplash.com/flagged/photo-1553642618-de0381320ff3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    name: "Jane Smith",
-    title: "Chief Financial Officer (CFO)",
-    description:
-      "Jane has a solid background in finance, working with global investment firms, and she now manages the financial planning and risk management at the company.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1543132220-3ec99c6094dc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    name: "Carlos Alvarez",
-    title: "Chief Marketing Officer (CMO)",
-    description:
-      "Carlos brings innovative marketing strategies and brand vision to life, with over 12 years in digital marketing and consumer engagement.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    name: "Lisa Wong",
-    title: "Chief Technology Officer (CTO)",
-    description:
-      "Lisa is a technology leader who has led multiple engineering teams in tech startups and is now responsible for overseeing all technical aspects of the company.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600878459108-617a253537e9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  }
-];
+import teamMembers from "../data/teamMembers";
+import {
+  FaArrowRight,
+  FaBullseye,
+  FaCheckCircle,
+  FaEye,
+  FaFacebook,
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
+import { FaX, FaXTwitter } from "react-icons/fa6";
 
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showFullDescription, setShowFullDescription] = useState(false);
-  const currentMember = teamMembers[currentIndex];
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? teamMembers.length - 1 : prevIndex - 1
-    );
-    setShowFullDescription(false);
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === teamMembers.length - 1 ? 0 : prevIndex + 1
-    );
-    setShowFullDescription(false);
-  };
 
   const divRef = useRef(null);
   const { setMenuColor } = useContext(MenuContext);
@@ -77,8 +31,6 @@ export default function About() {
   useEffect(() => {
     setMenuColor("dark");
   }, [isVisible]);
-
-
 
   return (
     <div className="text-[#F5BC6D] -mt-23">
@@ -92,95 +44,190 @@ export default function About() {
         >
           <div className="absolute inset-0 backdrop-blur-sm z-20" />
           <div className="relative z-30 text-center max-w-2xl mx-auto px-6 pt-32 pb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 heading-font">About</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 heading-font">
+              About
+            </h1>
             <Breadcrumbs />
-
           </div>
         </div>
 
-        <div className="text-[#F5BC6D] min-h-screen flex flex-col  mx-20 p-6 darkSection">
-          <Link to={'/'} className="flex justify-start items-center text-gray-700">
+        <div className=" min-h-screen flex flex-col    mx-20 p-6 darkSection">
+          <Link
+            to={"/"}
+            className="flex justify-start items-center text-gray-700"
+          >
             <ArrowLeft size={15} /> Back
           </Link>
-            {/* Our Story */}
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
-                Our Story
-              </h2>
-              <p className="text-lg tracking-wide text-gray-500 max-w-5xl mx-auto text-justify paragraph-font">
-                Framed by a stunning ocean panorama, Kingfisher’s newest landmark on Dubai Islands captures the essence of refined coastal living. Nestled along the marina, this exceptional development offers a seamless blend of tranquility, energy, and connectivity—where every feature is thoughtfully designed to elevate modern lifestyles.
-              </p>
-            </div>
+          {/* Our Story */}
+          <div className="text-center ">
+            <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
+              Our Story
+            </h2>
+            <p className="text-lg tracking-wide text-gray-500 max-w-5xl mx-auto text-justify paragraph-font">
+              Framed by a stunning ocean panorama, Kingfisher’s newest landmark
+              on Dubai Islands captures the essence of refined coastal living.
+              Nestled along the marina, this exceptional development offers a
+              seamless blend of tranquility, energy, and connectivity—where
+              every feature is thoughtfully designed to elevate modern
+              lifestyles.
+            </p>
+          </div>
 
-          <h2 className="text-4xl uppercase tracking-wider mt-15 pb-2 heading-font">
-            Our Team
-          </h2>
-          <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-10">
-            <div className="md:w-1/3">
-              <h2 className="text-sm uppercase border-b border-white mb-4 secondary-color">
-                {currentMember.title}
-              </h2>
-              <h1 className="text-5xl italic leading-none">
-                {currentMember.name.split(" ")[0]}
-                <span className="text-gray ml-2">
-                  {currentMember.name.split(" ").slice(1).join(" ")}
-                </span>
-              </h1>
-              <p className={`mt-6 text-lg leading-relaxed text-gray-500 ${showFullDescription ? "" : "line-clamp-3"}`}>
-                {currentMember.description}
-              </p>
-              {currentMember.description.length > 100 && (
-                <motion.button
-                  onClick={() => setShowFullDescription((prev) => !prev)}
-                  className="flex items-center justify-center w-5 h-5 rounded-full text-white mt-3"
-                  animate={{ rotate: showFullDescription ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <TbArrowUpDashed size={25} color="black" />
-                </motion.button>
-              )}
-              <div className="mt-6 flex items-center space-x-4">
-                <button
-                  onClick={handlePrev}
-                  className="w-12 h-12 rounded-full border border-[#F5BC6D] flex items-center justify-center hover:bg-white hover:text-black transition"
-                >
-                  <ArrowLeft />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="w-12 h-12 rounded-full border border-[#F5BC6D] flex items-center justify-center hover:bg-white hover:text-black transition"
-                >
-                  <ArrowRight />
-                </button>
+          <section className="py-15 px-6 max-w-screen-xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+              {/* Mission */}
+              <div className=" rounded-3xl p-10">
+                <h3 className="text-4xl font-semibold text-blue-900 mb-6 flex items-center gap-3">
+                  <FaBullseye className="text-blue-700" />
+                  <span className="mission_font">Our</span>
+                  <span>Mission</span>
+                </h3>
+                <ul className="text-xl text-gray-700 space-y-4">
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    Deliver trusted, transparent, and personalized real estate
+                    services.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    Empower individuals and families through smart property
+                    decisions.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    Build lasting value in communities we serve.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    Operate with integrity, empathy, and a client-first mindset.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    Create spaces that inspire comfort, safety, and belonging.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Vision */}
+              <div className=" rounded-3xl p-10">
+                <h3 className="text-4xl font-semibold text-green-900 mb-6 flex items-center gap-3">
+                  <FaEye className="text-green-700" />
+                  <span className="mission_font">Our</span>
+                  Vision
+                </h3>
+                <ul className="text-xl text-gray-700 space-y-4">
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-green-600 mt-1" />
+                    Become a leading name in innovative and people-first real
+                    estate.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-green-600 mt-1" />
+                    Shape communities that are sustainable, smart, and
+                    connected.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-green-600 mt-1" />
+                    Redefine the property experience through technology and
+                    design.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-green-600 mt-1" />
+                    Lead with purpose, delivering homes and spaces that elevate
+                    lives.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FaCheckCircle className="text-green-600 mt-1" />
+                    Foster long-term relationships built on trust and
+                    excellence.
+                  </li>
+                </ul>
               </div>
             </div>
+          </section>
 
-            <div className="relative flex-1 flex justify-center items-center h-[500px] overflow-hidden">
-              {[0, 1, 2, 3].map((offset, i) => {
-                const index = (currentIndex + offset) % teamMembers.length;
-                const opacities = [1, 0.5, 0.3, 0.1];
-                const zIndex = 50 - i;
-                const translate = i * 100;
+          <section className="py-18 px-6 max-w-screen-xl mx-auto">
+            <h2 className="text-4xl md:text-7xl font-bold text-center mb-20 heading-font">
+              Our Team
+            </h2>
 
-                return (
-                  <motion.img
-                    key={teamMembers[index].imageUrl}
-                    src={teamMembers[index].imageUrl}
-                    alt={teamMembers[index].name}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: opacities[i] }}
-                    transition={{ duration: 0.5 }}
-                    onClick={() => setCurrentIndex(index)}
-                    className="w-100 h-[500px] object-cover rounded-md shadow-lg absolute cursor-pointer"
-                    style={{
-                      transform: `translate(${translate}px, ${translate}px)`,
-                      zIndex: zIndex,
-                    }}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teamMembers.map((member) => (
+                <div
+                  key={member.id}
+                  className="relative group rounded-md w-full overflow-hidden"
+                  style={{ height: "500px" }} // Fixed uniform height
+                >
+                  {/* Image */}
+                  <img
+                    src={member.imageUrl}
+                    alt={member.name}
+                    className="w-full h-full object-cover rounded-md"
                   />
-                );
-              })}
+
+                  {/* Overlay on hover */}
+                  <div
+                    className="
+            absolute inset-0 bg-primary-color bg-opacity-70 text-white
+            transform -translate-x-full group-hover:translate-x-0
+            transition-transform duration-300 ease-in-out
+            rounded-md flex flex-col
+          "
+                  >
+                    {/* Rotated name */}
+                    <div
+                      className="
+                    absolute bottom-2 left-5 transform -translate-y-1/2
+                    rotate-[-90deg] origin-left
+                    max-w-[120px] overflow-hidden text-ellipsis whitespace-nowrap
+                    px-2 bg-primary-color bg-opacity-50
+                  "
+                    >
+                      <h3 className="text-base md:text-lg font-bold text-white leading-tight">
+                        {member.name}
+                      </h3>
+                    </div>
+
+                    {/* Social icons */}
+                    <div className="absolute top-5 right-5 flex flex-col gap-4">
+                      <a
+                        href={member.socials.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[#0A66C2]"
+                      >
+                        <FaLinkedin size={24} />
+                      </a>
+                      <a
+                        href={member.socials.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gray-900"
+                      >
+                        <FaXTwitter size={24} />
+                      </a>
+                      <a
+                        href={member.socials.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-500"
+                      >
+                        <FaFacebook size={24} />
+                      </a>
+                    </div>
+
+                    {/* Action Button */}
+                    <div className="mt-auto self-end m-5">
+                      <div className=" rounded-full hover:bg-gray-200 transition">
+                        {/* <FaArrowRight size={18} /> */}
+                        <img src="./logo/icon.png" alt="logo icon" height={20} width={35} className="object-cover" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>

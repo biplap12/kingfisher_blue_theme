@@ -17,7 +17,7 @@ const navItems = [
 
 const Sticky = () => {
   const navRef = useRef(null);
-  const [isSticky, setIsSticky] = useState(false);
+  // const [isSticky, setIsSticky] = useState(false);
 
   const handleClick = (id) => {
     gsap.to(window, {
@@ -32,16 +32,16 @@ const Sticky = () => {
 
 
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsSticky(!entry.isIntersecting),
-      { threshold: 0, rootMargin: "-1px 0px 0px 0px" }
-    );
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => setIsSticky(!entry.isIntersecting),
+  //     { threshold: 0, rootMargin: "-1px 0px 0px 0px" }
+  //   );
 
-    if (navRef.current) observer.observe(navRef.current);
+  //   if (navRef.current) observer.observe(navRef.current);
 
-    return () => observer.disconnect();
-  }, []);
+  //   return () => observer.disconnect();
+  // }, []);
 
   
   return (
@@ -62,13 +62,13 @@ const Sticky = () => {
     </div>
   </div>
 
- {isSticky && (
+ {/* {isSticky ? (
   <button
     className="fixed -top-8 left-1/2 -translate-x-1/2 z-[999999] text-5xl hover:text-yellow-500 transition animate-bounce"
   >
     🢕
   </button>
-) }
+): null } */}
 
 </>
 
