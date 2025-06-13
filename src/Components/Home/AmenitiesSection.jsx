@@ -28,12 +28,13 @@ const AmenitiesSection = () => {
 
   return (
     <section
-      id="amenities"
-      className="relative py-8 px-4 md:px-16 mx-25 lightSection"
+      id="gallery"
+      className=" py-8 px-4 md:px-16 mx-25 lightSection mb-4"
     >
-      <h2 className="text-center text-3xl md:text-5xl tracking-widest mb-16 heading-font">
-        AMENITIES
+      <h2 className="text-center text-3xl md:text-5xl tracking-widest mb-6 heading-font">
+        GALLERY
       </h2>
+      <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mb-10"></div>
 
       {/* Vertical Text */}
       <p className="absolute left-0 top-[65%] text-center -translate-y-1/2 -rotate-90 origin-left text-2xl tracking-wider font-light hidden lg:block text-black -z-50">

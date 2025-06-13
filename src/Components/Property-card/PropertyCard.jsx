@@ -14,7 +14,7 @@ import { FaDollarSign, FaMapMarkerAlt, FaHome, FaBed } from "react-icons/fa";
 import { BsWhatsapp } from "react-icons/bs";
 import { IoIosCall } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
-import data from "../../data/propertyCard.js";
+import data from "../../data/propertycard.js";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import Pagination from "../Pagination/Pagination.jsx";
