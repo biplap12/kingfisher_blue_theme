@@ -163,7 +163,7 @@ const FeaturedCarousel = ({ posts }) => {
             </div>
 
             {/* Title */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900 leading-tight tracking-tight">
               {currentPost.title}
             </h2>
 
