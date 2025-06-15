@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative  bg-zinc-100 overflow-hidden ">
+    <footer className="relative  bg-zinc-100 overflow-hidden z-0">
       {/* Background subtle pattern or shape */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Optional: add subtle geometric shapes or soft pattern here */}

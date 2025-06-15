@@ -29,7 +29,7 @@ const AllPropertypage = () => {
 
         {/* Centered Text */}
         <div className="absolute top-1/2 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6">
-          <p className="text-6xl font-bold tracking-wide uppercase leading-20 heading-font">
+          <p className="text-6xl font-bold heading-font tracking-widest uppercase leading-20 heading-font">
             ALL Properties
           </p>
           <Breadcrumbs />
