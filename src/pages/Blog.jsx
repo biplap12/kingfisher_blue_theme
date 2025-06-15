@@ -366,7 +366,7 @@
 
 // export default BlogPage;
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // import FeaturedCarousel from './FeaturedCarousel';
 // import BlogFilter from './BlogFilter';
 // import BlogCard from './BlogCard';
@@ -375,6 +375,7 @@ import FeaturedCarousel from '../Components/FeaturedCarousel/FeaturedCarousel';
 import BlogFilter from '../Components/BlogFIlter/BlogFilter';
 import BlogCard from '../Components/BlogCard/BlogCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useBannerHeight } from '../Context/BannerHeightContext';
 
 const BlogPage = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
@@ -383,6 +384,16 @@ const BlogPage = () => {
   const [allTags, setAllTags] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
+
+  const bannerRef = useRef(null);
+  // const { setMenuColor } = useContext(MenuContext);
+  const { setBannerHeight } = useBannerHeight();
+
+  useEffect(() => {
+    if (bannerRef.current) {
+      setBannerHeight(bannerRef.current.offsetHeight);
+    }
+  }, []);
 
   // Calculate total pages
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -435,6 +446,7 @@ const BlogPage = () => {
           height: "75vh",
           padding: "0 50px",
         }}
+        ref={bannerRef}
       >
         {/* Black overlay at 80% */}
         <div className="absolute inset-0 bg-black/60 z-0"></div>
