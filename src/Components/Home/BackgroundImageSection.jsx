@@ -12,8 +12,8 @@ const Hero1 = () => {
     >
       {/* Center Text */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-wide uppercase leading-20 text-center p-6 z-10 heading-font">
-        <h1>Your Dream House</h1>
-        <h2>Becoming True</h2>
+        <h1 className="text-white">Your Dream House</h1>
+        <h2 className="text-white">Becoming True</h2>
       </div>
       <div className="absolute inset-0 bg-black/70"></div>
     </div>

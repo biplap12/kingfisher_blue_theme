@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,7 +11,8 @@ export default function ToggleSidebar({ onClose }) {
     ["/", "Home"],
     ["/properties", "Properties"],
     ["/about", "About Us"],
-    ["/blog", "blog"],
+    ["/services", "Our Services"],
+    ["/blog", "Blog"],
     ["/contact", "Contact"],
   ];
 
@@ -63,7 +62,7 @@ export default function ToggleSidebar({ onClose }) {
             initial="hidden"
             animate="visible"
             variants={navContainer}
-            className="flex flex-col justify-center items-start gap-4 text-lg h-screen"
+            className="flex flex-col justify-center items-start gap-4 text-lg h-screen "
             onMouseEnter={() => setNavHovered(true)}
             onMouseLeave={() => {
               setNavHovered(false);
@@ -72,10 +71,11 @@ export default function ToggleSidebar({ onClose }) {
           >
             {navItems.map(([href, label], i) => {
               // Determine text color class based on hover states
-              let textColorClass = "text-yellow-300";
+              let textColorClass ="text-[#f6bc6d]";
 
               if (navHovered) {
-                textColorClass = i === hoveredIndex ? "text-yellow-300" : "text-zinc-500";
+                textColorClass =
+                  i === hoveredIndex ? "text-[#f6bc6d]" : "text-zinc-400";
               }
 
               return (
@@ -85,64 +85,63 @@ export default function ToggleSidebar({ onClose }) {
                   whileTap={{ scale: 0.9 }}
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  className={`relative block px-4 py-2 rounded-full font-bold tracking-wide font-serif text-6xl uppercase  transition-colors duration-300 ${textColorClass}`}
+                  className={`playfair-display-sc-regular relative block px-4 py-2 rounded-full font-bold tracking-wide font-serif text-6xl uppercase  transition-colors duration-300  ${textColorClass}`}
                 >
                   <Link
                     key={href}
                     to={href}
                     onClick={onClose}
-                    className="text-2xl md:text-6xl lg:text-7xl"
+                    className="text-2xl md:text-6xl lg:text-[63px] "
                   >
                     {label}
-
+{/* 
                     <span
                       className={`absolute -top-1 -right-1 rounded-full border w-6 h-6 flex items-center justify-center text-xs ${textColorClass}`}
                     >
                       {i + 1}
-                    </span>
+                    </span> */}
                   </Link>
                 </motion.div>
-
               );
             })}
           </motion.nav>
         </motion.div>
 
         {/* Centered Social Icons */}
-       <div className="fixed bottom-10 left-0 right-0 md:bottom-110 flex items-center justify-center pointer-events-none z-50">
-  <motion.div
-    initial={{ y: 40, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ delay: 1.5 }}
-    className="flex justify-center gap-4 sm:gap-6 pointer-events-auto"
-  >
-    {[
-      {
-        icon: <FaInstagram className="w-6 h-6 sm:w-8 sm:h-8" />,
-        hoverColor: "hover:text-pink-500",
-        href: "https://instagram.com/yourprofile",
-      },
-      {
-        icon: <FaFacebookF className="w-6 h-6 sm:w-8 sm:h-8" />,
-        hoverColor: "hover:text-blue-500",
-        href: "https://facebook.com/yourprofile",
-      },
-    ].map((item, index) => (
-      <motion.a
-        key={index}
-        href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.2, rotate: 8 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 300 }}
-        className={`text-gray-300 ${item.hoverColor} transition-all duration-300 cursor-pointer`}
-      >
-        {item.icon}
-      </motion.a>
-    ))}
-  </motion.div>
-</div>
+        {/* <div className="fixed bottom-10 left-0 right-0 md:bottom-110 flex items-center justify-center pointer-events-none z-50">
+          <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="flex justify-center gap-4 sm:gap-6 pointer-events-auto"
+          >
+            {[
+              {
+                icon: <FaInstagram className="w-6 h-6 sm:w-8 sm:h-8" />,
+                hoverColor: "hover:text-pink-500",
+                href: "https://instagram.com/yourprofile",
+              },
+              {
+                icon: <FaFacebookF className="w-6 h-6 sm:w-8 sm:h-8" />,
+                hoverColor: "hover:text-blue-500",
+                href: "https://facebook.com/yourprofile",
+              },
+            ].map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 8 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className={`text-gray-300 ${item.hoverColor} transition-all duration-300 cursor-pointer`}
+              >
+                {item.icon}
+              </motion.a>
+            ))}
+          </motion.div>
+        </div> */}
       </motion.div>
     </AnimatePresence>
   );

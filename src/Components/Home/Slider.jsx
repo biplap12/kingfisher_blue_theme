@@ -42,8 +42,8 @@ const Slider = ({title, description,images}) => {
   return (
     <><div className="relative lightSection -z-[9999999]">
         {/* <div className="absolute inset-0 bg-white clip-hero-shape z-0"></div> */}
-        <div id="indoor" className="relative -z-[9999999] text-center px-6 py-24 max-w-7xl mx-auto">
-              <div  className="text-center mb-10">
+        <div id="indoor" className="relative -z-[9999999] text-center px-6 py-15 max-w-7xl mx-auto">
+              <div  className="text-center ">
                 <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
                   {title}
                 </h2>
