@@ -81,3 +81,23 @@ html {
   font-style: italic;
 
 }
+
+
+.glitter-text {
+  position: relative;
+  color: #fff;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glitter 3s ease-in-out infinite;
+}
+
+@keyframes glitter {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

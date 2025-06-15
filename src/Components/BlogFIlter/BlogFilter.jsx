@@ -77,11 +77,11 @@ const BlogFilter = ({ tags, selectedTag, onTagChange, searchTerm, onSearchChange
             onClick={() => onTagChange(tag)}
             className={`px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition
               ${selectedTag === tag
-                ? 'bg-[#f6bc6d] text-white'
+                ? 'bg-[#f6bc6d] text-white '
                 : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}
             `}
           >
-            {tag}
+            <span className='paragraph-font tracking-wide'>{tag}</span>
           </button>
         ))}
       </div>

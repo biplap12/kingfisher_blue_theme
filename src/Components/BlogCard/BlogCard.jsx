@@ -47,6 +47,7 @@ import { Calendar, Clock, ArrowUpRight } from 'lucide-react';
 const BlogCard = ({ post, index }) => {
   return (
     <article className="group cursor-pointer">
+        
       <div className="bg-white rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-gray-100/50 border border-gray-100/60">
         
         {/* Image Section */}
