@@ -1,6 +1,8 @@
 
 
-// import { useEffect, useState } from "react";
+
+
+// import { useContext, useEffect, useState } from "react";
 // import ToggleSidebar from "./toggleSidebar.jsx";
 // import { Link } from "react-router-dom";
 // import { BiSolidMessageAltDetail } from "react-icons/bi";
@@ -15,10 +17,11 @@
 
 //   const { bannerHeight } = useBannerHeight();
 
+//   // Toggle sidebar open/close
 //   const toggleSidebar = () => setIsOpen((prev) => !prev);
 //   const closeSidebar = () => setIsOpen(false);
 
-//   // Disable body scroll when sidebar is open
+//   // Lock body scroll when sidebar is open
 //   useEffect(() => {
 //     document.body.style.overflow = isOpen ? "hidden" : "auto";
 //     return () => {
@@ -26,18 +29,14 @@
 //     };
 //   }, [isOpen]);
 
-//   // Scroll listener for navbar behavior
+//   // Scroll handling
 //   useEffect(() => {
 //     const handleScroll = () => {
 //       const scrollY = window.scrollY;
 
-//       // Show/hide logo and enquiry button on scroll
 //       setHideLogoEnquiry(scrollY > 100);
-
-//       // Hamburger scroll state (changes its color)
 //       setHamburgerScroll(scrollY > bannerHeight - 80);
 
-//       // Menu color state for navbar background change
 //       if (scrollY > bannerHeight - 80) {
 //         setMenuColor("dark");
 //       } else {
@@ -46,31 +45,30 @@
 //     };
 
 //     window.addEventListener("scroll", handleScroll);
-//     handleScroll(); // Run once on mount
+//     handleScroll();
 
 //     return () => window.removeEventListener("scroll", handleScroll);
 //   }, [bannerHeight]);
 
-//   // Screen resize listener for mobile state
+//   // Handle screen resize
 //   useEffect(() => {
 //     const handleResize = () => {
 //       setIsMobile(window.innerWidth <= 800);
 //     };
 
 //     window.addEventListener("resize", handleResize);
-//     handleResize(); // Run once on mount
-
+//     handleResize();
 //     return () => window.removeEventListener("resize", handleResize);
 //   }, []);
 
 //   return (
 //     <div
-//       className={`fixed top-0 left-0 z-50 transition duration-300 ${
+//       className={`fixed top-0 left-0 dark ${
 //         hamburgerScroll ? "w-fit" : "w-full"
-//       } ${menuColor === "dark" ? "bg-white text-black" : "bg-transparent text-white"}`}
+//       } z-50 transition duration-300`}
 //     >
 //       <div className="flex items-center justify-between px-6 py-5 transition-all duration-300">
-//         {/* Hamburger */}
+//         {/* Hamburger menu */}
 //         <div className="flex items-center gap-8">
 //           <div
 //             className="w-12 h-10 relative flex flex-col justify-center cursor-pointer z-[60]"
@@ -78,7 +76,7 @@
 //           >
 //             <span
 //               className={`absolute h-0.5 w-12 transform transition-all duration-300 ease-in-out ${
-//                 isOpen ? "rotate-45 top-5 bg-white" : "top-2"
+//                 isOpen ? "rotate-45 top-5 bg-transparent" : "top-2"
 //               } ${hamburgerScroll ? "bg-black" : "bg-white"}`}
 //             />
 //             <span
@@ -88,7 +86,7 @@
 //             />
 //             <span
 //               className={`absolute h-0.5 w-12 transform transition-all duration-300 ease-in-out ${
-//                 isOpen ? "-rotate-45 top-5 bg-white" : "top-8"
+//                 isOpen ? "-rotate-45 top-5 bg-transparent" : "top-8"
 //               } ${hamburgerScroll ? "bg-black" : "bg-white"}`}
 //             />
 //           </div>
@@ -110,13 +108,13 @@
 //           </Link>
 //         </div>
 
-//         {/* Enquiry / Contact */}
+//         {/* Contact & Enquiry */}
 //         <div
 //           className={`flex items-center gap-4 transition-opacity duration-300 ${
 //             hideLogoEnquiry ? "hidden pointer-events-none" : "opacity-100"
 //           }`}
 //         >
-//           <span className="font-medium hidden md:block">
+//           <span className="font-medium text-white hidden md:block">
 //             +1 (234) 567-8901
 //           </span>
 
@@ -145,12 +143,10 @@
 
 
 
-
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ToggleSidebar from "./toggleSidebar.jsx";
 import { Link } from "react-router-dom";
 import { BiSolidMessageAltDetail } from "react-icons/bi";
-import { MenuContext } from "../../state/MenuContext.jsx";
 import { useBannerHeight } from "../../Context/BannerHeightContext.jsx";
 
 export default function Sidebar() {
@@ -162,11 +158,9 @@ export default function Sidebar() {
 
   const { bannerHeight } = useBannerHeight();
 
-  // Toggle sidebar open/close
   const toggleSidebar = () => setIsOpen((prev) => !prev);
   const closeSidebar = () => setIsOpen(false);
 
-  // Lock body scroll when sidebar is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
@@ -174,7 +168,6 @@ export default function Sidebar() {
     };
   }, [isOpen]);
 
-  // Scroll handling
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -195,7 +188,6 @@ export default function Sidebar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [bannerHeight]);
 
-  // Handle screen resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 800);
@@ -203,37 +195,51 @@ export default function Sidebar() {
 
     window.addEventListener("resize", handleResize);
     handleResize();
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div
-      className={`fixed top-0 left-0 dark ${
+      className={`fixed top-0 left-0 ${
         hamburgerScroll ? "w-fit" : "w-full"
       } z-50 transition duration-300`}
     >
       <div className="flex items-center justify-between px-6 py-5 transition-all duration-300">
-        {/* Hamburger menu */}
+        {/* Hamburger Menu */}
         <div className="flex items-center gap-8">
           <div
             className="w-12 h-10 relative flex flex-col justify-center cursor-pointer z-[60]"
             onClick={toggleSidebar}
           >
-            <span
-              className={`absolute h-0.5 w-12 transform transition-all duration-300 ease-in-out ${
-                isOpen ? "rotate-45 top-5 bg-transparent" : "top-2"
-              } ${hamburgerScroll ? "bg-black" : "bg-white"}`}
-            />
-            <span
-              className={`absolute h-0.5 w-8 transition-all duration-300 ease-in-out ${
-                isOpen ? "opacity-0" : "top-5"
-              } ${hamburgerScroll ? "bg-black" : "bg-white"}`}
-            />
-            <span
-              className={`absolute h-0.5 w-12 transform transition-all duration-300 ease-in-out ${
-                isOpen ? "-rotate-45 top-5 bg-transparent" : "top-8"
-              } ${hamburgerScroll ? "bg-black" : "bg-white"}`}
-            />
+            {[0, 1, 2].map((index) => {
+              const commonClasses =
+                "absolute h-[3px] transition-all duration-300 ease-in-out";
+              // Corrected color logic: color depends on menuColor only
+              const colorClass = menuColor === "light" ? "bg-white" : "bg-black";
+
+              let extraClasses = "";
+              if (index === 0) {
+                extraClasses = isOpen
+                  ? "rotate-45 top-5 w-12"
+                  : "top-2 w-12";
+              } else if (index === 1) {
+                extraClasses = isOpen
+                  ? "opacity-0 top-5 w-8"
+                  : "top-5 w-8";
+              } else if (index === 2) {
+                extraClasses = isOpen
+                  ? "-rotate-45 top-5 w-12"
+                  : "top-8 w-12";
+              }
+
+              return (
+                <span
+                  key={index}
+                  className={`${commonClasses} ${colorClass} ${extraClasses}`}
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -280,7 +286,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Sidebar panel */}
+      {/* Sidebar Panel */}
       {isOpen && <ToggleSidebar onClose={closeSidebar} />}
     </div>
   );

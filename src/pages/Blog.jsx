@@ -1,8 +1,5 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-// import FeaturedCarousel from './FeaturedCarousel';
-// import BlogFilter from './BlogFilter';
-// import BlogCard from './BlogCard';
 import { blogPosts } from '../data/blogdata';
 import FeaturedCarousel from '../Components/FeaturedCarousel/FeaturedCarousel';
 import BlogFilter from '../Components/BlogFIlter/BlogFilter';
@@ -96,14 +93,6 @@ const BlogPage = () => {
         {/* Featured Carousel */}
         <FeaturedCarousel posts={blogPosts} />
 
-        {/* Filter Section */}
-        {/* <BlogFilter
-          tags={allTags}
-          selectedTag={selectedTag}
-          onTagChange={setSelectedTag}
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-        /> */}
 
         {/* Blog Posts Grid */}
         <div className='flex items-center justify-center'>

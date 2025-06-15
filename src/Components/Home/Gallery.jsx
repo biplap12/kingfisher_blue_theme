@@ -16,7 +16,7 @@ const Gallery = () => {
 
   const text = [
     {
-      title: "Enriched By The Apartment",
+      title: "Services That Elevate Living",
       description:
         "The apartment holds a kind of quiet that doesn’t ask questions, a silence so full of memory it feels like you’re borrowing someone else’s beautifully unfinished story.",
     },
