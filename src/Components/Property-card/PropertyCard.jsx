@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { 
   ArrowLeft, 
@@ -13,10 +11,14 @@ import {
   Phone, 
   MessageCircle,
   Bath,
+  Check,
+  UserCog,
+  UserCog2, 
 } from "lucide-react";
 
 // Import data from the existing file
 import data from "../../data/propertycard.js";
+import { FaWhatsapp } from "react-icons/fa";
 
 // Simple Swiper Component
 const SimpleSwiper = ({ images, propertyName, globalIndex }) => {
@@ -138,10 +140,22 @@ const SimpleSwiper = ({ images, propertyName, globalIndex }) => {
 const SimplePagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 100,
+      behavior: 'smooth'
+    });
+  };
+
+  const handlePageChange = (page) => {
+    onPageChange(page);
+    scrollToTop();
+  };
+
   return (
     <div className="flex justify-center items-center space-x-2 mt-12">
       <button
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
@@ -151,7 +165,7 @@ const SimplePagination = ({ currentPage, totalPages, onPageChange }) => {
       {pages.map((page) => (
         <button
           key={page}
-          onClick={() => onPageChange(page)}
+          onClick={() => handlePageChange(page)}
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             currentPage === page
               ? 'bg-gray-900 text-white'
@@ -163,7 +177,7 @@ const SimplePagination = ({ currentPage, totalPages, onPageChange }) => {
       ))}
       
       <button
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
@@ -232,11 +246,11 @@ const PropertyCard = () => {
                 <div className="px-6 pb-6">
                   {/* Title and Price */}
                   <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                    <h2 className="text-2xl font-bold paragraph-font tracking-wide text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
                       {property.Name}
                     </h2>
                     <div className="flex items-center justify-between">
-                      <p className="text-3xl font-bold text-gray-900">{property.priceFrom}</p>
+                      <p className="text-3xl font-bold text-green-600 paragraph-font tracking-wide">{property.priceFrom}</p>
                       <div className="flex items-center text-gray-500">
                         <MapPin size={16} className="mr-1" />
                         <span className="text-sm">{property.Location}</span>
@@ -251,38 +265,38 @@ const PropertyCard = () => {
                         <Home size={16} className="text-blue-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide">Type</p>
-                        <p className="font-semibold text-gray-900">{property.Type}</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Type</p>
+                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Type}</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
-                      <div className="p-2 bg-green-100 rounded-lg">
-                        <BedDouble size={16} className="text-green-600" />
+                      <div className="p-2 bg-pink-100 rounded-lg">
+                        <BedDouble size={16} className="text-pink-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide">Bedrooms</p>
-                        <p className="font-semibold text-gray-900">{property.Beds}</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Bedrooms</p>
+                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Beds}</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
                       <div className="p-2 bg-purple-100 rounded-lg">
-                        <Bath size={16} className="text-purple-600" />
+                        <UserCog2 size={16} className="text-purple-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide">Developer</p>
-                        <p className="font-semibold text-gray-900">{property.Developer}</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Developer</p>
+                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Developer}</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
-                      <div className="p-2 bg-red-100 rounded-lg">
-                        <DollarSign size={16} className="text-red-600" />
+                      <div className="p-2 bg-green-100 rounded-lg">
+                        <Check size={16} className="text-green-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide">Price From</p>
-                        <p className="font-semibold text-gray-900">$1,200,000</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Status</p>
+                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Status}</p>
                       </div>
                     </div>
                   </div>
@@ -299,9 +313,9 @@ const PropertyCard = () => {
                     
                     <button
                       onClick={() => handleContact('whatsapp', property)}
-                      className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors font-medium"
+                      className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors font-medium"
                     >
-                      <MessageCircle size={18} />
+                      <FaWhatsapp size={18} />
                       <span>WhatsApp</span>
                     </button>
                     

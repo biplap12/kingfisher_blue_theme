@@ -28,7 +28,7 @@ const AllPropertypage = () => {
         <div className="absolute inset-0 bg-black/60 z-0"></div>
 
         {/* Centered Text */}
-        <div className="absolute top-1/2 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6">
+        <div className="absolute top-[450px] left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6">
           <p className="text-6xl font-bold heading-font tracking-widest uppercase leading-20 heading-font">
             ALL Properties
           </p>
