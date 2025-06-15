@@ -374,13 +374,23 @@ import { blogPosts } from '../data/blogdata';
 import FeaturedCarousel from '../Components/FeaturedCarousel/FeaturedCarousel';
 import BlogFilter from '../Components/BlogFIlter/BlogFilter';
 import BlogCard from '../Components/BlogCard/BlogCard';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const BlogPage = () => {
-  const [selectedTag, setSelectedTag] = useState('All');
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+  const [selectedTag, setSelectedTag] = useState('All');
+  const [allTags, setAllTags] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
 
-  const allTags = [...new Set(blogPosts.flatMap(post => post.tags))];
+  // Calculate total pages
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   useEffect(() => {
     let filtered = blogPosts;
@@ -395,6 +405,7 @@ const BlogPage = () => {
       );
     }
     setFilteredPosts(filtered);
+    setAllTags([...new Set(blogPosts.flatMap(post => post.tags))]);
   }, [selectedTag, searchTerm]);
 
   return (
@@ -416,7 +427,7 @@ const BlogPage = () => {
         }
       `}</style>
 
-<div
+      <div
         className="relative w-full mx-auto h-screen bg-cover bg-center text-white -mt-25 darkSection"
         style={{
           backgroundImage: 'url("/property/property.jpg")',
@@ -436,9 +447,6 @@ const BlogPage = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-   
-     
         {/* Featured Carousel */}
         <FeaturedCarousel posts={blogPosts} />
 
@@ -451,16 +459,64 @@ const BlogPage = () => {
           onSearchChange={setSearchTerm}
         />
 
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post, index) => (
-            <BlogCard key={post.id} post={post} index={index} />
+        {/* Blog Posts Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {currentPosts.map((post, index) => (
+            <BlogCard key={index} post={post} />
           ))}
         </div>
 
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-12">
+            <div className="flex items-center space-x-2">
+              {/* Previous Button */}
+              <button
+                onClick={() => setCurrentPage((prev) => prev - 1)}
+                disabled={currentPage === 1}
+                className={`p-2 rounded-full transition-colors duration-200 ${
+                  currentPage === 1 
+                    ? 'text-gray-400 cursor-not-allowed' 
+                    : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Page Numbers */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                    page === currentPage 
+                      ? 'bg-[#f6bc6d] text-white' 
+                      : 'text-gray-600 hover:bg-gray-100'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              {/* Next Button */}
+              <button
+                onClick={() => setCurrentPage((prev) => prev + 1)}
+                disabled={currentPage === totalPages}
+                className={`p-2 rounded-full transition-colors duration-200 ${
+                  currentPage === totalPages 
+                    ? 'text-gray-400 cursor-not-allowed' 
+                    : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* No Results */}
         {filteredPosts.length === 0 && (
-          <div className="text-center py-12 fade-in-up opacity-0">
+          <div className="text-center py-12 fade-in-up">
             <h3 className="text-2xl font-semibold text-gray-900 mb-2">No posts found</h3>
             <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
             <button
@@ -468,9 +524,9 @@ const BlogPage = () => {
                 setSelectedTag('All');
                 setSearchTerm('');
               }}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+              className="inline-flex items-center px-6 py-3 bg-[#f6bc6d] text-white rounded-lg hover:bg-[#f5b86b] transition duration-300"
             >
-              Clear Filters
+              Reset Filters
             </button>
           </div>
         )}
