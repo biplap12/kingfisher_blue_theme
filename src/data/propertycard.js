@@ -7,7 +7,7 @@ const data = [
     Developer: "Arada Properties",
     Type: "Apartment",
     Beds: "Studio",
-    Status: "Available"
+    Status: "Sold Out"
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg","./gallery/img1.jpg", "./gallery/img2.jpg"],

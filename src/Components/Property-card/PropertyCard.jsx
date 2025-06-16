@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { 
-  ArrowLeft, 
-  ChevronLeft, 
-  ChevronRight, 
-  DollarSign, 
-  MapPin, 
-  Home, 
-  BedDouble, 
-  Mail, 
-  Phone, 
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  DollarSign,
+  MapPin,
+  Home,
+  BedDouble,
+  Mail,
+  Phone,
   MessageCircle,
   Bath,
   Check,
   UserCog,
-  UserCog2, 
+  UserCog2,
+  X,
 } from "lucide-react";
 
 // Import data from the existing file
@@ -60,7 +61,7 @@ const SimpleSwiper = ({ images, propertyName, globalIndex }) => {
           alt={`${propertyName} - Image ${currentSlide + 1}`}
           className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        
+
         {/* Navigation Buttons */}
         <button
           onClick={prevSlide}
@@ -82,7 +83,7 @@ const SimpleSwiper = ({ images, propertyName, globalIndex }) => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide ? 'bg-white w-6' : 'bg-white/60'
+                index === currentSlide ? "bg-white w-6" : "bg-white/60"
               }`}
             />
           ))}
@@ -100,8 +101,8 @@ const SimpleSwiper = ({ images, propertyName, globalIndex }) => {
                 onClick={() => goToSlide(actualIndex)}
                 className={`flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                   actualIndex === currentSlide
-                    ? 'border-gray-900 scale-105'
-                    : 'border-gray-200 hover:border-gray-400'
+                    ? "border-gray-900 scale-105"
+                    : "border-gray-200 hover:border-gray-400"
                 }`}
               >
                 <img
@@ -143,7 +144,7 @@ const SimplePagination = ({ currentPage, totalPages, onPageChange }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 100,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -161,21 +162,21 @@ const SimplePagination = ({ currentPage, totalPages, onPageChange }) => {
       >
         <ChevronLeft size={20} />
       </button>
-      
+
       {pages.map((page) => (
         <button
           key={page}
           onClick={() => handlePageChange(page)}
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             currentPage === page
-              ? 'bg-gray-900 text-white'
-              : 'bg-white border border-gray-200 hover:bg-gray-50'
+              ? "bg-gray-900 text-white"
+              : "bg-white border border-gray-200 hover:bg-gray-50"
           }`}
         >
           {page}
         </button>
       ))}
-      
+
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
@@ -197,17 +198,23 @@ const PropertyCard = () => {
   const handleContact = (type, property) => {
     const phone = "971501234567";
     const email = "info@luxury-properties.com";
-    
-    switch(type) {
-      case 'whatsapp':
+
+    switch (type) {
+      case "whatsapp":
         const message = `Hello, I'm interested in ${property.Name} priced at ${property.price}`;
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+        window.open(
+          `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+          "_blank"
+        );
         break;
-      case 'call':
+      case "call":
         window.open(`tel:${phone}`, "_blank");
         break;
-      case 'email':
-        window.open(`mailto:${email}?subject=Inquiry about ${property.Name}&body=Hello, I'm interested in learning more about ${property.Name} listed at ${property.price}.`, "_blank");
+      case "email":
+        window.open(
+          `mailto:${email}?subject=Inquiry about ${property.Name}&body=Hello, I'm interested in learning more about ${property.Name} listed at ${property.price}.`,
+          "_blank"
+        );
         break;
     }
   };
@@ -218,7 +225,10 @@ const PropertyCard = () => {
         {/* Header */}
         <div className="mb-8">
           <button className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors group">
-            <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft
+              size={20}
+              className="mr-2 group-hover:-translate-x-1 transition-transform"
+            />
             <span className="font-medium">Back to Home</span>
           </button>
         </div>
@@ -250,7 +260,9 @@ const PropertyCard = () => {
                       {property.Name}
                     </h2>
                     <div className="flex items-center justify-between">
-                      <p className="text-3xl font-bold text-green-600 paragraph-font tracking-wide">{property.priceFrom}</p>
+                      <p className="text-3xl font-bold text-green-600 paragraph-font tracking-wide">
+                        {property.priceFrom}
+                      </p>
                       <div className="flex items-center text-gray-500">
                         <MapPin size={16} className="mr-1" />
                         <span className="text-sm">{property.Location}</span>
@@ -265,8 +277,12 @@ const PropertyCard = () => {
                         <Home size={16} className="text-blue-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Type</p>
-                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Type}</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">
+                          Type
+                        </p>
+                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">
+                          {property.Type}
+                        </p>
                       </div>
                     </div>
 
@@ -275,8 +291,12 @@ const PropertyCard = () => {
                         <BedDouble size={16} className="text-pink-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Bedrooms</p>
-                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Beds}</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">
+                          Bedrooms
+                        </p>
+                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">
+                          {property.Beds}
+                        </p>
                       </div>
                     </div>
 
@@ -285,12 +305,16 @@ const PropertyCard = () => {
                         <UserCog2 size={16} className="text-purple-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Developer</p>
-                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Developer}</p>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">
+                          Developer
+                        </p>
+                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">
+                          {property.Developer}
+                        </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
+                    {/* <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
                       <div className="p-2 bg-green-100 rounded-lg">
                         <Check size={16} className="text-green-600" />
                       </div>
@@ -298,29 +322,59 @@ const PropertyCard = () => {
                         <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Status</p>
                         <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Status}</p>
                       </div>
+                    </div> */}
+
+                    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
+                      <div
+                        className={`p-2 rounded-lg ${
+                          property.Status === "Available"
+                            ? "bg-green-100"
+                            : "bg-red-100"
+                        }`}
+                      >
+                        {property.Status === "Available" ? (
+                          <Check size={16} className="text-green-600" />
+                        ) : (
+                          <X size={16} className="text-red-600" />
+                        )}
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">
+                          Status
+                        </p>
+                        <p
+                          className={`font-medium paragraph-font tracking-wide ${
+                            property.Status === "Available"
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }`}
+                        >
+                          {property.Status}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
                   {/* Contact Buttons */}
                   <div className="flex space-x-3">
                     <button
-                      onClick={() => handleContact('email', property)}
+                      onClick={() => handleContact("email", property)}
                       className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors font-medium"
                     >
                       <Mail size={18} />
                       <span>Email</span>
                     </button>
-                    
+
                     <button
-                      onClick={() => handleContact('whatsapp', property)}
+                      onClick={() => handleContact("whatsapp", property)}
                       className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors font-medium"
                     >
                       <FaWhatsapp size={18} />
                       <span>WhatsApp</span>
                     </button>
-                    
+
                     <button
-                      onClick={() => handleContact('call', property)}
+                      onClick={() => handleContact("call", property)}
                       className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-colors font-medium"
                     >
                       <Phone size={18} />
