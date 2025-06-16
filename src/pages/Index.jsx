@@ -41,10 +41,6 @@ const router = createBrowserRouter([
         path: "/blog",
         element: <Blog />,
       },
-      //   {
-      //   path:"/gallery/:id",
-      //   element:<Property_Gallary/>
-      // },
       {
         path: "/blog/:id",
         element: <BlogViewer />,

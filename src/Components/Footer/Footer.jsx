@@ -1,3 +1,6 @@
+
+
+
 import React from "react";
 import {
   Instagram,
@@ -13,89 +16,131 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative  bg-zinc-100 overflow-hidden z-0">
-      {/* Background subtle pattern or shape */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Optional: add subtle geometric shapes or soft pattern here */}
+    <footer className="relative bg-white overflow-hidden">
+
+      {/* Background Image */}
+      <div className="absolute">
+        <img
+          src="./footer/BuildFooter.png"
+          alt=""
+          className="w-full h-full object-cover opacity-10"
+        />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      {/* Main Footer Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 ">
           {/* Logo & Tagline */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <img src="/logo/logo1.png" alt="Company Logo" className="h-14 mb-4" />
-            <p className="text-gray-600 text-sm max-w-xs">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left ">
+            <div className="mb-4 transform hover:scale-105 transition-transform duration-300">
+              <img src="/logo/logo1.png" alt="Company Logo" className="h-12 " />
+            </div>
+            <p className="text-gray-700 paragraph-font tracking-widest text-base max-w-xs leading-relaxed">
               Building excellence and trust in every square foot.
             </p>
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold text-yellow-600 mb-4">Contact Us</h3>
-            <ul className="space-y-4 text-sm text-gray-600">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-yellow-600" />
-                <span>
+          <div className="space-y-6">
+            <h3 className="text-lg paragraph-font tracking-widest font-medium text-gray-800 mb-6">
+              Contact Us
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3 group">
+                <MapPin className="w-5 h-5 text-gray-600 mt-0.5 group-hover:text-green-600 transition-colors duration-300" />
+                <span className="text-sm text-black leading-relaxed">
                   SUITE 203, PARK HEIGHTS SQUARE 1, DUBAI HILLS, DUBAI
                 </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-yellow-600" />
-                <a href="tel:+971800468429" className="hover:underline hover:text-yellow-600 transition">
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Phone className="w-5 h-5 text-black group-hover:text-green-600 transition-colors duration-300" />
+                <a
+                  href="tel:+971800468429"
+                  className="text-sm text-black hover:text-green-600 transition-colors duration-300"
+                >
                   +971 800 468429
                 </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-yellow-600" />
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Mail className="w-5 h-5 text-black group-hover:text-green-600 transition-colors duration-300" />
                 <a
                   href="mailto:info@kingfisherrealestate.com"
-                  className="hover:underline hover:text-yellow-600 transition"
+                  className="text-sm text-black hover:text-green-600 transition-colors duration-300"
                 >
                   info@kingfisherrealestate.com
                 </a>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
 
           {/* Social Media */}
-          <div className="flex flex-col items-center md:items-end text-center md:text-right">
-            <h3 className="text-lg font-semibold text-yellow-600 mb-4">Follow Us</h3>
-            <div className="flex gap-4">
-              {[Instagram, Facebook, Linkedin, Youtube].map((Icon, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  aria-label={Icon.name}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 hover:bg-yellow-300 hover:text-white transition duration-300 shadow-sm"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+          <div className="flex flex-col items-center md:items-end">
+            <h3 className="text-lg paragraph-font tracking-widest font-medium text-black mb-6">
+              Follow Us
+            </h3>
+            <div className="flex gap-3">
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 text-black hover:bg-white hover:text-green-600 transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 text-gray-700 hover:bg-white hover:text-green-600 transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 text-gray-700 hover:bg-white hover:text-green-600 transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                aria-label="YouTube"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 text-gray-700 hover:bg-white hover:text-green-600 transform-gpu hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="my-10 border-t border-gray-300" />
+        <div className="border-t border-white border-opacity-30 mb-8"></div>
 
         {/* Bottom Info */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-3">
-          <p className="text-black">© {currentYear} KingFisher Pvt. Ltd. All rights reserved.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+          <p className="text-black paragraph-font tracking-widest">
+            © {currentYear} KingFisher Pvt. Ltd. All rights reserved.
+          </p>
           <a
             href="https://www.webxnep.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-yellow-600 transition"
+            className="flex items-center gap-2 text-gray-700 hover:text-green-600 transition-colors duration-300 group"
           >
-            <span className="text-black">Designed & Developed by</span>
-            <img
-              src="/webx/logo.svg"
-              alt="WebX logo"
-              className="h-5 object-contain invert"
-            />
+            <span>Designed & Developed by</span>
+            <div className="transform group-hover:scale-105 transition-transform duration-300">
+              <img
+                src="/webx/logo.svg"
+                alt="WebX logo"
+                className="h-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
           </a>
         </div>
       </div>
+
+      {/* Floating Animation Elements */}
+      <div className="absolute top-10 left-10 w-2 h-2 bg-white bg-opacity-30 rounded-full animate-bounce z-10"></div>
+      <div className="absolute top-20 right-20 w-3 h-3 bg-white bg-opacity-20 rounded-full animate-pulse z-10"></div>
+      <div className="absolute bottom-20 left-1/4 w-1 h-1 bg-white bg-opacity-40 rounded-full animate-ping z-10"></div>
     </footer>
   );
 };

@@ -42,11 +42,18 @@
 
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Calendar, Clock, ArrowUpRight } from 'lucide-react';
 
 const BlogCard = ({ post, index }) => {
+  const navigate = useNavigate();
+
+  const handleReadArticle = () => {
+    navigate(`/blog/${post.id}`);
+  };
+
   return (
-    <article className="group cursor-pointer">
+    <article className="group cursor-pointer" onClick={handleReadArticle}>
         
       <div className="bg-white rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-gray-100/50 border border-gray-100/60">
         
@@ -83,7 +90,7 @@ const BlogCard = ({ post, index }) => {
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 leading-tight group-hover:text-gray-700 transition-colors duration-200">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 leading-tight group-hover:text-gray-700 transition-colors duration-200 cursor-pointer" onClick={handleReadArticle}>
             {post.title}
           </h3>
 

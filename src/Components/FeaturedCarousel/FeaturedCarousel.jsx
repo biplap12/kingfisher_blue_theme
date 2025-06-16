@@ -154,10 +154,18 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AUTO_SCROLL_INTERVAL = 4000; // 5 seconds
 
 const FeaturedCarousel = ({ posts }) => {
+
+  const navigate = useNavigate();
+
+  const handleReadArticle = () => {
+    navigate(`/blog/${posts.id}`);
+  };
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const featuredPosts = posts.slice(0, 4);
 
@@ -252,7 +260,7 @@ const FeaturedCarousel = ({ posts }) => {
                       </div>
                     </div>
 
-                    <button className="group inline-flex items-center space-x-2 bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium">
+                    <button className="group cursor-pointer inline-flex items-center space-x-2 bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium" onClick={handleReadArticle}>
                       <span>Read Article</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
                     </button>
