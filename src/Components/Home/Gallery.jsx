@@ -4,7 +4,6 @@ const Gallery = () => {
   const lifestyle = [
     {
       title: "MARINA-SIDE BLISS",
-      desc: "A first-line marina facing property, with stunning views and interconnected promenades.",
       img: "/gallery/img1.jpg",
       span: 2,
     },
@@ -36,7 +35,7 @@ const Gallery = () => {
               </h1>
               <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto"></div>
 
-              <p className="text-lg tracking-wide text-gray-500 max-w-5xl mx-auto text-justify paragraph-font flex justify-center">
+              <p className="text-lg text-gray-500 max-w-5xl mx-auto raleway-regular text-center">
                 {item.description}
               </p>
             </div>
@@ -55,8 +54,7 @@ const Gallery = () => {
             style={{ backgroundImage: `url(${item.img})`, zIndex: "-1" }}
           >
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              {item.desc && <p className="text-sm mt-2">{item.desc}</p>}
+              {/* <h3 className="text-lg font-semibold">{item.title}</h3> */}
             </div>
           </div>
         ))}
@@ -66,3 +64,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+

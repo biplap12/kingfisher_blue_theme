@@ -97,7 +97,7 @@ const BlogPage = () => {
         {/* Blog Posts Grid */}
         <div className='flex items-center justify-center'>
 
-        <h1 className="text-6xl font-bold tracking-widest uppercase leading-20">You May Also Like</h1>
+        <h1 className="text-6xl font-bold  uppercase leading-20">You May Also Like</h1>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {currentPosts.map((post, index) => (

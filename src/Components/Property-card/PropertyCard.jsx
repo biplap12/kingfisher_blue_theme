@@ -256,7 +256,7 @@ const PropertyCard = () => {
                 <div className="px-6 pb-6">
                   {/* Title and Price */}
                   <div className="mb-6">
-                    <h2 className="text-2xl font-bold paragraph-font tracking-wide text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                    <h2 className="text-2xl font-bold  text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
                       {property.Name}
                     </h2>
                     <div className="flex items-center justify-between">
@@ -277,10 +277,10 @@ const PropertyCard = () => {
                         <Home size={16} className="text-blue-600" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">
+                        <p className="text-xs text-gray-500 uppercase font-bold">
                           Type
                         </p>
-                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">
+                        <p className="font-medium text-gray-900 ">
                           {property.Type}
                         </p>
                       </div>
@@ -313,17 +313,6 @@ const PropertyCard = () => {
                         </p>
                       </div>
                     </div>
-
-                    {/* <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
-                      <div className="p-2 bg-green-100 rounded-lg">
-                        <Check size={16} className="text-green-600" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">Status</p>
-                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">{property.Status}</p>
-                      </div>
-                    </div> */}
-
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
                       <div
                         className={`p-2 rounded-lg ${

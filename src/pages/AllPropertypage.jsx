@@ -51,7 +51,7 @@ const AllPropertypage = () => {
           <p className="text-6xl font-bold heading-font tracking-widest uppercase leading-20 heading-font">
             ALL Properties
           </p>
-          <Breadcrumbs />
+          {/* <Breadcrumbs /> */}
         </div>
       </section>
 

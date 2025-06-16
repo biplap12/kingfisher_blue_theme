@@ -430,13 +430,13 @@ export default function BlogViewer() {
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">{section.heading}</h2>
 
                 {section.paragraphs.map((para, pidx) => (
-                  <p key={pidx} className="text-gray-800 text-lg leading-relaxed mb-4">
+                  <p key={pidx} className="text-gray-800 text-lg  raleway-regular leading-relaxed mb-4">
                     {para}
                   </p>
                 ))}
 
                 {section.bullets && (
-                  <ul className="list-disc pl-6 mb-6 text-gray-800 text-lg leading-relaxed space-y-2">
+                  <ul className="list-disc pl-6 mb-6 text-gray-800 text-lg raleway-regular leading-relaxed space-y-2">
                     {section.bullets.map((bullet, bidx) => (
                       <li key={bidx}>{bullet}</li>
                     ))}

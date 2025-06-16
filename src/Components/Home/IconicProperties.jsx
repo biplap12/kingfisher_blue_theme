@@ -55,7 +55,7 @@ const IconicProperties = () => {
             <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
               {textItem.title}
             </h2>
-            <p className="text-lg text-gray-500 max-w-7xl mx-auto paragraph-font tracking-wide">
+            <p className="text-lg text-gray-500 max-w-7xl mx-auto raleway-regular">
               {textItem.description}
             </p>
           </div>
@@ -75,7 +75,7 @@ const IconicProperties = () => {
             />
             <div className="p-4 flex flex-col justify-between h-[180px]">
               <div>
-                <h3 className="text-md paragraph-font tracking-wide font-semibold text-gray-900">
+                <h3 className="text-md font-bold text-gray-900">
                   {property.title}
                 </h3>
                 <p className="text-sm paragraph-font tracking-wide text-gray-600 flex items-center mt-2">
@@ -102,7 +102,7 @@ const IconicProperties = () => {
       <div className="mt-10 flex justify-center ">
         <button
           onClick={() => navigate("/properties")}
-          className="flex items-center gap-2 px-7 py-3 rounded-xl bg-[#f6bc6d] text-white text-base font-medium tracking-wide hover:bg-[#f6bd6dcf] transition duration-300 ease-in-out shadow-sm hover:shadow-lg cursor-pointer"
+          className="flex items-center gap-2 px-7 py-3 rounded-xl bg-[#f6bc6d] text-black text-base font-medium tracking-wide hover:bg-[#f6bd6dcf] transition duration-300 ease-in-out shadow-sm hover:shadow-lg cursor-pointer"
         >
           View All
         </button>

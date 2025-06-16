@@ -15,14 +15,13 @@ import {
   FaEye,
   FaFacebook,
   FaGithub,
+  FaInstagram,
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa";
 import { FaX, FaXTwitter } from "react-icons/fa6";
 
 export default function About() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const divRef = useRef(null);
   const { setMenuColor } = useContext(MenuContext);
@@ -60,11 +59,11 @@ export default function About() {
           </Link>
           {/* Our Story */}
           <div className="text-center ">
-            <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
+            <h2 className="text-4xl md:text-5xl heading-font uppercase mb-6">
               Our Story
             </h2>
-            <p className="text-lg tracking-wide text-gray-500 max-w-5xl mx-auto text-justify paragraph-font">
-              Framed by a stunning ocean panorama, Kingfisher’s newest landmark
+            <p className="text-lg raleway-regular  text-gray-500 mx-auto ">
+              Framed by a stunning ocean panorama, Kingfisher&apos;s newest landmark
               on Dubai Islands captures the essence of refined coastal living.
               Nestled along the marina, this exceptional development offers a
               seamless blend of tranquility, energy, and connectivity—where
@@ -73,16 +72,16 @@ export default function About() {
             </p>
           </div>
 
-          <section className="py-15 px-6 max-w-screen-xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <section className="py-15 px-6 max-w-screen-xl mx-auto ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16  ">
               {/* Mission */}
-              <div className=" rounded-3xl p-10">
+              <div className=" rounded-3xl p-10  relative">
                 <h3 className="text-4xl font-semibold text-blue-900 mb-6 flex items-center gap-3">
                   <FaBullseye className="text-blue-700" />
                   <span className="mission_font">Our</span>
-                  <span>Mission</span>
+                  <span className="mission_font">Mission</span>
                 </h3>
-                <ul className="text-xl text-gray-700 space-y-4">
+                <ul className="absolute left-20 text-xl text-gray-700 space-y-4 raleway-regular">
                   <li className="flex items-start gap-3">
                     <FaCheckCircle className="text-blue-600 mt-1" />
                     Deliver trusted, transparent, and personalized real estate
@@ -109,13 +108,13 @@ export default function About() {
               </div>
 
               {/* Vision */}
-              <div className=" rounded-3xl p-10">
+              <div className=" rounded-3xl p-10  relative">
                 <h3 className="text-4xl font-semibold text-green-900 mb-6 flex items-center gap-3">
                   <FaEye className="text-green-700" />
                   <span className="mission_font">Our</span>
-                  Vision
+                  <span className="mission_font">Vision</span>
                 </h3>
-                <ul className="text-xl text-gray-700 space-y-4">
+                <ul className="text-xl text-gray-700 space-y-4 raleway-regular">
                   <li className="flex items-start gap-3">
                     <FaCheckCircle className="text-green-600 mt-1" />
                     Become a leading name in innovative and people-first real
@@ -177,19 +176,35 @@ export default function About() {
                     {/* Rotated name */}
                     <div
                       className="
-                    absolute bottom-2 left-5 transform -translate-y-1/2
+                    absolute bottom-2 left-10 transform -translate-y-1/2
                     rotate-[-90deg] origin-left
-                    max-w-[120px] overflow-hidden text-ellipsis whitespace-nowrap
-                    px-2 bg-primary-color bg-opacity-50
+                    max-w-[500px] overflow-hidden text-ellipsis whitespace-nowrap
+                    px-2 bg-primary-color bg-opacity-50 
                   "
                     >
-                      <h3 className="text-base md:text-lg font-bold text-white leading-tight">
+                      <h3 className="text-4xl md:text-5xl font-bold text-white leading-tight">
                         {member.name}
                       </h3>
                     </div>
 
                     {/* Social icons */}
                     <div className="absolute top-5 right-5 flex flex-col gap-4">
+                    <a
+                        href={member.socials.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-500"
+                      >
+                        <FaFacebook size={24} />
+                      </a>
+                      <a
+                        href={member.socials.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gray-900"
+                      >
+                        <FaInstagram size={24} />
+                      </a>
                       <a
                         href={member.socials.linkedin}
                         target="_blank"
@@ -198,22 +213,8 @@ export default function About() {
                       >
                         <FaLinkedin size={24} />
                       </a>
-                      <a
-                        href={member.socials.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-gray-900"
-                      >
-                        <FaXTwitter size={24} />
-                      </a>
-                      <a
-                        href={member.socials.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-blue-500"
-                      >
-                        <FaFacebook size={24} />
-                      </a>
+                      
+                      
                     </div>
 
                     {/* Action Button */}
