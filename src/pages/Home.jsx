@@ -36,7 +36,7 @@ const Home = () => {
       <section data-theme="light" className="min-h-screen">
         <Hero1 />
       </section>
-      <section data-theme="dark" className="min-h-screen">
+      <section data-theme="dark" className="">
         <Details />
       </section>
       <div className="sticky top-0">

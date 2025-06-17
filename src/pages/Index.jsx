@@ -10,54 +10,50 @@ import Contact from "./Contact.jsx";
 import Blog from "./Blog.jsx";
 import Property_Gallary from "../Components/Property-View/Gallery.jsx";
 import BlogViewer from "../Components/Blog/BlogView.jsx";
-
+import OurServices from "./OurServices.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-        <App />
-    ),
+    element: <App />,
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
       },
       {
-      path: "/enquiry",
-      element: <EnquiryForm />,
-      },
-       {
-      path: "/properties",
-      element: <AllPropertypage/>,
+        path: "/enquiry",
+        element: <EnquiryForm />,
       },
       {
-        path:"/about",
-        element:<About/>
+        path: "/properties",
+        element: <AllPropertypage />,
       },
-        {
-        path:"/contact",
-        element:<Contact/>
+      {
+        path: "/about",
+        element: <About />,
       },
-        {
-        path:"/blog",
-        element:<Blog/>
+      {
+        path: "/contact",
+        element: <Contact />,
       },
-      //   {
-      //   path:"/gallery/:id",
-      //   element:<Property_Gallary/>
-      // },
-  {
-        path:"/blog/:id",
-        element:<BlogViewer/>
+      {
+        path: "/blog",
+        element: <Blog />,
       },
+      {
+        path: "/blog/:id",
+        element: <BlogViewer />,
+      },{
+        path:"/services",
+        element:<OurServices/>
+      }
     ],
   },
   {
     path: "*",
     element: <NotFound />,
   },
-  
 ]);
 
 export default router;

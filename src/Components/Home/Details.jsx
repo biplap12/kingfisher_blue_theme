@@ -33,7 +33,7 @@ const data = [
 const Details = () => {
   return (
     <section 
-      className="text-[#1e1e1e]  w-full"
+      className="text-[#1e1e1e]  w-ful"
     >
       {/* Top Info Section */}
       <div className="w-full px-6 py-20 grid grid-cols-2 md:grid-cols-4 text-center">

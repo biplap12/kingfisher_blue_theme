@@ -33,9 +33,9 @@ const ContactForm = () => {
 
       <div className="max-w-5xl mx-auto">
         {/* Form section with table borders */}
-        <form className="grid grid-cols-2 border border-gray-300">
+        <form className="grid grid-cols-2 ">
           {/* Row 1: Name / Email */}
-          <div className="p-6 border-b border-r border-gray-300">
+          <div className="p-6 ">
             <label className="block text-sm text-gray-600 mb-2">
               Nice to meet you
             </label>
@@ -45,7 +45,7 @@ const ContactForm = () => {
               className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
             />
           </div>
-          <div className="p-6 border-b border-gray-300">
+          <div className="p-6 ">
             <label className="block text-sm text-gray-600 mb-2">
               Email address
             </label>
@@ -57,7 +57,7 @@ const ContactForm = () => {
           </div>
 
           {/* Row 2: Phone / Subject */}
-          <div className="p-6 border-b border-r border-gray-300">
+          <div className="p-6 ">
             <label className="block text-sm text-gray-600 mb-2">Phone</label>
             <input
               type="tel"
@@ -65,7 +65,7 @@ const ContactForm = () => {
               className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
             />
           </div>
-          <div className="p-6 border-b border-gray-300">
+          <div className="p-6 ">
             <label className="block text-sm text-gray-600 mb-2">Subject</label>
             <select className="w-full border-none outline-none text-black bg-white focus:font-semibold">
               <option>How can we help you?</option>
@@ -76,7 +76,7 @@ const ContactForm = () => {
           </div>
 
           {/* Row 3: Budget / Service */}
-          <div className="p-6 border-b border-r border-gray-300">
+          <div className="p-6 ">
             <label className="block text-sm text-gray-600 mb-2">Budget</label>
             <input
               type="text"
@@ -84,7 +84,7 @@ const ContactForm = () => {
               className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
             />
           </div>
-          <div className="p-6 border-b border-gray-300">
+          <div className="p-6 ">
             <label className="block text-sm text-gray-600 mb-2">
               Interested Service
             </label>
@@ -96,7 +96,7 @@ const ContactForm = () => {
           </div>
 
           {/* Row 4: Message */}
-          <div className="p-6 col-span-2 border-t border-b border-gray-300">
+          <div className="p-6 col-span-2">
             <label className="block text-sm text-gray-600 mb-2">
               Your name
             </label>

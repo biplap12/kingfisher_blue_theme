@@ -7,6 +7,7 @@ const data = [
     Developer: "Arada Properties",
     Type: "Apartment",
     Beds: "Studio",
+    Status: "Sold Out"
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg","./gallery/img1.jpg", "./gallery/img2.jpg"],
@@ -16,6 +17,8 @@ const data = [
     Developer: "Emaar Properties",
     Type: "Apartment",
     Beds: "1 Bedroom",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img9.jpg", "./gallery/img10.jpg", "./gallery/img11.jpg", "./gallery/img12.jpg"],
@@ -25,6 +28,8 @@ const data = [
     Developer: "Nakheel",
     Type: "Apartment",
     Beds: "2 Bedrooms",
+    Status: "Sold Out"
+    
   },
   {
     images: ["./gallery/img1.jpg", "./gallery/img2.jpg", "./gallery/img3.jpg", "./gallery/img4.jpg"],
@@ -34,6 +39,8 @@ const data = [
     Developer: "DAMAC",
     Type: "Apartment",
     Beds: "1 Bedroom",
+    Status: "Sold Out"
+
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg"],
@@ -43,6 +50,8 @@ const data = [
     Developer: "Emaar",
     Type: "Apartment",
     Beds: "2 Bedrooms",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img9.jpg", "./gallery/img10.jpg", "./gallery/img11.jpg", "./gallery/img12.jpg"],
@@ -52,6 +61,8 @@ const data = [
     Developer: "Meraas",
     Type: "Apartment",
     Beds: "3 Bedrooms",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img1.jpg", "./gallery/img2.jpg", "./gallery/img3.jpg", "./gallery/img4.jpg"],
@@ -61,6 +72,8 @@ const data = [
     Developer: "Select Group",
     Type: "Apartment",
     Beds: "2 Bedrooms",
+    Status: "Sold Out"
+
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg"],
@@ -70,6 +83,8 @@ const data = [
     Developer: "Emaar",
     Type: "Villa",
     Beds: "4 Bedrooms",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img9.jpg", "./gallery/img10.jpg", "./gallery/img11.jpg", "./gallery/img12.jpg"],
@@ -79,6 +94,8 @@ const data = [
     Developer: "Binghatti",
     Type: "Apartment",
     Beds: "Studio",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img1.jpg", "./gallery/img2.jpg", "./gallery/img3.jpg", "./gallery/img4.jpg"],
@@ -88,6 +105,8 @@ const data = [
     Developer: "Zaya",
     Type: "Villa",
     Beds: "5 Bedrooms",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg"],
@@ -97,6 +116,8 @@ const data = [
     Developer: "Meraas",
     Type: "Apartment",
     Beds: "1 Bedroom",
+    Status: "Sold Out"
+
   },
   {
     images: ["./gallery/img9.jpg", "./gallery/img10.jpg", "./gallery/img11.jpg", "./gallery/img12.jpg"],
@@ -106,6 +127,8 @@ const data = [
     Developer: "Emaar",
     Type: "Apartment",
     Beds: "3 Bedrooms",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img1.jpg", "./gallery/img2.jpg", "./gallery/img3.jpg", "./gallery/img4.jpg"],
@@ -115,6 +138,8 @@ const data = [
     Developer: "Emaar",
     Type: "Villa",
     Beds: "4 Bedrooms",
+    Status: "Sold Out"
+
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg"],
@@ -124,6 +149,8 @@ const data = [
     Developer: "Emaar",
     Type: "Villa",
     Beds: "3 Bedrooms",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img9.jpg", "./gallery/img10.jpg", "./gallery/img11.jpg", "./gallery/img12.jpg"],
@@ -133,6 +160,8 @@ const data = [
     Developer: "Tiger Group",
     Type: "Apartment",
     Beds: "Studio",
+    Status: "Sold Out"
+
   },
   {
     images: ["./gallery/img1.jpg", "./gallery/img2.jpg", "./gallery/img3.jpg", "./gallery/img4.jpg"],
@@ -142,6 +171,8 @@ const data = [
     Developer: "Omniyat",
     Type: "Apartment",
     Beds: "1 Bedroom",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg"],
@@ -151,6 +182,8 @@ const data = [
     Developer: "GGICO",
     Type: "Apartment",
     Beds: "Studio",
+    Status: "Sold Out"
+
   },
   {
     images: ["./gallery/img9.jpg", "./gallery/img10.jpg", "./gallery/img11.jpg", "./gallery/img12.jpg"],
@@ -160,6 +193,8 @@ const data = [
     Developer: "Emaar",
     Type: "Apartment",
     Beds: "1 Bedroom",
+    Status: "Sold Out"
+
   },
   {
     images: ["./gallery/img1.jpg", "./gallery/img2.jpg", "./gallery/img3.jpg", "./gallery/img4.jpg"],
@@ -169,6 +204,8 @@ const data = [
     Developer: "Dubai Investments",
     Type: "Apartment",
     Beds: "2 Bedrooms",
+    Status: "Available"
+
   },
   {
     images: ["./gallery/img5.jpg", "./gallery/img6.jpg", "./gallery/img7.jpg", "./gallery/img8.jpg"],
@@ -178,6 +215,8 @@ const data = [
     Developer: "Union Properties",
     Type: "Apartment",
     Beds: "1 Bedroom",
+    Status: "Sold Out"
+
   },
 ];
 

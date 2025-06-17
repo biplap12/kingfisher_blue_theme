@@ -61,7 +61,7 @@ const FloorPlanSelector = () => {
                   onClick={() => setSelected(plan)}
                   className={`w-full text-left p-6 rounded-2xl transition-all duration-500 border-2 ${
                     selected.label === plan.label
-                      ? "bg-amber-600 text-white border-amber-600 shadow-lg"
+                      ? "bg-amber-500 text-white border-amber-600 shadow-lg"
                       : "bg-white text-gray-800 border-gray-200 hover:border-amber-300 hover:shadow-md"
                   }`}
                 >

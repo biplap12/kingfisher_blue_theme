@@ -1,9 +1,6 @@
 import React, { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-
-
-
 const Slider = ({title, description,images}) => {
   const [current, setCurrent] = useState(0);
   const length = images.length;
@@ -47,7 +44,7 @@ const Slider = ({title, description,images}) => {
                 <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
                   {title}
                 </h2>
-                <p className="text-lg  tracking-widest text-gray-500 max-w-7xl mx-auto text-justify paragraph-font">
+                <p className="text-lg text-gray-500 max-w-7xl mx-auto raleway-regular">
                   {description}
                 </p>
               </div>
@@ -130,3 +127,142 @@ const Slider = ({title, description,images}) => {
 };
 
 export default Slider;
+
+
+
+// import React, { useState, useRef, useEffect } from "react";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
+
+// const Slider = ({ title, description, images }) => {
+//   const [current, setCurrent] = useState(0);
+//   const length = images.length;
+//   const startX = useRef(0);
+//   const isDragging = useRef(false);
+//   const intervalRef = useRef(null);
+
+//   // Auto-slide every 5 seconds
+//   useEffect(() => {
+//     startAutoSlide();
+//     return () => stopAutoSlide();
+//   }, [current]);
+
+//   const startAutoSlide = () => {
+//     stopAutoSlide();
+//     intervalRef.current = setInterval(() => {
+//       nextSlide();
+//     }, 5000);
+//   };
+
+//   const stopAutoSlide = () => {
+//     if (intervalRef.current) {
+//       clearInterval(intervalRef.current);
+//     }
+//   };
+
+//   const prevSlide = () => {
+//     setCurrent((prev) => (prev === 0 ? length - 1 : prev - 1));
+//   };
+
+//   const nextSlide = () => {
+//     setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));
+//   };
+
+//   const handleStart = (e) => {
+//     isDragging.current = true;
+//     startX.current = e.touches ? e.touches[0].clientX : e.clientX;
+//   };
+
+//   const handleEnd = (e) => {
+//     if (!isDragging.current) return;
+//     const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+//     const diff = startX.current - endX;
+
+//     if (diff > 50) {
+//       nextSlide();
+//       startAutoSlide();
+//     } else if (diff < -50) {
+//       prevSlide();
+//       startAutoSlide();
+//     }
+
+//     isDragging.current = false;
+//   };
+
+//   return (
+//     <>
+//       {/* Heading */}
+//       <div className="relative lightSection">
+//         <div id="indoor" className=" px-6 py-12 max-w-7xl mx-auto">
+//           <h2 className="text-4xl md:text-5xl heading-font text-center tracking-widest font-bold uppercase mb-6">
+//             {title}
+//           </h2>
+//           <p className="text-lg text-gray-500 max-w-4xl mx-auto raleway-regular">
+//             {description}
+//           </p>
+//         </div>
+//       </div>
+
+//       {/* Image Slider */}
+      // <div className="flex flex-col items-center w-full lightSection p-6">
+//         <div
+//           className=" w-full h-[450px] flex items-center justify-center touch-none rounded-xl overflow-hidden"
+//           onMouseDown={handleStart}
+//           onMouseUp={handleEnd}
+//           onTouchStart={handleStart}
+//           onTouchEnd={handleEnd}
+//         >
+//           {/* Slide Images */}
+//           {images.map((img, index) => (
+//             <div
+//               key={index}
+//               className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out ${
+//                 index === current ? "opacity-100 z-10" : "opacity-0 z-0"
+//               }`}
+//             >
+//               <img
+//                 src={img}
+//                 alt={`Slide ${index + 1}`}
+//                 className="w-full h-full object-cover rounded-xl"
+//                 draggable={false}
+//               />
+//             </div>
+//           ))}
+
+//           {/* Navigation Controls */}
+//           <div className="absolute inset-0 flex justify-between items-center px-6 z-20">
+//             <button
+//               onClick={() => {
+//                 prevSlide();
+//                 startAutoSlide();
+//               }}
+//               aria-label="Previous Slide"
+//               className="p-3 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition shadow"
+//             >
+//               <ChevronLeft size={28} className="text-gray-800 hover:text-yellow-500" />
+//             </button>
+
+//             <button
+//               onClick={() => {
+//                 nextSlide();
+//                 startAutoSlide();
+//               }}
+//               aria-label="Next Slide"
+//               className="p-3 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition shadow"
+//             >
+//               <ChevronRight size={28} className="text-gray-800 hover:text-yellow-500" />
+//             </button>
+//           </div>
+//         </div>
+
+//         {/* Image Counter */}
+//         <div className="flex justify-center mt-5">
+//           <div className="text-gray-700 font-medium text-sm select-none">
+//             {current + 1} / {length} images
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Slider;

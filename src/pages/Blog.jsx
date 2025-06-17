@@ -1,163 +1,173 @@
-import {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { blogPosts } from "../data/blogdata";
-import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
-import { MenuContext } from "../state/MenuContext";
-import { useInView } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState, useEffect, useRef } from 'react';
+import { blogPosts } from '../data/blogdata';
+import FeaturedCarousel from '../Components/FeaturedCarousel/FeaturedCarousel';
+import BlogFilter from '../Components/BlogFIlter/BlogFilter';
+import BlogCard from '../Components/BlogCard/BlogCard';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useBannerHeight } from '../Context/BannerHeightContext';
 
 const BlogPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTag, setSelectedTag] = useState('All');
+  const [allTags, setAllTags] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
 
-  const cardsRef = useRef([]);
-  const headerRef = useRef(null);
-
-  const categories = useMemo(() => {
-    const tags = blogPosts.flatMap((post) => post.tags);
-    return ["All", ...Array.from(new Set(tags))];
-  }, []);
-
-  const filteredPosts = useMemo(() => {
-    return blogPosts.filter((post) => {
-      const matchesCategory =
-        selectedCategory === "All" || post.tags.includes(selectedCategory);
-      const query = searchQuery.toLowerCase();
-      const matchesSearch =
-        post.title.toLowerCase().includes(query) ||
-        post.description.toLowerCase().includes(query) ||
-        post.tags.some((tag) => tag.toLowerCase().includes(query));
-      return matchesCategory && matchesSearch;
-    });
-  }, [searchQuery, selectedCategory]);
-
-  useLayoutEffect(() => {
-    gsap.from(headerRef.current, {
-      opacity: 1,
-      y: -40,
-      duration: 1,
-      ease: "power2.out",
-    });
-
-    cardsRef.current.forEach((card, i) => {
-      if (!card) return;
-
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: i * 0.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
-
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, [filteredPosts]);
-
-  const divRef = useRef(null);
-  const { setMenuColor } = useContext(MenuContext);
-
-  const isVisible = useInView(divRef, { once: false });
+  const bannerRef = useRef(null);
+  // const { setMenuColor } = useContext(MenuContext);
+  const { setBannerHeight } = useBannerHeight();
 
   useEffect(() => {
-    setMenuColor("dark");
-  }, [isVisible]);
+    if (bannerRef.current) {
+      setBannerHeight(bannerRef.current.offsetHeight);
+    }
+  }, []);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+  useEffect(() => {
+    let filtered = blogPosts;
+    if (selectedTag !== 'All') {
+      filtered = filtered.filter(post => post.tags.includes(selectedTag));
+    }
+    if (searchTerm) {
+      filtered = filtered.filter(post =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+    }
+    setFilteredPosts(filtered);
+    setAllTags([...new Set(blogPosts.flatMap(post => post.tags))]);
+  }, [selectedTag, searchTerm]);
 
   return (
-    <div className="relative text-white -mt-25">
-      {/* Background overlay */}
-      <div className="absolute inset-0 h-fit bg-black/50 z-10" />
+    <div className="min-h-screen w-full bg-gray-50 ">
+     
+      <style jsx>{`
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-      {/* Header section with background image */}
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+      `}</style>
+
       <div
-        data-theme="dark"
-        ref={headerRef}
-        className="relative h-[50vh] mt-24 bg-center bg-cover bg-no-repeat z-20 overflow-hidden"
+        className="relative w-full mx-auto h-screen bg-cover bg-center text-white -mt-25 darkSection"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1502139214982-d0ad755818d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+          backgroundImage: 'url("/property/property.jpg")',
+          fontFamily: `'Wellsbrook Initials SG Regular'`,
+          height: "75vh",
+          padding: "0 50px",
         }}
+        ref={bannerRef}
       >
-        {/* Blur overlay */}
-        <div className="absolute inset-0 backdrop-blur-sm z-20" />
+        {/* Black overlay at 80% */}
+        <div className="absolute inset-0 bg-black/60 z-0"></div>
 
-        {/* Content */}
-        <div className="relative z-30 text-center max-w-2xl mx-auto px-6 pt-32 pb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-          <Breadcrumbs />
-          <p className="text-lg text-[#F5BC6D] mt-4">
-            The Hottest Real Estate Marketing, Website, and Technology Insights.
+        {/* Centered Text */}
+        <div className="absolute top-[450px] left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6">
+          <p className="text-6xl font-bold heading-font tracking-widest uppercase leading-20 heading-font">
+            Blog
           </p>
         </div>
       </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Featured Carousel */}
+        <FeaturedCarousel posts={blogPosts} />
 
-      {/* Blog Cards */}
-      <Link
-        to={"/"}
-        className="flex justify-start mx-20 py-6 items-center text-gray-700"
-      >
-        <ArrowLeft size={15} /> Back
-      </Link>
-      <div className="grid w-11/12 md:grid-cols-3 gap-5 mx-auto" data-theme="dark">
-        {filteredPosts.length > 0 ? (
-          filteredPosts.map((post, index) => (
-            <Link key={index} to={`/blog/${index}`}>
-              <div
-                ref={(el) => (cardsRef.current[index] = el)}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer border border-[#F5BC6D]/20 h-[410px] flex flex-col"
+
+        {/* Blog Posts Grid */}
+        <div className='flex items-center justify-center'>
+
+        <h1 className="text-6xl font-bold  uppercase leading-20">You May Also Like</h1>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {currentPosts.map((post, index) => (
+            <BlogCard key={index} post={post} />
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-12">
+            <div className="flex items-center space-x-2">
+              {/* Previous Button */}
+              <button
+                onClick={() => setCurrentPage((prev) => prev - 1)}
+                disabled={currentPage === 1}
+                className={`p-2 rounded-full transition-colors duration-200 ${
+                  currentPage === 1 
+                    ? 'text-gray-400 cursor-not-allowed' 
+                    : 'text-gray-600 hover:text-gray-800'
+                }`}
               >
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6 flex flex-col justify-between flex-grow">
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {post.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="bg-[#F5BC6D] text-xs text-[#232266] px-3 py-1 rounded-full font-bold"
-                        >
-                          {tag.toUpperCase()}
-                        </span>
-                      ))}
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-500 line-clamp-1">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 line-clamp-2">
-                      {post.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <p className="text-center text-gray-400 col-span-3">
-            No posts found.
-          </p>
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Page Numbers */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                    page === currentPage 
+                      ? 'bg-[#f6bc6d] text-white' 
+                      : 'text-gray-600 hover:bg-gray-100'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              {/* Next Button */}
+              <button
+                onClick={() => setCurrentPage((prev) => prev + 1)}
+                disabled={currentPage === totalPages}
+                className={`p-2 rounded-full transition-colors duration-200 ${
+                  currentPage === totalPages 
+                    ? 'text-gray-400 cursor-not-allowed' 
+                    : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* No Results */}
+        {filteredPosts.length === 0 && (
+          <div className="text-center py-12 fade-in-up">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">No posts found</h3>
+            <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
+            <button
+              onClick={() => {
+                setSelectedTag('All');
+                setSearchTerm('');
+              }}
+              className="inline-flex items-center px-6 py-3 bg-[#f6bc6d] text-white rounded-lg hover:bg-[#f5b86b] transition duration-300"
+            >
+              Reset Filters
+            </button>
+          </div>
         )}
       </div>
     </div>

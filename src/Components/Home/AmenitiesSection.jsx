@@ -1,8 +1,24 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const amenities = [
+  { title: "CLUB HOUSE", img: "/new/6.jpg" },
+  { title: "STATE-OF-THE ART GYM", img: "/new/2.jpg" },
+  { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
+  { title: "EV CHARGING STATIONS", img: "/new/4.jpg" },
+  { title: "STATE-OF-THE ART GYM", img: "/new/3.jpg" },
+  { title: "CONTEMPORARY WORKING SPACES", img: "/new/8.jpg" },
+  { title: "EV CHARGING STATIONS", img: "/new/7.jpg" },
+
+  { title: "CLUB HOUSE", img: "/new/6.jpg" },
+  { title: "STATE-OF-THE ART GYM", img: "/new/2.jpg" },
+  { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
+  { title: "EV CHARGING STATIONS", img: "/new/4.jpg" },
+  { title: "STATE-OF-THE ART GYM", img: "/new/3.jpg" },
+  { title: "CONTEMPORARY WORKING SPACES", img: "/new/8.jpg" },
+  { title: "EV CHARGING STATIONS", img: "/new/7.jpg" },
+
   { title: "CLUB HOUSE", img: "/new/6.jpg" },
   { title: "STATE-OF-THE ART GYM", img: "/new/2.jpg" },
   { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
@@ -26,10 +42,19 @@ const AmenitiesSection = () => {
     }
   };
 
+  // Auto scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      scrollBy("next");
+    }, 2500); // scroll every 2.5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="gallery"
-      className=" py-8 px-4 md:px-16 mx-25 lightSection mb-4"
+      className="py-8 px-4 md:px-16 mx-25 lightSection mb-4"
     >
       <h2 className="text-center text-3xl md:text-5xl tracking-widest mb-6 heading-font">
         GALLERY
@@ -37,7 +62,7 @@ const AmenitiesSection = () => {
       <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mb-10"></div>
 
       {/* Vertical Text */}
-      <p className="absolute left-0 top-[65%] text-center -translate-y-1/2 -rotate-90 origin-left text-2xl tracking-wider font-light hidden lg:block text-black -z-50">
+      <p className="raleway-regular absolute left-0 top-[65%] text-center -translate-y-1/2 -rotate-90 origin-left text-2xl  ont-light hidden lg:block text-black -z-50">
         REVITALISE. RECHARGE. <br /> REIMAGINE.
       </p>
 
@@ -55,7 +80,7 @@ const AmenitiesSection = () => {
           {amenities.map((a, index) => (
             <div
               key={index}
-              className="min-w-[300px] w-[250px] -z-10 md:w-[300px] flex-shrink-0 text-center select-none"
+              className="min-w-[300px] w-[250px] md:w-[300px] flex-shrink-0 text-center select-none"
             >
               <img
                 src={a.img}
@@ -70,7 +95,7 @@ const AmenitiesSection = () => {
           ))}
         </motion.div>
 
-        {/* Buttons below carousel */}
+        {/* Buttons */}
         <div className="flex justify-end gap-4 mt-6 z-50">
           <button
             onClick={() => scrollBy("prev")}

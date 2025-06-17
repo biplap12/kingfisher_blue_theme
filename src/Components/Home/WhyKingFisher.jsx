@@ -44,7 +44,7 @@ const Whykingfisher = () => {
             </h2>
             <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto"></div>
 
-            <p className="text-lg tracking-wide text-gray-500 max-w-6xl mx-auto mb-14 paragraph-font text-justify">
+            <p className="text-lg mt-4 raleway-regular text-gray-500 max-w-6xl mx-auto mb-14 text-center">
               {textItem.description}
             </p>
           </div>
@@ -57,7 +57,7 @@ const Whykingfisher = () => {
             >
               <div className="mb-4">{stat.icon}</div>
               <p className="text-3xl font-bold text-[#003f2e]">{stat.value}</p>
-              <p className="paragraph-font tracking-wide text-sm text-gray-600 mt-2">
+              <p className="raleway-regular text-gray-600 mt-2">
                 {stat.label}
               </p>
             </div>
