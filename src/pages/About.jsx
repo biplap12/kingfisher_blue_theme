@@ -7,7 +7,6 @@ import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 import { Link } from "react-router-dom";
 import Slider from "../Components/Home/Slider";
 import { image } from "framer-motion/client";
-import teamMembers from "../data/teamMembers";
 import {
   FaArrowRight,
   FaBullseye,
@@ -20,16 +19,36 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { FaX, FaXTwitter } from "react-icons/fa6";
+import { showErrorToast } from "../config/toastConfig";
+import api from "../services/api";
 
 export default function About() {
 
   const divRef = useRef(null);
   const { setMenuColor } = useContext(MenuContext);
   const isVisible = useInView(divRef, { once: false });
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setMenuColor("dark");
+    fetchTeamMembers();
   }, [isVisible]);
+
+  const fetchTeamMembers = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/api/v1/team-members/active');
+      if (response.data.success) {
+        setTeamMembers(response.data.data);
+      }
+    } catch (error) {
+      console.error('Error fetching team members:', error);
+      showErrorToast('Failed to load team members. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="text-[#F5BC6D] -mt-23">
@@ -151,88 +170,91 @@ export default function About() {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {teamMembers.map((member) => (
-                <div
-                  key={member.id}
-                  className="relative group rounded-md w-full overflow-hidden"
-                  style={{ height: "500px" }} // Fixed uniform height
-                >
-                  {/* Image */}
-                  <img
-                    src={member.imageUrl}
-                    alt={member.name}
-                    className="w-full h-full object-cover rounded-md"
-                  />
-
-                  {/* Overlay on hover */}
+              {loading ? (
+                <div className="col-span-3 text-center py-20">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+                  <p className="mt-4 text-gray-600">Loading team members...</p>
+                </div>
+              ) : teamMembers.length > 0 ? (
+                teamMembers.map((member) => (
                   <div
-                    className="
-            absolute inset-0 bg-primary-color bg-opacity-70 text-white
-            transform -translate-x-full group-hover:translate-x-0
-            transition-transform duration-300 ease-in-out
-            rounded-md flex flex-col
-          "
+                    key={member._id}
+                    className="relative group rounded-md w-full overflow-hidden"
+                    style={{ height: "500px" }}
                   >
-                    {/* Rotated name */}
-                    <div
-                      className="
-                    absolute bottom-2 left-10 transform -translate-y-1/2
-                    rotate-[-90deg] origin-left
-                    max-w-[500px] overflow-hidden text-ellipsis whitespace-nowrap
-                    px-2 bg-primary-color bg-opacity-50 
-                  "
-                    >
-                      <h3 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                        {member.name}
-                      </h3>
-                    </div>
+                    {/* Image */}
+                    <img
+                      src={member.image || 'https://via.placeholder.com/300x400?text=Team+Member'}
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-md"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/300x400?text=Team+Member';
+                      }}
+                    />
 
-                    {/* Social icons */}
-                    <div className="absolute top-5 right-5 flex flex-col gap-4">
-                    <a
-                        href={member.socials.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-blue-500"
-                      >
-                        <FaFacebook size={24} />
-                      </a>
-                      <a
-                        href={member.socials.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-gray-900"
-                      >
-                        <FaInstagram size={24} />
-                      </a>
-                      <a
-                        href={member.socials.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-[#0A66C2]"
-                      >
-                        <FaLinkedin size={24} />
-                      </a>
-                      
-                      
-                    </div>
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-primary-color bg-opacity-70 text-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out rounded-md flex flex-col">
+                      {/* Rotated name */}
+                      <div className="absolute bottom-2 left-10 transform -translate-y-1/2 rotate-[-90deg] origin-left max-w-[500px] overflow-hidden text-ellipsis whitespace-nowrap px-2 bg-primary-color bg-opacity-50">
+                        <h3 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                          {member.name}
+                        </h3>
+                      </div>
 
-                    {/* Action Button */}
-                    <div className="mt-auto self-end m-5">
-                      <div className=" rounded-full hover:bg-gray-200 transition">
-                        {/* <FaArrowRight size={18} /> */}
-                        <img
-                          src="./logo/icon.png"
-                          alt="logo icon"
-                          height={20}
-                          width={35}
-                          className="object-cover"
-                        />
+                      {/* Social icons */}
+                      <div className="absolute top-5 right-5 flex flex-col gap-4">
+                        {member.facebookUrl && (
+                          <a
+                            href={member.facebookUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-blue-500"
+                          >
+                            <FaFacebook size={24} />
+                          </a>
+                        )}
+                        {member.twitterUrl && (
+                          <a
+                            href={member.twitterUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-gray-900"
+                          >
+                            <FaInstagram size={24} />
+                          </a>
+                        )}
+                        {member.linkedinUrl && (
+                          <a
+                            href={member.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[#0A66C2]"
+                          >
+                            <FaLinkedin size={24} />
+                          </a>
+                        )}
+                      </div>
+                      
+                      {/* Action Button */}
+                      <div className="mt-auto self-end m-5">
+                        <div className="rounded-full hover:bg-gray-200 transition">
+                          <img
+                            src="./logo/icon.png"
+                            alt="logo icon"
+                            height={20}
+                            width={35}
+                            className="object-cover"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
+                ))
+              ) : (
+                <div className="col-span-3 text-center py-20">
+                  <p className="text-gray-600">No team members found.</p>
                 </div>
-              ))}
+              )}
             </div>
           </section>
         </div>
