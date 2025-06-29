@@ -13,12 +13,9 @@ import {
   FaCheckCircle,
   FaEye,
   FaFacebook,
-  FaGithub,
   FaInstagram,
   FaLinkedin,
-  FaTwitter,
 } from "react-icons/fa";
-import { FaX, FaXTwitter } from "react-icons/fa6";
 import { showErrorToast } from "../config/toastConfig";
 import api from "../services/api";
 
@@ -38,7 +35,7 @@ export default function About() {
   const fetchTeamMembers = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/api/v1/team-members/active');
+      const response = await api.get('/team-members/active');
       if (response.data.success) {
         setTeamMembers(response.data.data);
       }

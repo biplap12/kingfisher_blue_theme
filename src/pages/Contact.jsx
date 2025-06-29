@@ -35,7 +35,7 @@ const ContactForm = () => {
         project: formData.project || 'kingfisher construencysd'
       };
           
-      const response = await api.post('/api/v1/contacts', dataToSend);
+      const response = await api.post('/contacts', dataToSend);
       if (response.status === 201) {
       showSuccessToast('Message sent successfully!');
       // Reset form

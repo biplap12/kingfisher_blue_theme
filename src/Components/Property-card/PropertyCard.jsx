@@ -20,6 +20,8 @@ import {
 // Import data from the existing file
 import data from "../../data/propertycard.js";
 import { FaWhatsapp } from "react-icons/fa";
+import api from "../../services/api";
+import { showErrorToast } from "../../config/toastConfig";
 
 // Simple Swiper Component
 const SimpleSwiper = ({ images, propertyName, globalIndex }) => {
@@ -190,18 +192,45 @@ const SimplePagination = ({ currentPage, totalPages, onPageChange }) => {
 
 const PropertyCard = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const itemsPerPage = 4;
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get('/properties/active');
+        if (response.data.success) {
+          setProperties(response.data.data);
+        }
+      } catch (err) {
+        console.error('Error fetching properties:', err);
+        setError('Failed to load properties. Showing sample data.');
+        showErrorToast('Failed to load properties');
+        setProperties(data); // Fallback to static data
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
+  const totalPages = Math.ceil(properties.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
-  const currentProperties = data.slice(startIdx, startIdx + itemsPerPage);
+  const currentProperties = properties.slice(startIdx, startIdx + itemsPerPage);
 
   const handleContact = (type, property) => {
     const phone = "971501234567";
     const email = "info@luxury-properties.com";
+    const propertyName = property.name || property.Name || 'this property';
+    const propertyPrice = property.price || property.priceFrom || '';
 
     switch (type) {
       case "whatsapp":
-        const message = `Hello, I'm interested in ${property.Name} priced at ${property.price}`;
+        const message = `Hello, I'm interested in ${propertyName}${propertyPrice ? ` priced at $${propertyPrice.toLocaleString()}` : ''}`;
         window.open(
           `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
           "_blank"
@@ -212,7 +241,7 @@ const PropertyCard = () => {
         break;
       case "email":
         window.open(
-          `mailto:${email}?subject=Inquiry about ${property.Name}&body=Hello, I'm interested in learning more about ${property.Name} listed at ${property.price}.`,
+          `mailto:${email}?subject=Inquiry about ${propertyName}&body=Hello, I'm interested in learning more about ${propertyName}${propertyPrice ? ` listed at $${propertyPrice.toLocaleString()}` : ''}.`,
           "_blank"
         );
         break;
@@ -233,9 +262,19 @@ const PropertyCard = () => {
           </button>
         </div>
 
-        {/* Properties Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {currentProperties.map((property, index) => {
+        {/* Loading State */}
+        {loading ? (
+          <div className="flex justify-center items-center h-96 col-span-2">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-600"></div>
+          </div>
+        ) : error ? (
+          <div className="col-span-2 text-center py-10 text-red-500">
+            <p>{error}</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 w-full">
+            {currentProperties.length > 0 ? (
+              currentProperties.map((property, index) => {
             const globalIndex = startIdx + index;
 
             return (
@@ -246,8 +285,12 @@ const PropertyCard = () => {
                 {/* Image Gallery */}
                 <div className="p-6 pb-4">
                   <SimpleSwiper
-                    images={property.images}
-                    propertyName={property.Name}
+                    images={property.galleryImages && property.galleryImages.length > 0 
+                      ? property.galleryImages.map(img => img.imageUrl || img) 
+                      : property.mainImage 
+                        ? [property.mainImage] 
+                        : property.images || []}
+                    propertyName={property.name || property.Name || 'Property'}
                     globalIndex={globalIndex}
                   />
                 </div>
@@ -256,16 +299,23 @@ const PropertyCard = () => {
                 <div className="px-6 pb-6">
                   {/* Title and Price */}
                   <div className="mb-6">
-                    <h2 className="text-2xl font-bold  text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
-                      {property.Name}
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors line-clamp-1">
+                      {property.name || property.Name}
                     </h2>
                     <div className="flex items-center justify-between">
-                      <p className="text-3xl font-bold text-green-600 paragraph-font tracking-wide">
-                        {property.priceFrom}
+                      <p className="text-2xl font-bold text-green-600 paragraph-font tracking-wide">
+                        ${property.price?.toLocaleString() || 'Price on request'}
+                        {property.offerPrice && (
+                          <span className="ml-2 text-sm text-gray-500 line-through">
+                            ${property.offerPrice.toLocaleString()}
+                          </span>
+                        )}
                       </p>
                       <div className="flex items-center text-gray-500">
-                        <MapPin size={16} className="mr-1" />
-                        <span className="text-sm">{property.Location}</span>
+                        <MapPin size={16} className="mr-1 flex-shrink-0" />
+                        <span className="text-sm truncate max-w-[150px]">
+                          {property.location || property.Location || 'Location not specified'}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -280,8 +330,8 @@ const PropertyCard = () => {
                         <p className="text-xs text-gray-500 uppercase font-bold">
                           Type
                         </p>
-                        <p className="font-medium text-gray-900 ">
-                          {property.Type}
+                        <p className="font-medium text-gray-900 capitalize">
+                          {property.propertyType?.name || property.Type || 'N/A'}
                         </p>
                       </div>
                     </div>
@@ -294,8 +344,8 @@ const PropertyCard = () => {
                         <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">
                           Bedrooms
                         </p>
-                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">
-                          {property.Beds}
+                        <p className="font-medium text-gray-900">
+                          {property.bedrooms || property.Beds || 'N/A'}
                         </p>
                       </div>
                     </div>
@@ -308,20 +358,20 @@ const PropertyCard = () => {
                         <p className="text-xs text-gray-500 uppercase tracking-wide font-bold">
                           Developer
                         </p>
-                        <p className="font-medium text-gray-900 paragraph-font tracking-wide">
-                          {property.Developer}
+                        <p className="font-medium text-gray-900">
+                          {property.developer || property.Developer || 'N/A'}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
                       <div
                         className={`p-2 rounded-lg ${
-                          property.Status === "Available"
+                          property.status === "available" || property.Status === "Available"
                             ? "bg-green-100"
                             : "bg-red-100"
                         }`}
                       >
-                        {property.Status === "Available" ? (
+                        {property.status === "available" || property.Status === "Available" ? (
                           <Check size={16} className="text-green-600" />
                         ) : (
                           <X size={16} className="text-red-600" />
@@ -333,12 +383,15 @@ const PropertyCard = () => {
                         </p>
                         <p
                           className={`font-medium paragraph-font tracking-wide ${
-                            property.Status === "Available"
+                            property.status === "available" || property.Status === "Available"
                               ? "text-green-600"
                               : "text-red-600"
                           }`}
                         >
-                          {property.Status}
+                          {property.status === 'rented' ? 'Rented' : 
+                           property.status === 'sold' ? 'Sold Out' : 
+                           property.status?.charAt(0).toUpperCase() + property.status?.slice(1) || 
+                           property.Status || 'N/A'}
                         </p>
                       </div>
                     </div>
@@ -372,18 +425,22 @@ const PropertyCard = () => {
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
 
-        {/* Pagination */}
-        <SimplePagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
+          {/* Pagination */}
+          <SimplePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
       </div>
     </div>
+  </div>
+</div>
+</div>
+</div>
   );
 };
 
