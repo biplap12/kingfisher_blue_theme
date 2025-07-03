@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin, ScrollTrigger } from "gsap/all";
@@ -7,7 +5,7 @@ import { ScrollToPlugin, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const navItems = [
-  "Our Story",
+  "our story",
   "Services",
   "Why Us?",
   "Properties",
@@ -15,15 +13,18 @@ const navItems = [
   "Location",
   "Payment Plan",
   "Floor Plan",
-  "Partners"
+  "Partners",
 ];
 
 const Sticky = () => {
   const navRef = useRef(null);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("our story");
 
   const toId = (str) =>
-    str.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
+    str
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-");
 
   const handleClick = (item) => {
     const id = toId(item);
@@ -56,22 +57,22 @@ const Sticky = () => {
 
   return (
     <>
-      <div ref={navRef}></div>
+      <div ref={navRef}> </div>
 
-      <div className="sticky top-0 z-[999999] bg-white pointer-events-auto">
-        <div className="text-center text-sm uppercase tracking-widest paragraph-font p-7 flex flex-wrap justify-center">
+      <div className="sticky top-0 z-[9999] bg-white border-b border-gray-200">
+        <div className="flex items-center overflow-x-auto mx-24 lg:mx-10 md:mx-20 scrollbar-hide scrollbar-hidden px-4 sm:px-6 py-7 space-x-4 sm:justify-center">
           {navItems.map((item, idx) => (
-            <span
+            <button
               key={idx}
               onClick={() => handleClick(item)}
-              className={`mx-2 cursor-pointer ${
+              className={`whitespace-nowrap text-xs sm:text-sm md:text-md tracking-widest uppercase font-medium transition-colors duration-200 ${
                 activeSection === item
-                  ? "text-[#cf8319c1] underline"
-                  : "text-[#1e2c3a] hover:underline"
+                  ? "text-[#cf8319c1] underline underline-offset-4"
+                  : "text-[#1e2c3a] hover:text-[#cf8319c1]"
               }`}
             >
               {item}
-            </span>
+            </button>
           ))}
         </div>
       </div>

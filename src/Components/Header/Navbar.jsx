@@ -66,7 +66,7 @@ export default function Sidebar() {
         {/* Hamburger Menu */}
         <div className="flex items-center gap-8">
           <div
-            className="w-12 h-10 relative flex flex-col justify-center cursor-pointer z-[60]"
+            className="lg:w-12 lg:h-10 w-10 h-8 relative flex flex-col justify-center cursor-pointer z-[60]"
             onClick={toggleSidebar}
           >
             {[0, 1, 2].map((index) => {

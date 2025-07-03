@@ -1,7 +1,4 @@
-
-import { motion } from "framer-motion"
-// import Image from "next/image"
-import { Download } from "lucide-react"
+import { motion } from "framer-motion";
 
 const paymentSchedule = [
   { step: 1, percentage: "20%", note: "On booking" },
@@ -11,18 +8,19 @@ const paymentSchedule = [
   { step: 5, percentage: "10%", note: "15th March 2026" },
   { step: 6, percentage: "10%", note: "15th July 2026" },
   { step: 7, percentage: "40%", note: "Q1 2027 On Completion" },
-]
+];
 
 const PaymentPlanSection = () => {
   return (
-    <section id="payment-plan" className="py-24 px-6 md:px-16 lg:px-24 bg-white">
+    <section
+      id="payment-plan"
+      className="py-24 px-6 md:px-16 lg:px-24 bg-white"
+    >
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-font text-center text-3xl md:text-4xl lg:text-5xl font-light tracking-widest mb-6 font-serif">
           PAYMENT PLAN
         </h2>
-        <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mb-10"></div>
-
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-16 items-start mt-12">
           {/* Left: Payment Steps */}
           <div className="grid grid-cols-2 gap-x-8 gap-y-12">
             {paymentSchedule.map((item, index) => (
@@ -37,11 +35,15 @@ const PaymentPlanSection = () => {
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-neutral-300 to-transparent group-hover:via-amber-200 transition-all duration-500"></div>
 
                 <div className="flex flex-col items-center">
-                  <span className="text-xs text-neutral-400 mb-3 font-light tracking-wider">STEP {item.step}</span>
+                  <span className="text-xs text-neutral-400 mb-3 font-light tracking-wider">
+                    STEP {item.step}
+                  </span>
                   <p className="text-3xl font-light mb-2 group-hover:text-amber-800 transition-colors duration-300">
                     {item.percentage}
                   </p>
-                  <p className="text-sm text-neutral-600 font-light tracking-wide">{item.note}</p>
+                  <p className="text-sm text-neutral-600 font-light tracking-wide">
+                    {item.note}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -65,12 +67,11 @@ const PaymentPlanSection = () => {
                 priority
               />
             </div>
-
           </motion.div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default PaymentPlanSection
+export default PaymentPlanSection;

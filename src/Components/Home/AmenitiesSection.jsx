@@ -1,35 +1,13 @@
-import React, { useRef, useEffect } from "react";
+"use client";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const amenities = [
-  { title: "CLUB HOUSE", img: "/new/6.jpg" },
-  { title: "STATE-OF-THE ART GYM", img: "/new/2.jpg" },
-  { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
-  { title: "EV CHARGING STATIONS", img: "/new/4.jpg" },
-  { title: "STATE-OF-THE ART GYM", img: "/new/3.jpg" },
-  { title: "CONTEMPORARY WORKING SPACES", img: "/new/8.jpg" },
-  { title: "EV CHARGING STATIONS", img: "/new/7.jpg" },
-
-  { title: "CLUB HOUSE", img: "/new/6.jpg" },
-  { title: "STATE-OF-THE ART GYM", img: "/new/2.jpg" },
-  { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
-  { title: "EV CHARGING STATIONS", img: "/new/4.jpg" },
-  { title: "STATE-OF-THE ART GYM", img: "/new/3.jpg" },
-  { title: "CONTEMPORARY WORKING SPACES", img: "/new/8.jpg" },
-  { title: "EV CHARGING STATIONS", img: "/new/7.jpg" },
-
-  { title: "CLUB HOUSE", img: "/new/6.jpg" },
-  { title: "STATE-OF-THE ART GYM", img: "/new/2.jpg" },
-  { title: "CONTEMPORARY WORKING SPACES", img: "/new/1.jpg" },
-  { title: "EV CHARGING STATIONS", img: "/new/4.jpg" },
-  { title: "STATE-OF-THE ART GYM", img: "/new/3.jpg" },
-  { title: "CONTEMPORARY WORKING SPACES", img: "/new/8.jpg" },
-  { title: "EV CHARGING STATIONS", img: "/new/7.jpg" },
-];
+import { ChevronLeft, ChevronRight, Loader } from "lucide-react";
+import api from "../../services/api";
 
 const AmenitiesSection = () => {
   const carouselRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [galleryData, setGalleryData] = useState([]);
 
   const scrollBy = (direction) => {
     const scrollContainer = carouselRef.current;
@@ -42,50 +20,70 @@ const AmenitiesSection = () => {
     }
   };
 
-  // Auto scroll effect
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        setLoading(true);
+        const res = await api.get("/home-galleries");
+        if (res.data.success) {
+          setGalleryData(res.data.data);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    dataFetch();
+  }, []);
+
+  console.log("galleryData:", galleryData);
+
   useEffect(() => {
     const interval = setInterval(() => {
       scrollBy("next");
-    }, 2500); // scroll every 2.5 seconds
-
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
+
+  if (loading)
+    return (
+      <div className="text-center py-20">
+        <Loader className="animate-spin w-6 h-6 mx-auto" />
+        Loading...
+      </div>
+    );
 
   return (
     <section
       id="gallery"
-      className="py-8 px-4 md:px-16 mx-25 lightSection mb-4"
+      className="py-8 px-4 md:px-16 mx-auto max-w-[100vw] overflow-hidden lightSection mb-4"
     >
       <h2 className="text-center text-3xl md:text-5xl tracking-widest mb-6 heading-font">
         GALLERY
       </h2>
-      <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mb-10"></div>
 
-      {/* Vertical Text */}
-      <p className="raleway-regular absolute left-0 top-[65%] text-center -translate-y-1/2 -rotate-90 origin-left text-2xl  ont-light hidden lg:block text-black -z-50">
-        REVITALISE. RECHARGE. <br /> REIMAGINE.
-      </p>
-
-      {/* Carousel Wrapper */}
-      <div>
+      {/* Carousel */}
+      <div className="w-full overflow-x-hidden scrollbar-hide mt-15">
         <motion.div
           ref={carouselRef}
-          className="flex items-end gap-6 overflow-hidden scrollbar-hide pb-4 "
+          className="flex items-end gap-6 overflow-x-auto  scrollbar-hidden pb-4"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.1}
           dragMomentum={true}
           style={{ cursor: "grab" }}
         >
-          {amenities.map((a, index) => (
+          {galleryData.map((a, index) => (
             <div
               key={index}
               className="min-w-[300px] w-[250px] md:w-[300px] flex-shrink-0 text-center select-none"
             >
               <img
-                src={a.img}
+                src={a.imageUrl}
                 alt={a.title}
-                className="h-78 w-full object-cover mb-3"
+                className="h-[310px] w-full object-cover mb-3"
                 draggable={false}
               />
               <p className="text-sm md:text-base uppercase tracking-wider text-gray-700">

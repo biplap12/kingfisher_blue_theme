@@ -75,11 +75,15 @@ const ContactForm = () => {
             "url('https://images.unsplash.com/photo-1502139214982-d0ad755818d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
-        <div className="absolute inset-0  backdrop-blur-sm z-20" />
-        <div className="relative z-30 text-center max-w-2xl mx-auto px-6 pt-32 mt-25">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 heading-font">
+        <div className="absolute top-10/12 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6">
+          <p
+            className="font-bold heading-font tracking-widest uppercase leading-tight"
+            style={{
+              fontSize: "clamp(1.75rem, 4vw, 3.5rem)", // Responsive size
+            }}
+          >
             Contact
-          </h1>
+          </p>
           <Breadcrumbs />
         </div>
       </div>
@@ -106,7 +110,7 @@ const ContactForm = () => {
               value={formData.fullName}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
+              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>
@@ -120,7 +124,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email address"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
+              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>
@@ -134,7 +138,7 @@ const ContactForm = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Your phone number"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
+              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>
@@ -146,7 +150,7 @@ const ContactForm = () => {
               value={formData.project}
               onChange={handleChange}
               placeholder="Project name"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
+              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
             />
           </div>
 
@@ -159,7 +163,7 @@ const ContactForm = () => {
               value={formData.budget}
               onChange={handleChange}
               placeholder="Your budget"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
+              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
             />
           </div>
           <div className="p-6 ">
@@ -172,7 +176,7 @@ const ContactForm = () => {
               value={formData.service}
               onChange={handleChange}
               placeholder="Interested service"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
+              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
             />
           </div>
 
@@ -187,7 +191,7 @@ const ContactForm = () => {
               onChange={handleChange}
               rows="4"
               placeholder="Tell us about your project"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold"
+              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>

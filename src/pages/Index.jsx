@@ -11,6 +11,7 @@ import Blog from "./Blog.jsx";
 import Property_Gallary from "../Components/Property-View/Gallery.jsx";
 import BlogViewer from "../Components/Blog/BlogView.jsx";
 import OurServices from "./OurServices.jsx";
+import PropertyViewPage from "./PropertyViewPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/properties",
         element: <AllPropertypage />,
+      },
+      {
+        path: "/properties/:id",
+        element: <PropertyViewPage/>,
       },
       {
         path: "/about",

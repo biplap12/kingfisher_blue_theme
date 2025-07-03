@@ -11,24 +11,22 @@ const Gallery = () => {
     const fetchGalleryData = async () => {
       try {
         setLoading(true);
-        const response = await api.get('/home-galleries/active');
+        const response = await api.get("/home-galleries/active");
         if (response.data.success) {
-          // Take first 5 items or all if less than 5
           let items = response.data.data.slice(0, 5);
-          // Add span to first item if we have items
           if (items.length > 0) {
             items = items.map((item, index) => ({
               ...item,
               img: item.imageUrl,
-              span: index === 0 ? 2 : 1
+              span: index === 0 ? 2 : 1,
             }));
           }
           setGalleryData(items);
         }
       } catch (err) {
-        console.error('Error fetching gallery data:', err);
-        setError('Failed to load gallery. Please try again later.');
-        showErrorToast('Failed to load gallery images');
+        console.error("Error fetching gallery data:", err);
+        setError("Failed to load gallery. Please try again later.");
+        showErrorToast("Failed to load gallery images");
       } finally {
         setLoading(false);
       }
@@ -58,16 +56,13 @@ const Gallery = () => {
 
   return (
     <section id="services">
-      <div
-        className="flex justify-center items-center mt-25 flex-col lightSection"
-      >
+      <div className="flex justify-center items-center mt-25 flex-col lightSection">
         {text.map((item, index) => {
           return (
             <div key={index} className="text-center mb-10">
               <h1 className="text-4xl md:text-5xl tracking-widest uppercase mb-6 heading-font">
                 {item.title}
               </h1>
-              <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto"></div>
 
               <p className="text-lg text-gray-500 max-w-5xl mx-auto raleway-regular text-center">
                 {item.description}
@@ -95,12 +90,12 @@ const Gallery = () => {
                   ? "md:col-span-2 md:row-span-2 h-[660px] -z-50"
                   : ""
               }`}
-              style={{ 
-                backgroundImage: `url(${item.img})`, 
+              style={{
+                backgroundImage: `url(${item.img})`,
                 zIndex: "-1",
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                transition: 'transform 0.5s ease-in-out'
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                transition: "transform 0.5s ease-in-out",
               }}
             >
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -125,4 +120,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-

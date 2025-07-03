@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const Slider = ({title, description,images}) => {
+const Slider = ({ title, description, images, loading }) => {
   const [current, setCurrent] = useState(0);
   const length = images.length;
   const startX = useRef(0);
@@ -26,243 +26,91 @@ const Slider = ({title, description,images}) => {
     if (!isDragging.current) return;
     const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
     const diff = startX.current - endX;
-
-    if (diff > 50) {
-      nextSlide();
-    } else if (diff < -50) {
-      prevSlide();
-    }
-
+    if (diff > 50) nextSlide();
+    else if (diff < -50) prevSlide();
     isDragging.current = false;
   };
 
+  if (!images || length === 0) {
+    return (
+      <div className="text-center py-10 text-gray-500">No images found.</div>
+    );
+  }
+
   return (
-    <><div className="relative lightSection -z-[9999999]">
-        {/* <div className="absolute inset-0 bg-white clip-hero-shape z-0"></div> */}
-        <div id="indoor" className="relative -z-[9999999] text-center px-6 py-15 max-w-7xl mx-auto">
-              <div  className="text-center ">
-                <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
-                  {title}
-                </h2>
-                <p className="text-lg text-gray-500 max-w-7xl mx-auto raleway-regular">
-                  {description}
-                </p>
-              </div>
-            
-
-       
-        </div>
+    <>
+      {/* Header */}
+      <div id="our-story" className="text-center px-6 py-12 max-w-7xl mx-auto ">
+        <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
+          {title}
+        </h2>
+        <p className="text-lg text-gray-500 max-w-4xl mx-auto raleway-regular">
+          {description}
+        </p>
       </div>
 
-    <div
-      className="flex flex-col items-center w-full -z-10  overflow-hidden lightSection"
-    >
-      <div
-        className="relative w-full -z-10 h-[500px] flex justify-center items-center overflow-visible touch-none hover:cursor-grab"
-        onMouseDown={handleStart}
-        onMouseUp={handleEnd}
-        onTouchStart={handleStart}
-        onTouchEnd={handleEnd}
-      >
-        {/* Left image */}
-        <img
-          src={images[getIndex(current - 1)]}
-          alt="Left Slide"
-          className="absolute -z-10 left-0 top-0 w-[10%] h-full object-cover opacity-80 transform -translate-x-6 scale-100   transition-all duration-500"
-          draggable={false}
-          style={{ zIndex: 10 }}
-        />
-
-        {/* Center image */}
-        <img
-          src={images[current]}
-          alt="Current Slide"
-          className="relative  -z-10 w-[80%] h-full object-cover shadow-lg transition-all duration-500 scale-100"
-          draggable={false}
-          style={{ zIndex: 20 }}
-        />
-
-        {/* Right image */}
-        <img
-          src={images[getIndex(current + 1)]}
-          alt="Right Slide"
-          className="absolute -z-10 right-0 top-0 w-[10%] h-full object-cover opacity-80 transform translate-x-6 scale-100 transition-all duration-500"
-          draggable={false}
-          style={{ zIndex: 10 }}
-        />
-      </div>
-
-      {/* Controls */}
-      <div className="flex justify-between items-center mt-6 w-full max-w-screen px-4">
-        <div className="text-gray-700 font-semibold text-sm select-none">
-          {length} images
-        </div>
-        <div className="flex space-x-4">
-          <button
-            onClick={prevSlide}
-            aria-label="Previous Slide"
-            className="p-2 transition bg-transparent rounded-full hover:bg-zinc-100"
+      {/* Slider */}
+      <div className="flex flex-col items-center w-full lightSection overflow-hidden">
+        {loading ? (
+          <div className="relative w-full h-[400px] md:h-[500px] flex justify-center items-center gap-2 px-4 animate-pulse">
+            <div className="hidden sm:block w-[10%] h-full bg-gray-200 rounded-xl" />
+            <div className="w-full sm:w-[80%] h-full bg-gray-300 rounded-xl shadow-lg" />
+            <div className="hidden sm:block w-[10%] h-full bg-gray-200 rounded-xl" />
+          </div>
+        ) : (
+          <div
+            className="relative w-full h-[400px] md:h-[500px] flex justify-center items-center overflow-visible touch-none px-4"
+            onMouseDown={handleStart}
+            onMouseUp={handleEnd}
+            onTouchStart={handleStart}
+            onTouchEnd={handleEnd}
           >
-            <ChevronLeft
-              size={24}
-              className="hover:text-yellow-500 cursor-pointer hover:scale-110"
+            {/* Left */}
+            <img
+              src={images[getIndex(current - 1)].imageUrl}
+              alt="Prev Slide"
+              className="hidden sm:block absolute left-0 -z-20 top-0 w-[10%] h-full object-cover opacity-80 transform -translate-x-6 transition-all duration-500 rounded-xl"
             />
-          </button>
-          <button
-            onClick={nextSlide}
-            aria-label="Next Slide"
-            className="p-2 transition bg-transparent rounded-full hover:bg-zinc-100"
-          >
-            <ChevronRight
-              size={24}
-              className="hover:text-yellow-500 cursor-pointer hover:scale-110"
+
+            {/* Center */}
+            <img
+              src={images[current].imageUrl}
+              alt="Current Slide"
+              className="w-full sm:w-[80%] h-full object-cover -z-20 shadow-lg transition-all duration-500 rounded-xl"
             />
-          </button>
+
+            {/* Right */}
+            <img
+              src={images[getIndex(current + 1)].imageUrl}
+              alt="Next Slide"
+              className="hidden sm:block absolute right-0 -z-20 top-0 w-[10%] h-full object-cover opacity-80 transform translate-x-6 transition-all duration-500 rounded-xl"
+            />
+          </div>
+        )}
+
+        {/* Controls */}
+        <div className="flex justify-between items-center mt-6 w-full max-w-7xl px-2">
+          <div className="text-gray-700 text-sm">
+            {loading ? "-- / -- images" : `${current + 1} / ${length} images`}
+          </div>
+          <div className="flex space-x-4">
+            <button
+              onClick={prevSlide}
+              className="p-2 rounded-full bg-white hover:bg-zinc-100 shadow transition"
+            >
+              <ChevronLeft size={20} className="text-gray-700" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="p-2 rounded-full bg-white hover:bg-zinc-100 shadow transition"
+            >
+              <ChevronRight size={20} className="text-gray-700" />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </>
-    
   );
 };
 
 export default Slider;
-
-
-
-// import React, { useState, useRef, useEffect } from "react";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
-
-// const Slider = ({ title, description, images }) => {
-//   const [current, setCurrent] = useState(0);
-//   const length = images.length;
-//   const startX = useRef(0);
-//   const isDragging = useRef(false);
-//   const intervalRef = useRef(null);
-
-//   // Auto-slide every 5 seconds
-//   useEffect(() => {
-//     startAutoSlide();
-//     return () => stopAutoSlide();
-//   }, [current]);
-
-//   const startAutoSlide = () => {
-//     stopAutoSlide();
-//     intervalRef.current = setInterval(() => {
-//       nextSlide();
-//     }, 5000);
-//   };
-
-//   const stopAutoSlide = () => {
-//     if (intervalRef.current) {
-//       clearInterval(intervalRef.current);
-//     }
-//   };
-
-//   const prevSlide = () => {
-//     setCurrent((prev) => (prev === 0 ? length - 1 : prev - 1));
-//   };
-
-//   const nextSlide = () => {
-//     setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));
-//   };
-
-//   const handleStart = (e) => {
-//     isDragging.current = true;
-//     startX.current = e.touches ? e.touches[0].clientX : e.clientX;
-//   };
-
-//   const handleEnd = (e) => {
-//     if (!isDragging.current) return;
-//     const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-//     const diff = startX.current - endX;
-
-//     if (diff > 50) {
-//       nextSlide();
-//       startAutoSlide();
-//     } else if (diff < -50) {
-//       prevSlide();
-//       startAutoSlide();
-//     }
-
-//     isDragging.current = false;
-//   };
-
-//   return (
-//     <>
-//       {/* Heading */}
-//       <div className="relative lightSection">
-//         <div id="indoor" className=" px-6 py-12 max-w-7xl mx-auto">
-//           <h2 className="text-4xl md:text-5xl heading-font text-center tracking-widest font-bold uppercase mb-6">
-//             {title}
-//           </h2>
-//           <p className="text-lg text-gray-500 max-w-4xl mx-auto raleway-regular">
-//             {description}
-//           </p>
-//         </div>
-//       </div>
-
-//       {/* Image Slider */}
-      // <div className="flex flex-col items-center w-full lightSection p-6">
-//         <div
-//           className=" w-full h-[450px] flex items-center justify-center touch-none rounded-xl overflow-hidden"
-//           onMouseDown={handleStart}
-//           onMouseUp={handleEnd}
-//           onTouchStart={handleStart}
-//           onTouchEnd={handleEnd}
-//         >
-//           {/* Slide Images */}
-//           {images.map((img, index) => (
-//             <div
-//               key={index}
-//               className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out ${
-//                 index === current ? "opacity-100 z-10" : "opacity-0 z-0"
-//               }`}
-//             >
-//               <img
-//                 src={img}
-//                 alt={`Slide ${index + 1}`}
-//                 className="w-full h-full object-cover rounded-xl"
-//                 draggable={false}
-//               />
-//             </div>
-//           ))}
-
-//           {/* Navigation Controls */}
-//           <div className="absolute inset-0 flex justify-between items-center px-6 z-20">
-//             <button
-//               onClick={() => {
-//                 prevSlide();
-//                 startAutoSlide();
-//               }}
-//               aria-label="Previous Slide"
-//               className="p-3 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition shadow"
-//             >
-//               <ChevronLeft size={28} className="text-gray-800 hover:text-yellow-500" />
-//             </button>
-
-//             <button
-//               onClick={() => {
-//                 nextSlide();
-//                 startAutoSlide();
-//               }}
-//               aria-label="Next Slide"
-//               className="p-3 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition shadow"
-//             >
-//               <ChevronRight size={28} className="text-gray-800 hover:text-yellow-500" />
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* Image Counter */}
-//         <div className="flex justify-center mt-5">
-//           <div className="text-gray-700 font-medium text-sm select-none">
-//             {current + 1} / {length} images
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Slider;

@@ -6,7 +6,6 @@ import { MenuContext } from "../state/MenuContext";
 import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 import { Link } from "react-router-dom";
 import Slider from "../Components/Home/Slider";
-import { image } from "framer-motion/client";
 import {
   FaArrowRight,
   FaBullseye,
@@ -20,7 +19,6 @@ import { showErrorToast } from "../config/toastConfig";
 import api from "../services/api";
 
 export default function About() {
-
   const divRef = useRef(null);
   const { setMenuColor } = useContext(MenuContext);
   const isVisible = useInView(divRef, { once: false });
@@ -35,13 +33,13 @@ export default function About() {
   const fetchTeamMembers = async () => {
     try {
       setLoading(true);
-      const response = await api.get('/team-members/active');
+      const response = await api.get("/team-members/active");
       if (response.data.success) {
         setTeamMembers(response.data.data);
       }
     } catch (error) {
-      console.error('Error fetching team members:', error);
-      showErrorToast('Failed to load team members. Please try again later.');
+      console.error("Error fetching team members:", error);
+      showErrorToast("Failed to load team members. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -66,71 +64,72 @@ export default function About() {
           </div>
         </div>
 
-        <div className=" min-h-screen flex flex-col    mx-20 p-6 darkSection">
+        <div className="min-h-screen flex flex-col w-full mx-0 lg:mx-20  darkSection">
           <Link
             to={"/"}
-            className="flex justify-start items-center text-gray-700"
+            className="flex mt-5 justify-start items-center text-gray-700"
           >
             <ArrowLeft size={15} /> Back
           </Link>
           {/* Our Story */}
-          <div className="text-center ">
-            <h2 className="text-4xl md:text-5xl heading-font uppercase mb-6">
+          <div className="text-center p-4 lg:p-6 max-w-7xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl heading-font uppercase mb-6">
               Our Story
             </h2>
-            <p className="text-lg raleway-regular  text-gray-500 mx-auto ">
-              Framed by a stunning ocean panorama, Kingfisher&apos;s newest landmark
-              on Dubai Islands captures the essence of refined coastal living.
-              Nestled along the marina, this exceptional development offers a
-              seamless blend of tranquility, energy, and connectivity—where
-              every feature is thoughtfully designed to elevate modern
-              lifestyles.
+            <p className="text-lg raleway-regular text-gray-500 mx-auto text-justify">
+              Framed by a stunning ocean panorama, Kingfisher&apos;s newest
+              landmark on Dubai Islands captures the essence of refined coastal
+              living. Nestled along the marina, this exceptional development
+              offers a seamless blend of tranquility, energy, and
+              connectivity—where every feature is thoughtfully designed to
+              elevate modern lifestyles.
             </p>
           </div>
 
-          <section className="py-15 px-6 max-w-screen-xl mx-auto ">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16  ">
+          <section className="py-10 px-4 sm:px-6 md:px-10 max-w-screen-xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
               {/* Mission */}
-              <div className=" rounded-3xl p-10  relative">
-                <h3 className="text-4xl font-semibold text-blue-900 mb-6 flex items-center gap-3">
+              <div className="rounded-3xl p-6 sm:p-10 md:p-10 bg-white shadow-md">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-blue-900 mb-6 flex items-center gap-3">
                   <FaBullseye className="text-blue-700" />
                   <span className="mission_font">Our</span>
                   <span className="mission_font">Mission</span>
                 </h3>
-                <ul className="absolute left-20 text-xl text-gray-700 space-y-4 raleway-regular">
+                <ul className="text-base sm:text-lg text-gray-700 space-y-4 raleway-regular">
                   <li className="flex items-start gap-3">
-                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    <FaCheckCircle size={16} className="text-blue-600 mt-1" />
                     Deliver trusted, transparent, and personalized real estate
                     services.
                   </li>
                   <li className="flex items-start gap-3">
-                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    <FaCheckCircle size={16} className="text-blue-600 mt-1" />
                     Empower individuals and families through smart property
                     decisions.
                   </li>
                   <li className="flex items-start gap-3">
-                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    <FaCheckCircle size={16} className="text-blue-600 mt-1" />
                     Build lasting value in communities we serve.
                   </li>
                   <li className="flex items-start gap-3">
-                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    <FaCheckCircle size={16} className="text-blue-600 mt-1" />
                     Operate with integrity, empathy, and a client-first mindset.
                   </li>
+
                   <li className="flex items-start gap-3">
-                    <FaCheckCircle className="text-blue-600 mt-1" />
+                    <FaCheckCircle size={16} className="text-blue-600 mt-1" />
                     Create spaces that inspire comfort, safety, and belonging.
                   </li>
                 </ul>
               </div>
 
               {/* Vision */}
-              <div className=" rounded-3xl p-10  relative">
-                <h3 className="text-4xl font-semibold text-green-900 mb-6 flex items-center gap-3">
+              <div className="rounded-3xl p-6 sm:p-8 md:p-10 bg-white shadow-md">
+                <h3 className="text-2xl lg:text-4xl md:text-4xl font-semibold text-green-900 mb-6 flex items-center gap-3">
                   <FaEye className="text-green-700" />
                   <span className="mission_font">Our</span>
                   <span className="mission_font">Vision</span>
                 </h3>
-                <ul className="text-xl text-gray-700 space-y-4 raleway-regular">
+                <ul className="text-base sm:text-lg text-gray-700 space-y-4 raleway-regular">
                   <li className="flex items-start gap-3">
                     <FaCheckCircle className="text-green-600 mt-1" />
                     Become a leading name in innovative and people-first real
@@ -181,11 +180,15 @@ export default function About() {
                   >
                     {/* Image */}
                     <img
-                      src={member.image || 'https://via.placeholder.com/300x400?text=Team+Member'}
+                      src={
+                        member.image ||
+                        "https://via.placeholder.com/300x400?text=Team+Member"
+                      }
                       alt={member.name}
                       className="w-full h-full object-cover rounded-md"
                       onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/300x400?text=Team+Member';
+                        e.target.src =
+                          "https://via.placeholder.com/300x400?text=Team+Member";
                       }}
                     />
 
@@ -231,7 +234,7 @@ export default function About() {
                           </a>
                         )}
                       </div>
-                      
+
                       {/* Action Button */}
                       <div className="mt-auto self-end m-5">
                         <div className="rounded-full hover:bg-gray-200 transition">

@@ -1,15 +1,17 @@
-
-
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import PropertyCard from "../Components/Property-card/PropertyCard";
 import { MenuContext } from "../state/MenuContext";
 import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 import { useBannerHeight } from "../Context/BannerHeightContext";
+import api from "../services/api";
 
 const AllPropertypage = () => {
   const bannerRef = useRef(null);
   const { setMenuColor } = useContext(MenuContext);
   const { setBannerHeight } = useBannerHeight();
+
+  const [loading, setLoading] = useState(true);
+  const [properties, setProperties] = useState([]);
 
   useEffect(() => {
     if (bannerRef.current) {
@@ -33,6 +35,29 @@ const AllPropertypage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [setMenuColor]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get("/properties/active");
+        if (response.data.success) {
+          setProperties(response.data.data);
+        }
+        if (!response.data.success) {
+          setProperties([]);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <section
@@ -47,15 +72,27 @@ const AllPropertypage = () => {
       >
         <div className="absolute inset-0 bg-black/60 z-0"></div>
 
-        <div className="absolute top-[450px] left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6">
-          <p className="text-6xl font-bold heading-font tracking-widest uppercase leading-20 heading-font">
+        <div className="absolute top-10/12 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-center p-6">
+          <button
+            onClick={() => window.history.back()}
+            className="font-bold heading-font tracking-widest uppercase leading-tight"
+            style={{
+              fontSize: "clamp(1.75rem, 4vw, 3.5rem)",
+            }}
+          >
             ALL Properties
-          </p>
-          {/* <Breadcrumbs /> */}
+          </button>
+          <Breadcrumbs />
         </div>
       </section>
 
-      <PropertyCard />
+      {loading ? (
+        <div className="flex items-center justify-center h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+        </div>
+      ) : (
+        <PropertyCard data={properties} />
+      )}
     </>
   );
 };

@@ -42,7 +42,7 @@ const Whykingfisher = () => {
             <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
               {textItem.title}
             </h2>
-            <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto"></div>
+            {/* <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto"></div> */}
 
             <p className="text-lg mt-4 raleway-regular text-gray-500 max-w-6xl mx-auto mb-14 text-center">
               {textItem.description}

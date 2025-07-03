@@ -43,8 +43,6 @@ const FloorPlanSelector = () => {
           <h2 className="heading-font text-4xl lg:text-6xl font-thin text-gray-800 tracking-widest mb-4">
             FLOOR PLANS
           </h2>
-          <div className="w-20 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto"></div>
-
           {/* <div className="w-20 h-px bg-amber-600 mx-auto"></div> */}
         </div>
       </div>

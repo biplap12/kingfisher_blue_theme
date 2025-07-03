@@ -10,26 +10,42 @@ import Details from "../Components/Home/Details.jsx";
 import Gallery from "../Components/Home/Gallery.jsx";
 import PartnerLogos from "../Components/Partners/Associated-Partners.jsx";
 import Sticky from "../Components/Home/Sticky.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import api from "../services/api.js";
+4;
 
 const Home = () => {
-  useEffect(() => {});
+  const [loading, setLoading] = useState(true);
+  const [galleryData, setGalleryData] = useState([]);
+
+  useEffect(() => {
+    const fetchGalleryData = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get("/home-galleries/active");
+        if (response.data.success) {
+          console.log("Gallery data:", response.data.data[0].imageUrl);
+          setGalleryData(response.data.data);
+        }
+      } catch (err) {
+        console.error("Error fetching gallery data:", err);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGalleryData();
+  }, []);
+
   const text = [
     {
       title: "Our Story",
       description:
-        "Framed by a stunning ocean panorama, Kingfisher’s newest landmark on Dubai Islands captures the essence of refined coastal living. Nestled along the marina, this exceptional development offers a seamless blend of tranquility, energy, and connectivity—where every feature is thoughtfully designed to elevate modern lifestyles.",
-      images: [
-        "/gallery/img1.jpg",
-        "/gallery/img2.jpg",
-        "/gallery/img3.jpg",
-        "/gallery/img4.jpg",
-        "/gallery/img5.jpg",
-        "/gallery/img6.jpg",
-        "/gallery/img7.jpg",
-      ],
+        "Framed by a stunning ocean panorama, Kingfisher's newest landmark on Dubai Islands captures the essence of refined coastal living. Nestled along the marina, this exceptional development offers a seamless blend of tranquility, energy, and connectivity—where every feature is thoughtfully designed to elevate modern lifestyles.",
     },
   ];
+
   return (
     <>
       {/* <Navbar/> */}
@@ -42,11 +58,12 @@ const Home = () => {
       <div className="sticky top-0">
         <Sticky />
       </div>
-      <section>
+      <section className="min-h-screen" id="our-story">
         <Slider
           title={text[0].title}
           description={text[0].description}
-          images={text[0].images}
+          images={galleryData || []}
+          loading={loading}
         />
       </section>
       <section className="min-h-screen">
