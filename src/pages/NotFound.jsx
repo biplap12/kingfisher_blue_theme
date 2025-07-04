@@ -1,33 +1,48 @@
-import { useLocation } from "react-router-dom";
+// src/pages/NotFound.tsx
+
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
+    console.error("404 Error: Tried to access:", location.pathname);
   }, [location.pathname]);
 
   return (
-    <div class="bg-indigo-900 relative overflow-hidden h-screen">
-      <img src="https://external-preview.redd.it/4MddL-315mp40uH18BgGL2-5b6NIPHcDMBSWuN11ynM.jpg?width=960&crop=smart&auto=webp&s=b98d54a43b3dac555df398588a2c791e0f3076d9" class="absolute h-full w-full object-cover" />
-      <div class="inset-0 bg-black opacity-25 absolute">
-      </div>
-      <div class="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">
-        <div class="w-full font-mono flex flex-col items-center relative z-10">
-          <h1 class="font-extrabold text-5xl text-center text-white leading-tight mt-4">
-            You are all alone here
-          </h1>
-          <p class="font-extrabold text-8xl my-44 text-white animate-bounce">
-            404
-          </p>
-        </div>
+    <div className="relative w-full h-screen bg-text-yellow-300">
+      {/* Background Image */}
+      <img
+        src="/404.jpg"
+        alt="404 Not Found"
+        className="absolute inset-0 w-full h-full object-contain "
+      />
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 text-yellow-300 bg-opacity-60" />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-yellow-300 px-6">
+        <Link
+          to="/"
+          className="absolute bottom-10 px-6 py-3 bg-[#f7e62a] text-white font-semibold rounded-lg shadow hover:bg-yellow-400 transition flex flex-row items-center gap-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M20 11v2H8v2H6v-2H4v-2h2V9h2v2zM10 7H8v2h2zm0 0h2V5h-2zm0 10H8v-2h2zm0 0h2v2h-2z"
+            />
+          </svg>
+          <span>Go Back Home</span>
+        </Link>
       </div>
     </div>
-
   );
 };
 
