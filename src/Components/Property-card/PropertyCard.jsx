@@ -154,12 +154,12 @@ const PropertyCard = ({ data }) => {
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl capitalize">
                       <div
                         className={`p-2 rounded-lg ${
-                          property.Status === "Available"
+                          property.Status === "available"
                             ? "bg-green-100"
                             : "bg-red-100"
                         }`}
                       >
-                        {property.Status === "Available" ? (
+                        {property.Status === "available" ? (
                           <Check size={16} className="text-green-600" />
                         ) : (
                           <X size={16} className="text-red-600" />
@@ -171,7 +171,7 @@ const PropertyCard = ({ data }) => {
                         </p>
                         <p
                           className={`font-medium paragraph-font tracking-wide  ${
-                            property.Status === "Available"
+                            property.Status === "available"
                               ? "text-green-600"
                               : "text-red-600"
                           }`}
