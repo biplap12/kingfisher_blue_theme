@@ -60,8 +60,7 @@ const BlogCard = ({ post }) => {
             </h3>
 
             {/* Description */}
-            <p className="text-gray-600 text-sm raleway-regular leading-relaxed line-clamp-3">
-              {post.description}
+            <p className="text-gray-600 text-sm raleway-regular leading-relaxed line-clamp-3"  dangerouslySetInnerHTML={{ __html: post.description }}>
             </p>
           </div>
 
