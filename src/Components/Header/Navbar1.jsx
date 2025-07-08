@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from "react";
 import ToggleSidebar from "./toggleSidebar.jsx";
 import { Link } from "react-router-dom";
@@ -6,6 +8,8 @@ import { useBannerHeight } from "../../Context/BannerHeightContext.jsx";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hideLogoEnquiry, setHideLogoEnquiry] = useState(false);
+  const [hamburgerScroll, setHamburgerScroll] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
   const [menuColor, setMenuColor] = useState("light");
 
@@ -24,6 +28,10 @@ export default function Sidebar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
+
+      setHideLogoEnquiry(scrollY > 100);
+      setHamburgerScroll(scrollY > bannerHeight - 80);
+
       if (scrollY > bannerHeight - 80) {
         setMenuColor("dark");
       } else {
@@ -50,9 +58,9 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50 transition duration-300 ${
-        menuColor === "dark" ? "bg-white shadow" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 ${
+        hamburgerScroll ? "w-fit" : "w-full"
+      } z-50 transition duration-300`}
     >
       <div className="flex items-center justify-between px-6 py-5 transition-all duration-300">
         {/* Hamburger Menu */}
@@ -64,16 +72,22 @@ export default function Sidebar() {
             {[0, 1, 2].map((index) => {
               const commonClasses =
                 "absolute h-[3px] transition-all duration-300 ease-in-out";
-              const colorClass =
-                menuColor === "light" ? "bg-white" : "bg-black";
+              // Corrected color logic: color depends on menuColor only
+              const colorClass = menuColor === "light" ? "bg-white" : "bg-black";
 
               let extraClasses = "";
               if (index === 0) {
-                extraClasses = isOpen ? "rotate-45 top-5 w-12" : "top-2 w-12";
+                extraClasses = isOpen
+                  ? "rotate-45 top-5 w-12"
+                  : "top-2 w-12";
               } else if (index === 1) {
-                extraClasses = isOpen ? "opacity-0 top-5 w-8" : "top-5 w-8";
+                extraClasses = isOpen
+                  ? "opacity-0 top-5 w-8"
+                  : "top-5 w-8";
               } else if (index === 2) {
-                extraClasses = isOpen ? "-rotate-45 top-5 w-12" : "top-8 w-12";
+                extraClasses = isOpen
+                  ? "-rotate-45 top-5 w-12"
+                  : "top-8 w-12";
               }
 
               return (
@@ -90,7 +104,9 @@ export default function Sidebar() {
         <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
           <Link
             to="/"
-            className={`flex items-center transition-opacity duration-300 opacity-100`}
+            className={`flex items-center transition-opacity duration-300 ${
+              hideLogoEnquiry ? "hidden pointer-events-none" : "opacity-100"
+            }`}
           >
             <img
               src="/logo/logo1.png"
@@ -102,33 +118,24 @@ export default function Sidebar() {
 
         {/* Contact & Enquiry */}
         <div
-          className={`flex items-center gap-4 transition-opacity duration-300 opacity-100`}
+          className={`flex items-center gap-4 transition-opacity duration-300 ${
+            hideLogoEnquiry ? "hidden pointer-events-none" : "opacity-100"
+          }`}
         >
-          <span
-            className={`font-medium ${
-              menuColor === "light" ? "text-white" : "text-[#232266]"
-            } hidden md:block`}
-          >
-            <Link to="tel:+91 9999999999"> +91 9999999999</Link>
+          <span className="font-medium text-white hidden md:block">
+            +1 (234) 567-8901
           </span>
 
           <Link
             to="/contact"
-            className={`transition transform ease-in-out cursor-pointer ${
-              menuColor === "light"
-                ? "bg-transparent lg:bg-white "
-                : "bg-transparent lg:bg-[#F5BC6D] text-white"
-            } ${
+            className={`transition cursor-pointer ${
               isMobile
                 ? "p-2 rounded-full"
-                : "px-4 py-2 rounded font-semibold  text-[#232266] hover:bg-[#F5BC6D]"
+                : "px-4 py-2 rounded font-semibold bg-white text-[#232266] hover:bg-[#e0a647]"
             }`}
           >
             {isMobile ? (
-              <BiSolidMessageAltDetail
-                color={menuColor === "light" ? "white" : "#232266"}
-                size={30}
-              />
+              <BiSolidMessageAltDetail color="white" size={30} />
             ) : (
               "Enquiry Now?"
             )}

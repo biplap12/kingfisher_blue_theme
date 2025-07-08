@@ -13,9 +13,7 @@ const logos = [
   "https://i.pinimg.com/736x/7e/3b/1d/7e3b1dbb81d7a522546a8b9c0b74e1b1.jpg",
   "https://png.pngtree.com/png-vector/20220831/ourmid/pngtree-m-a-letter-mark-mandel-round-automobile-car-truck-transport-logo-png-image_6133010.png",
   "https://i.pinimg.com/736x/7e/3b/1d/7e3b1dbb81d7a522546a8b9c0b74e1b1.jpg",
-  "https://i.pinimg.com/736x/7e/3b/1d/7e3b1dbb81d7a522546a8b9c0b74e1b1.jpg",
-  "https://i.pinimg.com/736x/e3/24/31/e324313e7ac9f32b33d6d20f0d815e6b.jpg",
-  "https://i.pinimg.com/736x/7e/3b/1d/7e3b1dbb81d7a522546a8b9c0b74e1b1.jpg",
+  
 ];
 
 const PartnerLogos = () => {

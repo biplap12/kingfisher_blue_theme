@@ -8,10 +8,11 @@ import AllPropertypage from "./AllPropertypage.jsx";
 import About from "./About.jsx";
 import Contact from "./Contact.jsx";
 import Blog from "./Blog.jsx";
-import Property_Gallary from "../Components/Property-View/Gallery.jsx";
 import BlogViewer from "../Components/Blog/BlogView.jsx";
 import OurServices from "./OurServices.jsx";
 import PropertyViewPage from "./PropertyViewPage.jsx";
+import PropertyApartments from "../Components/Property-Types/property-types.jsx";
+import PropertyDetails from "../Components/PropertyDetails/propertydetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "/properties/:id",
         element: <PropertyViewPage/>,
+      },
+      {
+        path: "/properties/apartments",
+        element: <PropertyApartments />,
+      },
+      {
+        path: "/properties/apartments/apartments",
+        element: <PropertyDetails />,
       },
       {
         path: "/about",

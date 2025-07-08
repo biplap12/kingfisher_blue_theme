@@ -5,7 +5,6 @@ import { TbArrowUpDashed } from "react-icons/tb";
 import { MenuContext } from "../state/MenuContext";
 import Breadcrumbs from "../Components/Breadcrumbs/Breadcrumbs";
 import { Link } from "react-router-dom";
-import Slider from "../Components/Home/Slider";
 import {
   FaArrowRight,
   FaBullseye,

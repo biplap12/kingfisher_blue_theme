@@ -1,11 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import api from "../../services/api";
 
-const Slider = ({ title, description, images, loading }) => {
+const text = [
+  {
+    title: "Our Story",
+    description:
+      "Framed by a stunning ocean panorama, Kingfisher's newest landmark on Dubai Islands captures the essence of refined coastal living. Nestled along the marina, this exceptional development offers a seamless blend of tranquility, energy, and connectivity—where every feature is thoughtfully designed to elevate modern lifestyles.",
+  },
+];
+const OurStorySlider = () => {
+  const [loading, setLoading] = useState(true);
+  const [galleryData, setGalleryData] = useState([]);
   const [current, setCurrent] = useState(0);
-  const length = images.length;
   const startX = useRef(0);
   const isDragging = useRef(false);
+
+
+  useEffect(() => {
+    const fetchGalleryData = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get("/home-galleries/active");
+        if (response.data.success) {
+          console.log("Gallery data:", response.data.data[0].imageUrl);
+          setGalleryData(response.data.data);
+        }
+      } catch (err) {
+        console.error("Error fetching gallery data:", err);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGalleryData();
+  }, []);
+
+  const length = galleryData.length;
 
   const prevSlide = () => {
     setCurrent((prev) => (prev === 0 ? length - 1 : prev - 1));
@@ -31,7 +63,7 @@ const Slider = ({ title, description, images, loading }) => {
     isDragging.current = false;
   };
 
-  if (!images || length === 0) {
+  if (!galleryData || length === 0) {
     return (
       <div className="text-center py-10 text-gray-500">No images found.</div>
     );
@@ -42,10 +74,10 @@ const Slider = ({ title, description, images, loading }) => {
       {/* Header */}
       <div id="our-story" className="text-center px-6 py-12 max-w-7xl mx-auto ">
         <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
-          {title}
+          {text[0].title}
         </h2>
         <p className="text-lg text-gray-500 max-w-4xl mx-auto raleway-regular">
-          {description}
+          {text[0].description}
         </p>
       </div>
 
@@ -67,21 +99,19 @@ const Slider = ({ title, description, images, loading }) => {
           >
             {/* Left */}
             <img
-              src={images[getIndex(current - 1)].imageUrl}
+              src={galleryData[getIndex(current - 1)].imageUrl}
               alt="Prev Slide"
               className="hidden sm:block absolute left-0 -z-20 top-0 w-[10%] h-full object-cover opacity-80 transform -translate-x-6 transition-all duration-500 rounded-xl"
             />
 
-            {/* Center */}
             <img
-              src={images[current].imageUrl}
+              src={galleryData[current].imageUrl}
               alt="Current Slide"
               className="w-full sm:w-[80%] h-full object-cover -z-20 shadow-lg transition-all duration-500 rounded-xl"
             />
 
-            {/* Right */}
             <img
-              src={images[getIndex(current + 1)].imageUrl}
+              src={galleryData[getIndex(current + 1)].imageUrl}
               alt="Next Slide"
               className="hidden sm:block absolute right-0 -z-20 top-0 w-[10%] h-full object-cover opacity-80 transform translate-x-6 transition-all duration-500 rounded-xl"
             />
@@ -113,4 +143,4 @@ const Slider = ({ title, description, images, loading }) => {
   );
 };
 
-export default Slider;
+export default OurStorySlider;

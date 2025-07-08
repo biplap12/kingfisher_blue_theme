@@ -85,7 +85,7 @@ const Gallery = () => {
           {displayData.map((item, index) => (
             <div
               key={item._id || index}
-              className={`relative text-white h-80 bg-cover bg-center group overflow-hidden ${
+              className={`relative text-white h-80 bg-cover bg-center group overflow-hidden  rounded-2xl ${
                 item.span === 2
                   ? "md:col-span-2 md:row-span-2 h-[660px] -z-50"
                   : ""

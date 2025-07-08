@@ -91,11 +91,6 @@ const FloorPlanSelector = () => {
                       <span className="text-sm">{plan.sqrft}</span>
                     </div>
                   </div>
-
-                  {/* Active indicator */}
-                  {selected.label === plan.label && (
-                    <div className="mt-4 w-full h-px bg-white/30"></div>
-                  )}
                 </button>
               </div>
             ))}
@@ -107,7 +102,7 @@ const FloorPlanSelector = () => {
           <div className="lg:col-span-8">
             <div className=" ">
               <div className="absolute -inset-2rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-              <div className=" bg-white rounded-2xl p-4 shadow-2xl">
+              <div className=" bg-white rounded-2xl p-4">
                 <div className="overflow-hidden rounded-xl">
                   <img
                     src={selected.image}
@@ -131,10 +126,6 @@ const FloorPlanSelector = () => {
         </div>
       </div>
 
-      {/* Bottom Divider */}
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="h-px bg-gray-200"></div>
-      </div>
     </section>
   );
 };
