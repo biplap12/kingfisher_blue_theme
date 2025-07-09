@@ -27,7 +27,7 @@ const locations = [
 
 const MapSection = () => {
   return (
-    <section className="bg-white" id="location">
+    <section  id="location">
       {/* Header */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center">

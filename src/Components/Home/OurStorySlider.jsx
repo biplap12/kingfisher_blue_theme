@@ -16,7 +16,6 @@ const OurStorySlider = () => {
   const startX = useRef(0);
   const isDragging = useRef(false);
 
-
   useEffect(() => {
     const fetchGalleryData = async () => {
       try {
@@ -72,7 +71,10 @@ const OurStorySlider = () => {
   return (
     <>
       {/* Header */}
-      <div id="our-story" className="text-center px-6 py-12 max-w-7xl mx-auto ">
+      <div
+        id="our-story"
+        className="text-center px-6 py-12 max-w-7xl mx-auto bg-secondary-color"
+      >
         <h2 className="text-4xl md:text-5xl tracking-widest heading-font uppercase mb-6">
           {text[0].title}
         </h2>

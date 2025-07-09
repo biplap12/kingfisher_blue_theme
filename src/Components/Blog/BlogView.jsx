@@ -91,13 +91,13 @@ export default function BlogViewer() {
     if (bannerRef.current) {
       setBannerHeight(bannerRef.current.offsetHeight);
     }
-  }, []);
+  }, [bannerRef, setBannerHeight]);
 
   if (loading) return <Loader />;
   if (!blog) return <NotFound />;
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen">
       {/* Banner */}
       <div
         className="relative w-full mx-auto h-screen bg-cover bg-center heading-font tracking-widest text-white -mt-25"
@@ -122,10 +122,9 @@ export default function BlogViewer() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
-        {/* Back button */}
         <button
           onClick={() => window.history.back()}
-          className="flex items-center text-gray-600 hover:text-gray-900 mb-8 text-sm font-medium"
+          className="flex items-center text-white hover:text-white mb-8 text-sm font-medium"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
@@ -135,23 +134,29 @@ export default function BlogViewer() {
 
         <article>
           <header className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4 font-serif line">
+            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4 font-serif line">
               {blog.title}
             </h1>
 
-            <div className="flex items-center text-sm text-gray-600">
-              <span className="font-medium text-gray-900 mr-2 flex items-center gap-2">
-               By {blog.author || "Unknown"}
+            <div className="flex items-center text-sm text-white">
+              <span className="font-medium text-white mr-2 flex items-center gap-2">
+                By {blog.author || "Unknown"}
               </span>
               <span className="mr-2"> </span>
-              <span className="mr-2 flex items-center gap-1"> <Calendar size={16} />
+              <span className="mr-2 flex items-center gap-1">
+                {" "}
+                <Calendar size={16} />
                 {new Date(blog.updatedAt).toLocaleString("en-GB", {
                   day: "2-digit",
                   month: "short",
                   year: "numeric",
                 })}
               </span>
-              <span className="flex items-center gap-1"> <Clock size={16} />{formatTimeAgo(blog.updatedAt)}</span>
+              <span className="flex items-center gap-1">
+                {" "}
+                <Clock size={16} />
+                {formatTimeAgo(blog.updatedAt)}
+              </span>
             </div>
           </header>
 
@@ -166,14 +171,14 @@ export default function BlogViewer() {
 
           {/* Render description as HTML */}
           <div
-            className="prose prose-lg max-w-none text-gray-800"
+            className="prose prose-lg max-w-none text-white"
             dangerouslySetInnerHTML={{ __html: blog.description }}
           />
 
           {/* Tags */}
           {blog.tags && blog.tags.length > 0 && (
             <div className="border-t border-gray-200 pt-8 mt-12">
-              <h3 className="text-lg font-semibold mb-4 text-gray-900">Tags</h3>
+              <h3 className="text-lg font-semibold mb-4 text-white">Tags</h3>
               <div className="flex flex-wrap gap-3">
                 {blog.tags.map((tag, idx) => (
                   <span
@@ -188,7 +193,7 @@ export default function BlogViewer() {
           )}
         </article>
         <div className="border-t border-gray-200 pt-12 mt-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">
+          <h3 className="text-2xl font-bold text-white mb-8">
             Recommended for you
           </h3>
           <div className="grid md:grid-cols-3 gap-8">

@@ -73,7 +73,7 @@ const ContactFormSection = () => {
         <form className="grid grid-cols-2" onSubmit={handleSubmit}>
           {/* Row 1: Name / Email */}
           <div className="p-6 ">
-            <label className="block text-sm text-gray-600 mb-2">
+            <label className="block text-sm text-white mb-2">
               Nice to meet you
             </label>
             <input
@@ -82,12 +82,12 @@ const ContactFormSection = () => {
               value={formData.fullName}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
+              className="w-full border-none outline-none placeholder-gray-400 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>
           <div className="p-6 ">
-            <label className="block text-sm text-gray-600 mb-2">
+            <label className="block text-sm text-white mb-2">
               Email address
             </label>
             <input
@@ -96,50 +96,50 @@ const ContactFormSection = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email address"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
+              className="w-full border-none outline-none placeholder-gray-400 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>
 
           {/* Row 2: Phone / Subject */}
           <div className="p-6 ">
-            <label className="block text-sm text-gray-600 mb-2">Phone</label>
+            <label className="block text-sm text-white mb-2">Phone</label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="Your phone number"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
+              className="w-full border-none outline-none placeholder-gray-400 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>
           <div className="p-6 ">
-            <label className="block text-sm text-gray-600 mb-2">Subject</label>
+            <label className="block text-sm text-white mb-2">Subject</label>
             <input
               type="text"
               name="project"
               value={formData.project}
               onChange={handleChange}
               placeholder="Project name"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
+              className="w-full border-none outline-none placeholder-gray-400 focus:font-semibold text-xs lg:text-lg"
             />
           </div>
 
           {/* Row 3: Budget / Service */}
           <div className="p-6 ">
-            <label className="block text-sm text-gray-600 mb-2">Budget</label>
+            <label className="block text-sm text-white mb-2">Budget</label>
             <input
               type="text"
               name="budget"
               value={formData.budget}
               onChange={handleChange}
               placeholder="Your budget"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
+              className="w-full border-none outline-none placeholder-gray-400 focus:font-semibold text-xs lg:text-lg"
             />
           </div>
           <div className="p-6 ">
-            <label className="block text-sm text-gray-600 mb-2">
+            <label className="block text-sm text-white mb-2">
               Interested Service
             </label>
             <input
@@ -148,13 +148,13 @@ const ContactFormSection = () => {
               value={formData.service}
               onChange={handleChange}
               placeholder="Interested service"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
+              className="w-full border-none outline-none placeholder-gray-400 focus:font-semibold text-xs lg:text-lg"
             />
           </div>
 
           {/* Row 4: Message */}
           <div className="p-6 col-span-2">
-            <label className="block text-sm text-gray-600 mb-2">
+            <label className="block text-sm text-white mb-2">
               Your name
             </label>
             <textarea
@@ -163,7 +163,7 @@ const ContactFormSection = () => {
               onChange={handleChange}
               rows="4"
               placeholder="Tell us about your project"
-              className="w-full border-none outline-none placeholder-gray-800 focus:font-semibold text-xs lg:text-lg"
+              className="w-full border-none outline-none placeholder-gray-400 focus:font-semibold text-xs lg:text-lg"
               required
             />
           </div>

@@ -28,7 +28,7 @@ const ContactHeroSection = () => {
 
       {/* Content Section */}
       <div className="flex flex-col px-6 md:px-20 py-10">
-        <Link to="/" className="flex items-center text-gray-700 mb-6">
+        <Link to="/" className="flex items-center text-gray-400 mb-6">
           <ArrowLeft size={18} className="mr-2" />
           Back
         </Link>

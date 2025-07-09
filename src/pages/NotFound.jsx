@@ -26,7 +26,7 @@ const NotFound = () => {
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-yellow-300 px-6">
         <Link
           to="/"
-          className="absolute bottom-10 px-6 py-3 bg-[#f7e62a] text-white font-semibold rounded-lg shadow hover:bg-yellow-400 transition flex flex-row items-center gap-2"
+          className="absolute bottom-10 px-6 py-3 bg-[#F5BC6D] text-white font-semibold rounded-lg shadow hover:bg-yellow-400 transition flex flex-row items-center gap-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

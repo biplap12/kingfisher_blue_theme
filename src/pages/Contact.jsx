@@ -3,7 +3,7 @@ import ContactHeroSection from "../Components/Contact/heroSection";
 
 const ContactForm = () => {
   return (
-    <div className="bg-white min-h-screen text-black font-sans text-lg mb-10">
+    <div className=" min-h-screen text-white font-sans text-lg mb-10">
       <ContactHeroSection />
       <ContactFormSection />
     </div>

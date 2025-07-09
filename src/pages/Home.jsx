@@ -9,21 +9,21 @@ import Gallery from "../Components/Home/Gallery.jsx";
 import PartnerLogos from "../Components/Partners/Associated-Partners.jsx";
 // import { useEffect, useState } from "react";
 // import api from "../services/api.js";
+import Home1 from "../Components/Home/home.jsx";
 
 import OurStorySlider from "../Components/Home/OurStorySlider.jsx";
 import AbcPage from "../Components/abc.jsx";
 
 const Home = () => {
-
-
   return (
     <>
       {/* <Navbar/> */}
       <section data-theme="light" className="min-h-screen relative">
-        <Hero1 />
-          <div className="absolute lg:-bottom-20 -bottom-30  left-1/2  transform -translate-x-1/2 ">
+        {/* <Hero1 /> */}
+        <Home1/>
+        {/* <div className="absolute lg:-bottom-20 -bottom-30  left-1/2  transform -translate-x-1/2 ">
           <AbcPage />
-        </div>
+        </div> */}
       </section>
 
       {/* <section className="min-h-screen" id="our-story">
